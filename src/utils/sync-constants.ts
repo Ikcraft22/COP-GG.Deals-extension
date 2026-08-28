@@ -1,0 +1,36 @@
+export const STEAM_URL: string = 'https://store.steampowered.com/dynamicstore/userdata/';
+export const STEAM_COLLECTION_SYNC_BUTTON_ID: string = 'steam-collection-sync-btn';
+export const STEAM_HOME_URL: string = 'https://store.steampowered.com/';
+export const STEAM_WARMUP_WAIT_MS: number = 3000;
+export const STEAM_NOT_LOGGED_IN_MESSAGE: string = 'User is probably not logged in to Steam.';
+export const STEAM_SOURCE_ID: number = 64;
+export const STEAM_IGNORELIST_BUTTON_ID: string = 'steam-ignorelist-sync-btn';
+export const STEAM_WISHLIST_BUTTON_ID: string = 'steam-wishlist-sync-btn';
+
+export const EPIC_GAMES_COLLECTION_SYNC_BUTTON_ID: string = 'epic-collection-sync-btn';
+export const EPIC_GAMES_WISHLIST_SYNC_BUTTON_ID: string = 'epic-wishlist-sync-btn';
+export const EPIC_AUTH_CODE_URL: string = 'https://www.epicgames.com/id/api/redirect?clientId=34a02cf8f4414e29b15921876da36f9a&responseType=code';
+export const EPIC_TOKEN_URL: string = 'https://account-public-service-prod03.ol.epicgames.com/account/api/oauth/token';
+export const EPIC_LIBRARY_ITEMS_URL: string = 'https://library-service.live.use1a.on.epicgames.com/library/api/public/items?includeMetadata=true';
+export const EPIC_LAUNCHER_USER_AGENT: string = 'UELauncher/11.0.1-14907503+++Portal+Release-Live Windows/10.0.19041.1.256.64bit';
+export const EPIC_OAUTH_CLIENT_ID: string = '34a02cf8f4414e29b15921876da36f9a'; // launcherAppClient2
+export const EPIC_OAUTH_CLIENT_SECRET: string = 'daafbccc737745039dffe53d94fc76cf'; // launcherAppClient2
+export const EPIC_ID_LOGIN_URL: string = 'https://www.epicgames.com/id/login?';
+export const EPIC_SOURCE_ID: number = 128;
+export const EPIC_TOKEN_STORAGE_KEY: string = 'ggdeals.epic.token';
+export const EPIC_TOKEN_EXPIRY_SKEW_MS: number = 60000;
+export const EPIC_STORE_HOME_URL: string = 'https://store.epicgames.com/';
+export const EPIC_STORE_WISHLIST_URL: string = 'https://store.epicgames.com/graphql';
+export const EPIC_STORE_WARMUP_WAIT_MS: number = 3000;
+export const EPIC_WISHLIST_PERSISTED_QUERY_HASH: string = '40e7770852757ee6aaa43b0f6fce65de984754e8d32572a1c978910cbf26f02e';
+
+export const PLAYSTATION_WISHLIST_URL: string = 'https://library.playstation.com/wishlist';
+export const PLAYSTATION_COLLECTION_URL: string = 'https://library.playstation.com/recently-purchased';
+export const PLAYSTATION_SIGNIN_URL: string = 'https://web.np.playstation.com/api/session/v1//signin?redirect_uri=https%3A%2F%2Fio.playstation.com%2Fcentral%2Fauth%2Flogin';
+export const PLAYSTATION_SOURCE_ID: number = 256;
+export const PLAYSTATION_WISHLIST_SYNC_BUTTON_ID: string = 'ps-wishlist-sync-btn';
+export const PLAYSTATION_COLLECTION_SYNC_BUTTON_ID: string = 'ps-collection-sync-btn';
+
+export const EXTENSION_INSTALLED_CLASSNAME: string = 'extension-installed';
+export const EXTENSION_VERSION: string = chrome.runtime.getManifest().version;
+export const USER_SETTINGS_PAGE_CLASSNAME: string = 'user-settings-page';

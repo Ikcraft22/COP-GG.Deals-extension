@@ -1,0 +1,308 @@
+{
+  "extensionName": {
+    "message": "GG.deals – Spelerbjudanden och prisjämförelse"
+  },
+  "extensionDescription": {
+    "message": "Jämför spelpriser och hitta billigare erbjudanden medan du surfar. Synkronisera önskelistor och bibliotek med GG.deals."
+  },
+  "settingsTabAria": {
+    "message": "Fliken Inställningar",
+    "description": "Tillgänglig etikett för fliken med tilläggsinställningar."
+  },
+  "signInBetterHeading": {
+    "message": "Logga in för en bättre upplevelse"
+  },
+  "signIn": {
+    "message": "Logga in"
+  },
+  "signInBetterDescription": {
+    "message": "Personliga erbjudanden och synkronisering av ditt spelbibliotek på ett och samma ställe."
+  },
+  "ggDealsUserSettings": {
+    "message": "Användarinställningar för GG.deals"
+  },
+  "settingsPlatformTitle": {
+    "message": "Plattform"
+  },
+  "settingsPlatformDescription": {
+    "message": "Se produkter och priser som är relevanta för din plattform."
+  },
+  "platformAll": {
+    "message": "Alla plattformar"
+  },
+  "platformPc": {
+    "message": "PC"
+  },
+  "platformXbox": {
+    "message": "Xbox"
+  },
+  "platformPlayStation": {
+    "message": "PlayStation"
+  },
+  "platformSwitch": {
+    "message": "Switch"
+  },
+  "settingsRegionCurrencyTitle": {
+    "message": "Region och valuta"
+  },
+  "settingsRegionCurrencyDescription": {
+    "message": "Se produkter och priser som är relevanta för din region."
+  },
+  "regionAustralia": {
+    "message": "Australien (AUD)"
+  },
+  "regionBelgium": {
+    "message": "Belgien (EUR)"
+  },
+  "regionBrazil": {
+    "message": "Brasilien (BRL)"
+  },
+  "regionCanada": {
+    "message": "Kanada (CAD)"
+  },
+  "regionDenmark": {
+    "message": "Danmark (DKK)"
+  },
+  "regionEurope": {
+    "message": "Europa (EUR)"
+  },
+  "regionFinland": {
+    "message": "Finland (EUR)"
+  },
+  "regionFrance": {
+    "message": "Frankrike (EUR)"
+  },
+  "regionGermany": {
+    "message": "Tyskland (EUR)"
+  },
+  "regionIreland": {
+    "message": "Irland (EUR)"
+  },
+  "regionItaly": {
+    "message": "Italien (EUR)"
+  },
+  "regionNetherlands": {
+    "message": "Nederländerna (EUR)"
+  },
+  "regionNorway": {
+    "message": "Norge (NOK)"
+  },
+  "regionPoland": {
+    "message": "Polen (zł)"
+  },
+  "regionSpain": {
+    "message": "Spanien (EUR)"
+  },
+  "regionSweden": {
+    "message": "Sverige (SEK)"
+  },
+  "regionSwitzerland": {
+    "message": "Schweiz (CHF)"
+  },
+  "regionUnitedKingdom": {
+    "message": "Storbritannien (GBP)"
+  },
+  "regionUnitedStates": {
+    "message": "USA (USD)"
+  },
+  "settingsKeyshopsTitle": {
+    "message": "Keyshops"
+  },
+  "settingsKeyshopsDescription": {
+    "message": "Styr visningen av priser från keyshops."
+  },
+  "settingsBarTitle": {
+    "message": "GG.deals-fält"
+  },
+  "settingsBarDescription": {
+    "message": "Visa tilläggsfältet på webbplatser."
+  },
+  "settingsWebsiteHiddenHeading": {
+    "message": "Webbplats dold från GG.deals-fältet"
+  },
+  "settingsWebsiteHiddenDescription": {
+    "message": "Den här webbplatsen har lagts till i din blockeringslista. Hantera uteslutna webbplatser nedan."
+  },
+  "settingsBlacklistTitle": {
+    "message": "Blockeringslista"
+  },
+  "settingsBlacklistDescription": {
+    "message": "Dölj tilläggsfältet på valda webbplatser."
+  },
+  "close": {
+    "message": "Stäng"
+  },
+  "userAvatarAlt": {
+    "message": "$USERNAME$s avatar",
+    "placeholders": {
+      "username": {
+        "content": "$1"
+      }
+    }
+  },
+  "user": {
+    "message": "Användare"
+  },
+  "getSettingsFromGgDeals": {
+    "message": "Hämta inställningar från GG.deals"
+  },
+  "signOut": {
+    "message": "Logga ut"
+  },
+  "appearanceTabAria": {
+    "message": "Fliken Utseende"
+  },
+  "appearanceThemeTitle": {
+    "message": "Tema"
+  },
+  "appearanceThemeDescription": {
+    "message": "Välj färger."
+  },
+  "appearanceThemeOptionsAria": {
+    "message": "Temaalternativ"
+  },
+  "themeDark": {
+    "message": "Mörkt"
+  },
+  "themeLight": {
+    "message": "Ljust"
+  },
+  "themeSystem": {
+    "message": "System"
+  },
+  "appearanceBarWidthTitle": {
+    "message": "Fältets bredd"
+  },
+  "appearanceBarWidthDescription": {
+    "message": "Välj bredden på tilläggsfältet."
+  },
+  "appearanceBarWidthOptionsAria": {
+    "message": "Alternativ för fältbredd"
+  },
+  "barWidthFixed": {
+    "message": "Fast"
+  },
+  "barWidthFitContent": {
+    "message": "Anpassa till innehåll"
+  },
+  "barWidthEdgeToEdge": {
+    "message": "Från kant till kant"
+  },
+  "appearanceBarRoundingTitle": {
+    "message": "Avrundning av fältet"
+  },
+  "appearanceBarRoundingDescription": {
+    "message": "Välj avrundningen av tilläggsfältet."
+  },
+  "appearanceRoundingOptionsAria": {
+    "message": "Avrundningsalternativ"
+  },
+  "roundingRounded": {
+    "message": "Avrundat"
+  },
+  "roundingRoundedCorners": {
+    "message": "Avrundade hörn"
+  },
+  "roundingRoundedTop": {
+    "message": "Avrundad ovansida"
+  },
+  "dealsSeeAll": {
+    "message": "Visa alla"
+  },
+  "historicalLow": {
+    "message": "Historiskt lägsta pris"
+  },
+  "historicalLowAbbreviation": {
+    "message": "HL"
+  },
+  "excludedSearchWebsites": {
+    "message": "Sök webbplatser"
+  },
+  "excludedRemoveAll": {
+    "message": "Ta bort alla"
+  },
+  "excludedRemove": {
+    "message": "Ta bort"
+  },
+  "excludedRemoveLowercase": {
+    "message": "ta bort"
+  },
+  "excludedNoMatches": {
+    "message": "Inga matchande webbplatser hittades."
+  },
+  "excludedRemoveSingleConfirm": {
+    "message": "Är du säker på att du vill ta bort $WEBSITE$ från listan över uteslutna webbplatser?",
+    "placeholders": {
+      "website": {
+        "content": "$1"
+      }
+    }
+  },
+  "excludedRemoveFilteredConfirm": {
+    "message": "Är du säker på att du vill ta bort alla $COUNT$ filtrerade webbplatser?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "excludedRemoveAllConfirm": {
+    "message": "Är du säker på att du vill ta bort alla $COUNT$ webbplatser från listan?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "cancel": {
+    "message": "Avbryt"
+  },
+  "extensionSettingsAria": {
+    "message": "Tilläggsinställningar"
+  },
+  "goToGgDeals": {
+    "message": "Gå till GG.deals"
+  },
+  "search": {
+    "message": "Sök"
+  },
+  "searchGameOnGgDeals": {
+    "message": "Sök efter spel på GG.deals"
+  },
+  "searchOnGgDeals": {
+    "message": "Sök på GG.deals"
+  },
+  "mainSettingsTabsAria": {
+    "message": "Huvudflikar för inställningar"
+  },
+  "tabDeals": {
+    "message": "Erbjudanden"
+  },
+  "tabSettings": {
+    "message": "Inställningar"
+  },
+  "tabAppearance": {
+    "message": "Utseende"
+  },
+  "verifyEmailAddress": {
+    "message": "Verifiera din e-postadress"
+  },
+  "notice": {
+    "message": "Meddelande"
+  },
+  "barOfficialLabel": {
+    "message": "Officiell:"
+  },
+  "barKeyshopLabel": {
+    "message": "Keyshop:"
+  },
+  "barViewOnGgDeals": {
+    "message": "Visa på GG.deals"
+  },
+  "barAlwaysHideOnSite": {
+    "message": "Dölj alltid på den här webbplatsen"
+  },
+  "barChangeAppearance": {
+    "message": "Ändra utseende"
+  }
+}

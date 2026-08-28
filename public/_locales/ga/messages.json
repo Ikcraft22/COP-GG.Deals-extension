@@ -1,0 +1,308 @@
+{
+  "extensionName": {
+    "message": "GG.deals – Margaí cluichí agus comparáid praghsanna"
+  },
+  "extensionDescription": {
+    "message": "Cuir praghsanna cluichí i gcomparáid agus aimsigh margaí níos saoire. Sioncronaigh liostaí mianta agus leabharlanna le GG.deals."
+  },
+  "settingsTabAria": {
+    "message": "Cluaisín na socruithe",
+    "description": "Lipéad inrochtana do chluaisín socruithe an tsínidh."
+  },
+  "signInBetterHeading": {
+    "message": "Sínigh isteach le haghaidh eispéireas níos fearr"
+  },
+  "signIn": {
+    "message": "Sínigh isteach"
+  },
+  "signInBetterDescription": {
+    "message": "Margaí pearsantaithe agus sioncronú do leabharlainne cluichí in aon áit amháin."
+  },
+  "ggDealsUserSettings": {
+    "message": "Socruithe úsáideora GG.deals"
+  },
+  "settingsPlatformTitle": {
+    "message": "Ardán"
+  },
+  "settingsPlatformDescription": {
+    "message": "Féach ar tháirgí agus ar phraghsanna a bhaineann le d’ardán."
+  },
+  "platformAll": {
+    "message": "Gach ardán"
+  },
+  "platformPc": {
+    "message": "PC"
+  },
+  "platformXbox": {
+    "message": "Xbox"
+  },
+  "platformPlayStation": {
+    "message": "PlayStation"
+  },
+  "platformSwitch": {
+    "message": "Switch"
+  },
+  "settingsRegionCurrencyTitle": {
+    "message": "Réigiún agus airgeadra"
+  },
+  "settingsRegionCurrencyDescription": {
+    "message": "Féach ar tháirgí agus ar phraghsanna a bhaineann le do réigiún."
+  },
+  "regionAustralia": {
+    "message": "An Astráil (AUD)"
+  },
+  "regionBelgium": {
+    "message": "An Bheilg (EUR)"
+  },
+  "regionBrazil": {
+    "message": "An Bhrasaíl (BRL)"
+  },
+  "regionCanada": {
+    "message": "Ceanada (CAD)"
+  },
+  "regionDenmark": {
+    "message": "An Danmhairg (DKK)"
+  },
+  "regionEurope": {
+    "message": "An Eoraip (EUR)"
+  },
+  "regionFinland": {
+    "message": "An Fhionlainn (EUR)"
+  },
+  "regionFrance": {
+    "message": "An Fhrainc (EUR)"
+  },
+  "regionGermany": {
+    "message": "An Ghearmáin (EUR)"
+  },
+  "regionIreland": {
+    "message": "Éire (EUR)"
+  },
+  "regionItaly": {
+    "message": "An Iodáil (EUR)"
+  },
+  "regionNetherlands": {
+    "message": "An Ísiltír (EUR)"
+  },
+  "regionNorway": {
+    "message": "An Iorua (NOK)"
+  },
+  "regionPoland": {
+    "message": "An Pholainn (zł)"
+  },
+  "regionSpain": {
+    "message": "An Spáinn (EUR)"
+  },
+  "regionSweden": {
+    "message": "An tSualainn (SEK)"
+  },
+  "regionSwitzerland": {
+    "message": "An Eilvéis (CHF)"
+  },
+  "regionUnitedKingdom": {
+    "message": "An Ríocht Aontaithe (GBP)"
+  },
+  "regionUnitedStates": {
+    "message": "Stáit Aontaithe Mheiriceá (USD)"
+  },
+  "settingsKeyshopsTitle": {
+    "message": "Siopaí eochracha"
+  },
+  "settingsKeyshopsDescription": {
+    "message": "Rialaigh taispeáint praghsanna ó shiopaí eochracha."
+  },
+  "settingsBarTitle": {
+    "message": "Barra GG.deals"
+  },
+  "settingsBarDescription": {
+    "message": "Taispeáin barra an tsínidh ar shuíomhanna gréasáin."
+  },
+  "settingsWebsiteHiddenHeading": {
+    "message": "Suíomh gréasáin folaithe ó bharra GG.deals"
+  },
+  "settingsWebsiteHiddenDescription": {
+    "message": "Cuireadh an suíomh gréasáin seo le do bhlocliosta. Bainistigh suíomhanna gréasáin eisiata thíos."
+  },
+  "settingsBlacklistTitle": {
+    "message": "Blocliosta"
+  },
+  "settingsBlacklistDescription": {
+    "message": "Folaigh barra an tsínidh ar shuíomhanna gréasáin roghnaithe."
+  },
+  "close": {
+    "message": "Dún"
+  },
+  "userAvatarAlt": {
+    "message": "Abhatár $USERNAME$",
+    "placeholders": {
+      "username": {
+        "content": "$1"
+      }
+    }
+  },
+  "user": {
+    "message": "Úsáideoir"
+  },
+  "getSettingsFromGgDeals": {
+    "message": "Faigh socruithe ó GG.deals"
+  },
+  "signOut": {
+    "message": "Sínigh amach"
+  },
+  "appearanceTabAria": {
+    "message": "Cluaisín an chuma"
+  },
+  "appearanceThemeTitle": {
+    "message": "Téama"
+  },
+  "appearanceThemeDescription": {
+    "message": "Roghnaigh na dathanna."
+  },
+  "appearanceThemeOptionsAria": {
+    "message": "Roghanna téama"
+  },
+  "themeDark": {
+    "message": "Dorcha"
+  },
+  "themeLight": {
+    "message": "Geal"
+  },
+  "themeSystem": {
+    "message": "Córas"
+  },
+  "appearanceBarWidthTitle": {
+    "message": "Leithead an bharra"
+  },
+  "appearanceBarWidthDescription": {
+    "message": "Roghnaigh leithead bharra an tsínidh."
+  },
+  "appearanceBarWidthOptionsAria": {
+    "message": "Roghanna leithead an bharra"
+  },
+  "barWidthFixed": {
+    "message": "Seasta"
+  },
+  "barWidthFitContent": {
+    "message": "Oiriúnaigh don ábhar"
+  },
+  "barWidthEdgeToEdge": {
+    "message": "Ó imeall go himeall"
+  },
+  "appearanceBarRoundingTitle": {
+    "message": "Slánú an bharra"
+  },
+  "appearanceBarRoundingDescription": {
+    "message": "Roghnaigh slánú bharra an tsínidh."
+  },
+  "appearanceRoundingOptionsAria": {
+    "message": "Roghanna slánaithe"
+  },
+  "roundingRounded": {
+    "message": "Slánaithe"
+  },
+  "roundingRoundedCorners": {
+    "message": "Cúinní slánaithe"
+  },
+  "roundingRoundedTop": {
+    "message": "Barr slánaithe"
+  },
+  "dealsSeeAll": {
+    "message": "Féach orthu go léir"
+  },
+  "historicalLow": {
+    "message": "An praghas is ísle riamh"
+  },
+  "historicalLowAbbreviation": {
+    "message": "HL"
+  },
+  "excludedSearchWebsites": {
+    "message": "Cuardaigh suíomhanna gréasáin"
+  },
+  "excludedRemoveAll": {
+    "message": "Bain gach ceann"
+  },
+  "excludedRemove": {
+    "message": "Bain"
+  },
+  "excludedRemoveLowercase": {
+    "message": "bain"
+  },
+  "excludedNoMatches": {
+    "message": "Níor aimsíodh aon suíomh gréasáin meaitseála."
+  },
+  "excludedRemoveSingleConfirm": {
+    "message": "An bhfuil tú cinnte gur mhaith leat $WEBSITE$ a bhaint den liosta eisiaimh?",
+    "placeholders": {
+      "website": {
+        "content": "$1"
+      }
+    }
+  },
+  "excludedRemoveFilteredConfirm": {
+    "message": "An bhfuil tú cinnte gur mhaith leat na $COUNT$ suíomh gréasáin scagtha go léir a bhaint?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "excludedRemoveAllConfirm": {
+    "message": "An bhfuil tú cinnte gur mhaith leat na $COUNT$ suíomh gréasáin go léir a bhaint den liosta?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "cancel": {
+    "message": "Cealaigh"
+  },
+  "extensionSettingsAria": {
+    "message": "Socruithe an tsínidh"
+  },
+  "goToGgDeals": {
+    "message": "Téigh chuig GG.deals"
+  },
+  "search": {
+    "message": "Cuardaigh"
+  },
+  "searchGameOnGgDeals": {
+    "message": "Cuardaigh cluiche ar GG.deals"
+  },
+  "searchOnGgDeals": {
+    "message": "Cuardaigh ar GG.deals"
+  },
+  "mainSettingsTabsAria": {
+    "message": "Príomhchluaisíní na socruithe"
+  },
+  "tabDeals": {
+    "message": "Margaí"
+  },
+  "tabSettings": {
+    "message": "Socruithe"
+  },
+  "tabAppearance": {
+    "message": "Cuma"
+  },
+  "verifyEmailAddress": {
+    "message": "Fíoraigh do sheoladh ríomhphoist"
+  },
+  "notice": {
+    "message": "Fógra"
+  },
+  "barOfficialLabel": {
+    "message": "Oifigiúil:"
+  },
+  "barKeyshopLabel": {
+    "message": "Siopa eochracha:"
+  },
+  "barViewOnGgDeals": {
+    "message": "Féach ar GG.deals"
+  },
+  "barAlwaysHideOnSite": {
+    "message": "Folaigh ar an suíomh seo i gcónaí"
+  },
+  "barChangeAppearance": {
+    "message": "Athraigh an chuma"
+  }
+}

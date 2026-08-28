@@ -1,0 +1,308 @@
+{
+  "extensionName": {
+    "message": "GG.deals – Pelitarjoukset ja hintavertailu"
+  },
+  "extensionDescription": {
+    "message": "Vertaile pelien hintoja ja löydä halvempia tarjouksia verkossa. Synkronoi toivelistat ja kirjastot GG.deals-palveluun."
+  },
+  "settingsTabAria": {
+    "message": "Asetukset-välilehti",
+    "description": "Laajennuksen asetusvälilehden saavutettava tunniste."
+  },
+  "signInBetterHeading": {
+    "message": "Kirjaudu sisään saadaksesi paremman käyttökokemuksen"
+  },
+  "signIn": {
+    "message": "Kirjaudu sisään"
+  },
+  "signInBetterDescription": {
+    "message": "Henkilökohtaiset tarjoukset ja pelikirjaston synkronointi yhdessä paikassa."
+  },
+  "ggDealsUserSettings": {
+    "message": "GG.deals-käyttäjäasetukset"
+  },
+  "settingsPlatformTitle": {
+    "message": "Alusta"
+  },
+  "settingsPlatformDescription": {
+    "message": "Näytä alustallesi sopivat tuotteet ja hinnat."
+  },
+  "platformAll": {
+    "message": "Kaikki alustat"
+  },
+  "platformPc": {
+    "message": "PC"
+  },
+  "platformXbox": {
+    "message": "Xbox"
+  },
+  "platformPlayStation": {
+    "message": "PlayStation"
+  },
+  "platformSwitch": {
+    "message": "Switch"
+  },
+  "settingsRegionCurrencyTitle": {
+    "message": "Alue ja valuutta"
+  },
+  "settingsRegionCurrencyDescription": {
+    "message": "Näytä alueellesi sopivat tuotteet ja hinnat."
+  },
+  "regionAustralia": {
+    "message": "Australia (AUD)"
+  },
+  "regionBelgium": {
+    "message": "Belgia (EUR)"
+  },
+  "regionBrazil": {
+    "message": "Brasilia (BRL)"
+  },
+  "regionCanada": {
+    "message": "Kanada (CAD)"
+  },
+  "regionDenmark": {
+    "message": "Tanska (DKK)"
+  },
+  "regionEurope": {
+    "message": "Eurooppa (EUR)"
+  },
+  "regionFinland": {
+    "message": "Suomi (EUR)"
+  },
+  "regionFrance": {
+    "message": "Ranska (EUR)"
+  },
+  "regionGermany": {
+    "message": "Saksa (EUR)"
+  },
+  "regionIreland": {
+    "message": "Irlanti (EUR)"
+  },
+  "regionItaly": {
+    "message": "Italia (EUR)"
+  },
+  "regionNetherlands": {
+    "message": "Alankomaat (EUR)"
+  },
+  "regionNorway": {
+    "message": "Norja (NOK)"
+  },
+  "regionPoland": {
+    "message": "Puola (zł)"
+  },
+  "regionSpain": {
+    "message": "Espanja (EUR)"
+  },
+  "regionSweden": {
+    "message": "Ruotsi (SEK)"
+  },
+  "regionSwitzerland": {
+    "message": "Sveitsi (CHF)"
+  },
+  "regionUnitedKingdom": {
+    "message": "Yhdistynyt kuningaskunta (GBP)"
+  },
+  "regionUnitedStates": {
+    "message": "Yhdysvallat (USD)"
+  },
+  "settingsKeyshopsTitle": {
+    "message": "Avainkaupat"
+  },
+  "settingsKeyshopsDescription": {
+    "message": "Hallitse avainkauppojen hintojen näyttämistä."
+  },
+  "settingsBarTitle": {
+    "message": "GG.deals-palkki"
+  },
+  "settingsBarDescription": {
+    "message": "Näytä laajennuspalkki verkkosivustoilla."
+  },
+  "settingsWebsiteHiddenHeading": {
+    "message": "Verkkosivusto piilotettu GG.deals-palkista"
+  },
+  "settingsWebsiteHiddenDescription": {
+    "message": "Tämä verkkosivusto on lisätty estolistallesi. Hallitse pois jätettyjä verkkosivustoja alla."
+  },
+  "settingsBlacklistTitle": {
+    "message": "Estolista"
+  },
+  "settingsBlacklistDescription": {
+    "message": "Piilota laajennuspalkki valituilla verkkosivustoilla."
+  },
+  "close": {
+    "message": "Sulje"
+  },
+  "userAvatarAlt": {
+    "message": "Käyttäjän $USERNAME$ avatar",
+    "placeholders": {
+      "username": {
+        "content": "$1"
+      }
+    }
+  },
+  "user": {
+    "message": "Käyttäjä"
+  },
+  "getSettingsFromGgDeals": {
+    "message": "Hae asetukset GG.deals-palvelusta"
+  },
+  "signOut": {
+    "message": "Kirjaudu ulos"
+  },
+  "appearanceTabAria": {
+    "message": "Ulkoasu-välilehti"
+  },
+  "appearanceThemeTitle": {
+    "message": "Teema"
+  },
+  "appearanceThemeDescription": {
+    "message": "Valitse värit."
+  },
+  "appearanceThemeOptionsAria": {
+    "message": "Teema-asetukset"
+  },
+  "themeDark": {
+    "message": "Tumma"
+  },
+  "themeLight": {
+    "message": "Vaalea"
+  },
+  "themeSystem": {
+    "message": "Järjestelmä"
+  },
+  "appearanceBarWidthTitle": {
+    "message": "Palkin leveys"
+  },
+  "appearanceBarWidthDescription": {
+    "message": "Valitse laajennuspalkin leveys."
+  },
+  "appearanceBarWidthOptionsAria": {
+    "message": "Palkin leveysasetukset"
+  },
+  "barWidthFixed": {
+    "message": "Kiinteä"
+  },
+  "barWidthFitContent": {
+    "message": "Sovita sisältöön"
+  },
+  "barWidthEdgeToEdge": {
+    "message": "Reunasta reunaan"
+  },
+  "appearanceBarRoundingTitle": {
+    "message": "Palkin pyöristys"
+  },
+  "appearanceBarRoundingDescription": {
+    "message": "Valitse laajennuspalkin pyöristys."
+  },
+  "appearanceRoundingOptionsAria": {
+    "message": "Pyöristysasetukset"
+  },
+  "roundingRounded": {
+    "message": "Pyöristetty"
+  },
+  "roundingRoundedCorners": {
+    "message": "Pyöristetyt kulmat"
+  },
+  "roundingRoundedTop": {
+    "message": "Pyöristetty yläosa"
+  },
+  "dealsSeeAll": {
+    "message": "Näytä kaikki"
+  },
+  "historicalLow": {
+    "message": "Kaikkien aikojen alin hinta"
+  },
+  "historicalLowAbbreviation": {
+    "message": "HL"
+  },
+  "excludedSearchWebsites": {
+    "message": "Hae verkkosivustoja"
+  },
+  "excludedRemoveAll": {
+    "message": "Poista kaikki"
+  },
+  "excludedRemove": {
+    "message": "Poista"
+  },
+  "excludedRemoveLowercase": {
+    "message": "poista"
+  },
+  "excludedNoMatches": {
+    "message": "Vastaavia verkkosivustoja ei löytynyt."
+  },
+  "excludedRemoveSingleConfirm": {
+    "message": "Haluatko varmasti poistaa verkkosivuston $WEBSITE$ pois jätettyjen luettelosta?",
+    "placeholders": {
+      "website": {
+        "content": "$1"
+      }
+    }
+  },
+  "excludedRemoveFilteredConfirm": {
+    "message": "Haluatko varmasti poistaa kaikki $COUNT$ suodatettua verkkosivustoa?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "excludedRemoveAllConfirm": {
+    "message": "Haluatko varmasti poistaa kaikki $COUNT$ verkkosivustoa luettelosta?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "cancel": {
+    "message": "Peruuta"
+  },
+  "extensionSettingsAria": {
+    "message": "Laajennuksen asetukset"
+  },
+  "goToGgDeals": {
+    "message": "Siirry GG.deals-palveluun"
+  },
+  "search": {
+    "message": "Hae"
+  },
+  "searchGameOnGgDeals": {
+    "message": "Hae peliä GG.deals-palvelusta"
+  },
+  "searchOnGgDeals": {
+    "message": "Hae GG.deals-palvelusta"
+  },
+  "mainSettingsTabsAria": {
+    "message": "Asetusten päävälilehdet"
+  },
+  "tabDeals": {
+    "message": "Tarjoukset"
+  },
+  "tabSettings": {
+    "message": "Asetukset"
+  },
+  "tabAppearance": {
+    "message": "Ulkoasu"
+  },
+  "verifyEmailAddress": {
+    "message": "Vahvista sähköpostiosoitteesi"
+  },
+  "notice": {
+    "message": "Huomautus"
+  },
+  "barOfficialLabel": {
+    "message": "Virallinen:"
+  },
+  "barKeyshopLabel": {
+    "message": "Avainkauppa:"
+  },
+  "barViewOnGgDeals": {
+    "message": "Näytä GG.deals-palvelussa"
+  },
+  "barAlwaysHideOnSite": {
+    "message": "Piilota aina tällä sivustolla"
+  },
+  "barChangeAppearance": {
+    "message": "Muuta ulkoasua"
+  }
+}

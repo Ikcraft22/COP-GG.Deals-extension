@@ -1,0 +1,308 @@
+{
+  "extensionName": {
+    "message": "GG.deals – Game-aanbiedingen en prijsvergelijking"
+  },
+  "extensionDescription": {
+    "message": "Vergelijk gameprijzen en vind goedkopere deals tijdens het browsen. Synchroniseer verlanglijsten en bibliotheken met GG.deals."
+  },
+  "settingsTabAria": {
+    "message": "Tabblad Instellingen",
+    "description": "Toegankelijk label voor het tabblad met extensie-instellingen."
+  },
+  "signInBetterHeading": {
+    "message": "Meld je aan voor een betere ervaring"
+  },
+  "signIn": {
+    "message": "Aanmelden"
+  },
+  "signInBetterDescription": {
+    "message": "Gepersonaliseerde aanbiedingen en synchronisatie van je gamebibliotheek op één plek."
+  },
+  "ggDealsUserSettings": {
+    "message": "GG.deals-gebruikersinstellingen"
+  },
+  "settingsPlatformTitle": {
+    "message": "Platform"
+  },
+  "settingsPlatformDescription": {
+    "message": "Bekijk producten en prijzen die relevant zijn voor je platform."
+  },
+  "platformAll": {
+    "message": "Alle platforms"
+  },
+  "platformPc": {
+    "message": "PC"
+  },
+  "platformXbox": {
+    "message": "Xbox"
+  },
+  "platformPlayStation": {
+    "message": "PlayStation"
+  },
+  "platformSwitch": {
+    "message": "Switch"
+  },
+  "settingsRegionCurrencyTitle": {
+    "message": "Regio en valuta"
+  },
+  "settingsRegionCurrencyDescription": {
+    "message": "Bekijk producten en prijzen die relevant zijn voor je regio."
+  },
+  "regionAustralia": {
+    "message": "Australië (AUD)"
+  },
+  "regionBelgium": {
+    "message": "België (EUR)"
+  },
+  "regionBrazil": {
+    "message": "Brazilië (BRL)"
+  },
+  "regionCanada": {
+    "message": "Canada (CAD)"
+  },
+  "regionDenmark": {
+    "message": "Denemarken (DKK)"
+  },
+  "regionEurope": {
+    "message": "Europa (EUR)"
+  },
+  "regionFinland": {
+    "message": "Finland (EUR)"
+  },
+  "regionFrance": {
+    "message": "Frankrijk (EUR)"
+  },
+  "regionGermany": {
+    "message": "Duitsland (EUR)"
+  },
+  "regionIreland": {
+    "message": "Ierland (EUR)"
+  },
+  "regionItaly": {
+    "message": "Italië (EUR)"
+  },
+  "regionNetherlands": {
+    "message": "Nederland (EUR)"
+  },
+  "regionNorway": {
+    "message": "Noorwegen (NOK)"
+  },
+  "regionPoland": {
+    "message": "Polen (zł)"
+  },
+  "regionSpain": {
+    "message": "Spanje (EUR)"
+  },
+  "regionSweden": {
+    "message": "Zweden (SEK)"
+  },
+  "regionSwitzerland": {
+    "message": "Zwitserland (CHF)"
+  },
+  "regionUnitedKingdom": {
+    "message": "Verenigd Koninkrijk (GBP)"
+  },
+  "regionUnitedStates": {
+    "message": "Verenigde Staten (USD)"
+  },
+  "settingsKeyshopsTitle": {
+    "message": "Keyshops"
+  },
+  "settingsKeyshopsDescription": {
+    "message": "Bepaal of prijzen van keyshops worden weergegeven."
+  },
+  "settingsBarTitle": {
+    "message": "GG.deals-balk"
+  },
+  "settingsBarDescription": {
+    "message": "Toon de extensiebalk op websites."
+  },
+  "settingsWebsiteHiddenHeading": {
+    "message": "Website verborgen in de GG.deals-balk"
+  },
+  "settingsWebsiteHiddenDescription": {
+    "message": "Deze website is aan je blokkeerlijst toegevoegd. Beheer hieronder uitgesloten websites."
+  },
+  "settingsBlacklistTitle": {
+    "message": "Blokkeerlijst"
+  },
+  "settingsBlacklistDescription": {
+    "message": "Verberg de extensiebalk op geselecteerde websites."
+  },
+  "close": {
+    "message": "Sluiten"
+  },
+  "userAvatarAlt": {
+    "message": "Avatar van $USERNAME$",
+    "placeholders": {
+      "username": {
+        "content": "$1"
+      }
+    }
+  },
+  "user": {
+    "message": "Gebruiker"
+  },
+  "getSettingsFromGgDeals": {
+    "message": "Instellingen ophalen van GG.deals"
+  },
+  "signOut": {
+    "message": "Afmelden"
+  },
+  "appearanceTabAria": {
+    "message": "Tabblad Vormgeving"
+  },
+  "appearanceThemeTitle": {
+    "message": "Thema"
+  },
+  "appearanceThemeDescription": {
+    "message": "Kies de kleuren."
+  },
+  "appearanceThemeOptionsAria": {
+    "message": "Themaopties"
+  },
+  "themeDark": {
+    "message": "Donker"
+  },
+  "themeLight": {
+    "message": "Licht"
+  },
+  "themeSystem": {
+    "message": "Systeem"
+  },
+  "appearanceBarWidthTitle": {
+    "message": "Balkbreedte"
+  },
+  "appearanceBarWidthDescription": {
+    "message": "Kies de breedte van de extensiebalk."
+  },
+  "appearanceBarWidthOptionsAria": {
+    "message": "Opties voor balkbreedte"
+  },
+  "barWidthFixed": {
+    "message": "Vast"
+  },
+  "barWidthFitContent": {
+    "message": "Aanpassen aan inhoud"
+  },
+  "barWidthEdgeToEdge": {
+    "message": "Van rand tot rand"
+  },
+  "appearanceBarRoundingTitle": {
+    "message": "Afronding van de balk"
+  },
+  "appearanceBarRoundingDescription": {
+    "message": "Kies de afronding van de extensiebalk."
+  },
+  "appearanceRoundingOptionsAria": {
+    "message": "Afrondingsopties"
+  },
+  "roundingRounded": {
+    "message": "Afgerond"
+  },
+  "roundingRoundedCorners": {
+    "message": "Afgeronde hoeken"
+  },
+  "roundingRoundedTop": {
+    "message": "Afgeronde bovenkant"
+  },
+  "dealsSeeAll": {
+    "message": "Alles bekijken"
+  },
+  "historicalLow": {
+    "message": "Laagste prijs ooit"
+  },
+  "historicalLowAbbreviation": {
+    "message": "HL"
+  },
+  "excludedSearchWebsites": {
+    "message": "Websites doorzoeken"
+  },
+  "excludedRemoveAll": {
+    "message": "Alles verwijderen"
+  },
+  "excludedRemove": {
+    "message": "Verwijderen"
+  },
+  "excludedRemoveLowercase": {
+    "message": "verwijderen"
+  },
+  "excludedNoMatches": {
+    "message": "Geen overeenkomende websites gevonden."
+  },
+  "excludedRemoveSingleConfirm": {
+    "message": "Weet je zeker dat je $WEBSITE$ uit de lijst met uitsluitingen wilt verwijderen?",
+    "placeholders": {
+      "website": {
+        "content": "$1"
+      }
+    }
+  },
+  "excludedRemoveFilteredConfirm": {
+    "message": "Weet je zeker dat je alle $COUNT$ gefilterde websites wilt verwijderen?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "excludedRemoveAllConfirm": {
+    "message": "Weet je zeker dat je alle $COUNT$ websites uit de lijst wilt verwijderen?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "cancel": {
+    "message": "Annuleren"
+  },
+  "extensionSettingsAria": {
+    "message": "Extensie-instellingen"
+  },
+  "goToGgDeals": {
+    "message": "Naar GG.deals"
+  },
+  "search": {
+    "message": "Zoeken"
+  },
+  "searchGameOnGgDeals": {
+    "message": "Game zoeken op GG.deals"
+  },
+  "searchOnGgDeals": {
+    "message": "Zoeken op GG.deals"
+  },
+  "mainSettingsTabsAria": {
+    "message": "Hoofdtabbladen voor instellingen"
+  },
+  "tabDeals": {
+    "message": "Aanbiedingen"
+  },
+  "tabSettings": {
+    "message": "Instellingen"
+  },
+  "tabAppearance": {
+    "message": "Vormgeving"
+  },
+  "verifyEmailAddress": {
+    "message": "Verifieer je e-mailadres"
+  },
+  "notice": {
+    "message": "Melding"
+  },
+  "barOfficialLabel": {
+    "message": "Officieel:"
+  },
+  "barKeyshopLabel": {
+    "message": "Keyshop:"
+  },
+  "barViewOnGgDeals": {
+    "message": "Bekijken op GG.deals"
+  },
+  "barAlwaysHideOnSite": {
+    "message": "Altijd verbergen op deze website"
+  },
+  "barChangeAppearance": {
+    "message": "Vormgeving wijzigen"
+  }
+}

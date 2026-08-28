@@ -1,0 +1,308 @@
+{
+  "extensionName": {
+    "message": "GG.deals – Spiltilbud og prissammenligning"
+  },
+  "extensionDescription": {
+    "message": "Sammenlign spilpriser, og find billigere tilbud, mens du browser. Synkroniser ønskelister og biblioteker med GG.deals."
+  },
+  "settingsTabAria": {
+    "message": "Fanen Indstillinger",
+    "description": "Tilgængelig etiket til fanen med udvidelsesindstillinger."
+  },
+  "signInBetterHeading": {
+    "message": "Log ind for at få en bedre oplevelse"
+  },
+  "signIn": {
+    "message": "Log ind"
+  },
+  "signInBetterDescription": {
+    "message": "Personlige tilbud og synkronisering af dit spilbibliotek samlet ét sted."
+  },
+  "ggDealsUserSettings": {
+    "message": "Brugerindstillinger for GG.deals"
+  },
+  "settingsPlatformTitle": {
+    "message": "Platform"
+  },
+  "settingsPlatformDescription": {
+    "message": "Se produkter og priser, der er relevante for din platform."
+  },
+  "platformAll": {
+    "message": "Alle platforme"
+  },
+  "platformPc": {
+    "message": "PC"
+  },
+  "platformXbox": {
+    "message": "Xbox"
+  },
+  "platformPlayStation": {
+    "message": "PlayStation"
+  },
+  "platformSwitch": {
+    "message": "Switch"
+  },
+  "settingsRegionCurrencyTitle": {
+    "message": "Område og valuta"
+  },
+  "settingsRegionCurrencyDescription": {
+    "message": "Se produkter og priser, der er relevante for dit område."
+  },
+  "regionAustralia": {
+    "message": "Australien (AUD)"
+  },
+  "regionBelgium": {
+    "message": "Belgien (EUR)"
+  },
+  "regionBrazil": {
+    "message": "Brasilien (BRL)"
+  },
+  "regionCanada": {
+    "message": "Canada (CAD)"
+  },
+  "regionDenmark": {
+    "message": "Danmark (DKK)"
+  },
+  "regionEurope": {
+    "message": "Europa (EUR)"
+  },
+  "regionFinland": {
+    "message": "Finland (EUR)"
+  },
+  "regionFrance": {
+    "message": "Frankrig (EUR)"
+  },
+  "regionGermany": {
+    "message": "Tyskland (EUR)"
+  },
+  "regionIreland": {
+    "message": "Irland (EUR)"
+  },
+  "regionItaly": {
+    "message": "Italien (EUR)"
+  },
+  "regionNetherlands": {
+    "message": "Nederlandene (EUR)"
+  },
+  "regionNorway": {
+    "message": "Norge (NOK)"
+  },
+  "regionPoland": {
+    "message": "Polen (zł)"
+  },
+  "regionSpain": {
+    "message": "Spanien (EUR)"
+  },
+  "regionSweden": {
+    "message": "Sverige (SEK)"
+  },
+  "regionSwitzerland": {
+    "message": "Schweiz (CHF)"
+  },
+  "regionUnitedKingdom": {
+    "message": "Storbritannien (GBP)"
+  },
+  "regionUnitedStates": {
+    "message": "USA (USD)"
+  },
+  "settingsKeyshopsTitle": {
+    "message": "Keyshops"
+  },
+  "settingsKeyshopsDescription": {
+    "message": "Styr visningen af priser fra keyshops."
+  },
+  "settingsBarTitle": {
+    "message": "GG.deals-bjælke"
+  },
+  "settingsBarDescription": {
+    "message": "Vis udvidelsesbjælken på websteder."
+  },
+  "settingsWebsiteHiddenHeading": {
+    "message": "Websted skjult fra GG.deals-bjælken"
+  },
+  "settingsWebsiteHiddenDescription": {
+    "message": "Dette websted er blevet føjet til din blokeringsliste. Administrer ekskluderede websteder nedenfor."
+  },
+  "settingsBlacklistTitle": {
+    "message": "Blokeringsliste"
+  },
+  "settingsBlacklistDescription": {
+    "message": "Skjul udvidelsesbjælken på udvalgte websteder."
+  },
+  "close": {
+    "message": "Luk"
+  },
+  "userAvatarAlt": {
+    "message": "$USERNAME$s avatar",
+    "placeholders": {
+      "username": {
+        "content": "$1"
+      }
+    }
+  },
+  "user": {
+    "message": "Bruger"
+  },
+  "getSettingsFromGgDeals": {
+    "message": "Hent indstillinger fra GG.deals"
+  },
+  "signOut": {
+    "message": "Log ud"
+  },
+  "appearanceTabAria": {
+    "message": "Fanen Udseende"
+  },
+  "appearanceThemeTitle": {
+    "message": "Tema"
+  },
+  "appearanceThemeDescription": {
+    "message": "Vælg farverne."
+  },
+  "appearanceThemeOptionsAria": {
+    "message": "Temaindstillinger"
+  },
+  "themeDark": {
+    "message": "Mørkt"
+  },
+  "themeLight": {
+    "message": "Lyst"
+  },
+  "themeSystem": {
+    "message": "System"
+  },
+  "appearanceBarWidthTitle": {
+    "message": "Bjælkens bredde"
+  },
+  "appearanceBarWidthDescription": {
+    "message": "Vælg bredden på udvidelsesbjælken."
+  },
+  "appearanceBarWidthOptionsAria": {
+    "message": "Indstillinger for bjælkens bredde"
+  },
+  "barWidthFixed": {
+    "message": "Fast"
+  },
+  "barWidthFitContent": {
+    "message": "Tilpas til indhold"
+  },
+  "barWidthEdgeToEdge": {
+    "message": "Fra kant til kant"
+  },
+  "appearanceBarRoundingTitle": {
+    "message": "Afrunding af bjælken"
+  },
+  "appearanceBarRoundingDescription": {
+    "message": "Vælg afrundingen af udvidelsesbjælken."
+  },
+  "appearanceRoundingOptionsAria": {
+    "message": "Indstillinger for afrunding"
+  },
+  "roundingRounded": {
+    "message": "Afrundet"
+  },
+  "roundingRoundedCorners": {
+    "message": "Afrundede hjørner"
+  },
+  "roundingRoundedTop": {
+    "message": "Afrundet top"
+  },
+  "dealsSeeAll": {
+    "message": "Se alle"
+  },
+  "historicalLow": {
+    "message": "Historisk laveste pris"
+  },
+  "historicalLowAbbreviation": {
+    "message": "HL"
+  },
+  "excludedSearchWebsites": {
+    "message": "Søg efter websteder"
+  },
+  "excludedRemoveAll": {
+    "message": "Fjern alle"
+  },
+  "excludedRemove": {
+    "message": "Fjern"
+  },
+  "excludedRemoveLowercase": {
+    "message": "fjern"
+  },
+  "excludedNoMatches": {
+    "message": "Der blev ikke fundet nogen matchende websteder."
+  },
+  "excludedRemoveSingleConfirm": {
+    "message": "Er du sikker på, at du vil fjerne $WEBSITE$ fra listen over ekskluderede websteder?",
+    "placeholders": {
+      "website": {
+        "content": "$1"
+      }
+    }
+  },
+  "excludedRemoveFilteredConfirm": {
+    "message": "Er du sikker på, at du vil fjerne alle $COUNT$ filtrerede websteder?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "excludedRemoveAllConfirm": {
+    "message": "Er du sikker på, at du vil fjerne alle $COUNT$ websteder fra listen?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "cancel": {
+    "message": "Annuller"
+  },
+  "extensionSettingsAria": {
+    "message": "Indstillinger for udvidelsen"
+  },
+  "goToGgDeals": {
+    "message": "Gå til GG.deals"
+  },
+  "search": {
+    "message": "Søg"
+  },
+  "searchGameOnGgDeals": {
+    "message": "Søg efter et spil på GG.deals"
+  },
+  "searchOnGgDeals": {
+    "message": "Søg på GG.deals"
+  },
+  "mainSettingsTabsAria": {
+    "message": "Primære indstillingsfaner"
+  },
+  "tabDeals": {
+    "message": "Tilbud"
+  },
+  "tabSettings": {
+    "message": "Indstillinger"
+  },
+  "tabAppearance": {
+    "message": "Udseende"
+  },
+  "verifyEmailAddress": {
+    "message": "Bekræft din e-mailadresse"
+  },
+  "notice": {
+    "message": "Bemærkning"
+  },
+  "barOfficialLabel": {
+    "message": "Officiel:"
+  },
+  "barKeyshopLabel": {
+    "message": "Keyshop:"
+  },
+  "barViewOnGgDeals": {
+    "message": "Se på GG.deals"
+  },
+  "barAlwaysHideOnSite": {
+    "message": "Skjul altid på dette websted"
+  },
+  "barChangeAppearance": {
+    "message": "Skift udseende"
+  }
+}

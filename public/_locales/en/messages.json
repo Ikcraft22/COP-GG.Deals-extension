@@ -1,0 +1,308 @@
+{
+  "extensionName": {
+    "message": "GG.deals – Game Deals & Price Comparison"
+  },
+  "extensionDescription": {
+    "message": "Compare game prices and find cheaper deals while you browse. Sync wishlists & libraries with GG.deals."
+  },
+  "settingsTabAria": {
+    "message": "Settings tab",
+    "description": "Accessible label for the extension settings tab."
+  },
+  "signInBetterHeading": {
+    "message": "Sign in for a better experience"
+  },
+  "signIn": {
+    "message": "Sign in"
+  },
+  "signInBetterDescription": {
+    "message": "Personalized deals and game library sync in one place."
+  },
+  "ggDealsUserSettings": {
+    "message": "GG.deals user settings"
+  },
+  "settingsPlatformTitle": {
+    "message": "Platform"
+  },
+  "settingsPlatformDescription": {
+    "message": "See products and prices relevant for your platform."
+  },
+  "platformAll": {
+    "message": "All platforms"
+  },
+  "platformPc": {
+    "message": "PC"
+  },
+  "platformXbox": {
+    "message": "Xbox"
+  },
+  "platformPlayStation": {
+    "message": "PlayStation"
+  },
+  "platformSwitch": {
+    "message": "Switch"
+  },
+  "settingsRegionCurrencyTitle": {
+    "message": "Region & currency"
+  },
+  "settingsRegionCurrencyDescription": {
+    "message": "See products and prices relevant for your region."
+  },
+  "regionAustralia": {
+    "message": "Australia (AUD)"
+  },
+  "regionBelgium": {
+    "message": "Belgium (EUR)"
+  },
+  "regionBrazil": {
+    "message": "Brazil (BRL)"
+  },
+  "regionCanada": {
+    "message": "Canada (CAD)"
+  },
+  "regionDenmark": {
+    "message": "Denmark (DKK)"
+  },
+  "regionEurope": {
+    "message": "Europe (EUR)"
+  },
+  "regionFinland": {
+    "message": "Finland (EUR)"
+  },
+  "regionFrance": {
+    "message": "France (EUR)"
+  },
+  "regionGermany": {
+    "message": "Germany (EUR)"
+  },
+  "regionIreland": {
+    "message": "Ireland (EUR)"
+  },
+  "regionItaly": {
+    "message": "Italy (EUR)"
+  },
+  "regionNetherlands": {
+    "message": "Netherlands (EUR)"
+  },
+  "regionNorway": {
+    "message": "Norway (NOK)"
+  },
+  "regionPoland": {
+    "message": "Poland (zł)"
+  },
+  "regionSpain": {
+    "message": "Spain (EUR)"
+  },
+  "regionSweden": {
+    "message": "Sweden (SEK)"
+  },
+  "regionSwitzerland": {
+    "message": "Switzerland (CHF)"
+  },
+  "regionUnitedKingdom": {
+    "message": "United Kingdom (GBP)"
+  },
+  "regionUnitedStates": {
+    "message": "United States (USD)"
+  },
+  "settingsKeyshopsTitle": {
+    "message": "Keyshops"
+  },
+  "settingsKeyshopsDescription": {
+    "message": "Control the display of keyshop prices."
+  },
+  "settingsBarTitle": {
+    "message": "GG.deals bar"
+  },
+  "settingsBarDescription": {
+    "message": "Show the extension bar on websites."
+  },
+  "settingsWebsiteHiddenHeading": {
+    "message": "Website hidden from GG.deals bar"
+  },
+  "settingsWebsiteHiddenDescription": {
+    "message": "This website has been added to your blacklist. Manage excluded websites below."
+  },
+  "settingsBlacklistTitle": {
+    "message": "Blacklist"
+  },
+  "settingsBlacklistDescription": {
+    "message": "Hide the extension bar on selected websites."
+  },
+  "close": {
+    "message": "Close"
+  },
+  "userAvatarAlt": {
+    "message": "$USERNAME$ avatar",
+    "placeholders": {
+      "username": {
+        "content": "$1"
+      }
+    }
+  },
+  "user": {
+    "message": "User"
+  },
+  "getSettingsFromGgDeals": {
+    "message": "Get settings from GG.deals"
+  },
+  "signOut": {
+    "message": "Sign out"
+  },
+  "appearanceTabAria": {
+    "message": "Appearance tab"
+  },
+  "appearanceThemeTitle": {
+    "message": "Theme"
+  },
+  "appearanceThemeDescription": {
+    "message": "Choose the colors."
+  },
+  "appearanceThemeOptionsAria": {
+    "message": "Theme options"
+  },
+  "themeDark": {
+    "message": "Dark"
+  },
+  "themeLight": {
+    "message": "Light"
+  },
+  "themeSystem": {
+    "message": "System"
+  },
+  "appearanceBarWidthTitle": {
+    "message": "Bar width"
+  },
+  "appearanceBarWidthDescription": {
+    "message": "Choose the width of the extension bar."
+  },
+  "appearanceBarWidthOptionsAria": {
+    "message": "Bar width options"
+  },
+  "barWidthFixed": {
+    "message": "Fixed"
+  },
+  "barWidthFitContent": {
+    "message": "Fit to content"
+  },
+  "barWidthEdgeToEdge": {
+    "message": "Edge to edge"
+  },
+  "appearanceBarRoundingTitle": {
+    "message": "Bar rounding"
+  },
+  "appearanceBarRoundingDescription": {
+    "message": "Choose the rounding of the extension bar."
+  },
+  "appearanceRoundingOptionsAria": {
+    "message": "Rounding options"
+  },
+  "roundingRounded": {
+    "message": "Rounded"
+  },
+  "roundingRoundedCorners": {
+    "message": "Rounded corners"
+  },
+  "roundingRoundedTop": {
+    "message": "Rounded top"
+  },
+  "dealsSeeAll": {
+    "message": "See all"
+  },
+  "historicalLow": {
+    "message": "Historical low"
+  },
+  "historicalLowAbbreviation": {
+    "message": "HL"
+  },
+  "excludedSearchWebsites": {
+    "message": "Search websites"
+  },
+  "excludedRemoveAll": {
+    "message": "Remove all"
+  },
+  "excludedRemove": {
+    "message": "Remove"
+  },
+  "excludedRemoveLowercase": {
+    "message": "remove"
+  },
+  "excludedNoMatches": {
+    "message": "No matching websites found."
+  },
+  "excludedRemoveSingleConfirm": {
+    "message": "Are you sure you want to remove $WEBSITE$ from the excluded list?",
+    "placeholders": {
+      "website": {
+        "content": "$1"
+      }
+    }
+  },
+  "excludedRemoveFilteredConfirm": {
+    "message": "Are you sure you want to remove all $COUNT$ filtered websites?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "excludedRemoveAllConfirm": {
+    "message": "Are you sure you want to remove all $COUNT$ websites from the list?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "cancel": {
+    "message": "Cancel"
+  },
+  "extensionSettingsAria": {
+    "message": "Extension settings"
+  },
+  "goToGgDeals": {
+    "message": "Go to GG.deals"
+  },
+  "search": {
+    "message": "Search"
+  },
+  "searchGameOnGgDeals": {
+    "message": "Search game on GG.deals"
+  },
+  "searchOnGgDeals": {
+    "message": "Search on GG.deals"
+  },
+  "mainSettingsTabsAria": {
+    "message": "Main settings tabs"
+  },
+  "tabDeals": {
+    "message": "Deals"
+  },
+  "tabSettings": {
+    "message": "Settings"
+  },
+  "tabAppearance": {
+    "message": "Appearance"
+  },
+  "verifyEmailAddress": {
+    "message": "Verify your email address"
+  },
+  "notice": {
+    "message": "Notice"
+  },
+  "barOfficialLabel": {
+    "message": "Official:"
+  },
+  "barKeyshopLabel": {
+    "message": "Keyshop:"
+  },
+  "barViewOnGgDeals": {
+    "message": "View on GG.deals"
+  },
+  "barAlwaysHideOnSite": {
+    "message": "Always hide on this site"
+  },
+  "barChangeAppearance": {
+    "message": "Change Appearance"
+  }
+}

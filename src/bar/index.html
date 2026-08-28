@@ -1,0 +1,131 @@
+<!-- layout-rounded | layout-rounded-corners | layout-rounded-top | layout-bottom-edge -->
+<div class="gg-bottom-bar layout-rounded theme-dark" role="region" aria-label="GG.deals bar">
+    <div class="gg-bar-content-wrapper">
+        <a href="https://gg.deals" title="Go to GG.deals" class="gg-logo" target="_blank" rel="external">
+            <svg class="svg-icon" width="139" height="80" viewBox="0 0 139 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs>
+                    <path id="gg-dot-mask" d="m.055 9.875 16.95 9.875 16.951-9.875L17.006 0z"/>
+                </defs>
+                <g id="gg-logo-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="gg-logo-g" fill="currentColor">
+                        <path id="Fill-1" d="M34.703 0 0 20l.017 40 34.704 20 34.703-20V40L52.073 30 34.72 40l17.352 10L34.72 60 17.369 50l-.017-20 34.703-20L34.704 0z"/>
+                        <path id="Fill-2" d="M104.11 0 69.407 20l.017 40 34.704 20 34.703-20V40L121.48 30l-17.351 10 17.351 10-17.351 10-17.352-10-.017-20 34.703-20L104.11 0z"/>
+                    </g>
+                    <g id="gg-logo-dot" transform="translate(52 40)">
+                        <mask id="gg-dot-mask-2" fill="#fff">
+                            <use xlink:href="#gg-dot-mask"/>
+                        </mask>
+                        <use fill="#EB1F32" xlink:href="#gg-dot-mask"/>
+                        <path fill="#1353FF" mask="url(#gg-dot-mask-2)" d="M0 19.75 34.597 0v19.75z"/>
+                    </g>
+                </g>
+            </svg>
+        </a>
+        
+        <div class="gg-bar-content" id="gg-bottom-bar-game-info">
+            <div class="gg-bar-game-title">
+                <!-- This element can be replaced with a dropdown (multiple editions) -->
+                <span class="title-label" data-gg-game-info="title"></span>
+
+                <!-- dropdown template -->
+<!--                 
+                <div class="gg-bar-dropdown gg-bar-game-title-dropdown dropdown-left">
+                    <button class="gg-options-btn" data-action="bar-dropdown-trigger">
+                        <span class="title-label gg-bar-dropdown-active" data-gg-game-info="title">Edition A</span>
+                        <span class="gg-bar-dropdown-arrow">
+                            <svg class="svg-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.67063 9.82806C5.70733 9.88136 5.75644 9.92494 5.81372 9.95505C5.871 9.98515 5.93475 10.0009 5.99946 10.0009C6.06417 10.0009 6.12791 9.98515 6.1852 9.95505C6.24248 9.92494 6.29158 9.88136 6.32828 9.82806L9.92857 4.62765C9.97024 4.56767 9.99468 4.49741 9.99923 4.42452C10.0038 4.35162 9.98826 4.27887 9.95436 4.21417C9.92047 4.14948 9.86949 4.09531 9.80697 4.05755C9.74445 4.01979 9.67278 3.99989 9.59974 4H2.39918C2.32631 4.0003 2.2549 4.02046 2.19263 4.05831C2.13036 4.09616 2.07959 4.15027 2.04578 4.21481C2.01196 4.27936 1.99638 4.35191 2.00071 4.42465C2.00504 4.49739 2.02912 4.56757 2.07035 4.62765L5.67063 9.82806Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="gg-options-list">
+                        <div class="gg-option-single" data-action="dropdown-title-option">
+                            <span class="gg-option-label">Edition A</span>
+                        </div>
+                        <div class="gg-option-single" data-action="dropdown-title-option">
+                            <span class="gg-option-label">Edition B</span>
+                        </div>
+                        <div class="gg-option-single" data-action="dropdown-title-option">
+                            <span class="gg-option-label">Edition C</span>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+
+            <div class="gg-bar-game-offers">
+                <div class="gg-game-price">
+                    <div class="gg-game-price-label" data-i18n="barOfficialLabel">Official:</div>
+                    <div class="gg-game-price-value game-price-retail"></div>
+                </div>
+                <div id="gg-bar-keyshop-label" class="gg-game-price">
+                    <div class="gg-game-price-label" data-i18n="barKeyshopLabel">Keyshop:</div>
+                    <div class="gg-game-price-value game-price-keyshop"></div>
+                </div>
+            </div>
+            <div class="gg-bar-game-actions">
+                <a href="#game" class="gg-bar-game-link" target="_blank" rel="external" data-gg-game-info="gameUrl" data-i18n="barViewOnGgDeals">View on GG.deals</a>
+                <!-- DEBUG_ONLY_START -->
+                <div class="gg-bar-debug">
+                    <button type="button" class="gg-bar-debug-trigger" aria-label="Show request debugging data" aria-controls="gg-bar-debug-panel">
+                        <svg class="svg-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1.5" y="2.5" width="13" height="11" rx="2" stroke="currentColor"/>
+                            <path d="M4.5 6L6.5 8L4.5 10M8.5 10H11.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div id="gg-bar-debug-panel" class="gg-bar-debug-panel" role="region" aria-label="Request debugging data" tabindex="0">
+                        <section class="gg-bar-debug-section">
+                            <div class="gg-bar-debug-heading">Request</div>
+                            <pre class="gg-bar-debug-json gg-bar-debug-request-json">No request data available.</pre>
+                        </section>
+                        <section class="gg-bar-debug-section">
+                            <div class="gg-bar-debug-heading">Server response</div>
+                            <pre class="gg-bar-debug-json gg-bar-debug-response-json">No response data available.</pre>
+                        </section>
+                    </div>
+                </div>
+                <!-- DEBUG_ONLY_END -->
+            </div>
+            <a href="#game" class="full-link" target="_blank" rel="external" data-gg-game-info="gameUrl"></a>
+        </div>
+
+        <div class="gg-bar-options-wrap">
+            <div id="gg-bar-options" class="gg-bar-dropdown gg-bar-options-drop">
+                <span class="gg-options-btn" data-action="bar-dropdown-trigger">
+                    <svg class="svg-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="currentColor">
+                            <path d="M9.33268 12.6667C9.33268 11.9303 8.73573 11.3333 7.99935 11.3333C7.26297 11.3333 6.66602 11.9303 6.66602 12.6667C6.66602 13.403 7.26297 14 7.99935 14C8.73573 14 9.33268 13.403 9.33268 12.6667Z"/>
+                            <path d="M9.33268 8.00025C9.33268 7.26387 8.73573 6.66692 7.99935 6.66692C7.26297 6.66692 6.66602 7.26388 6.66602 8.00025C6.66602 8.73663 7.26297 9.33359 7.99935 9.33359C8.73573 9.33359 9.33268 8.73663 9.33268 8.00025Z"/>
+                            <path d="M9.33268 3.33308C9.33268 2.5967 8.73573 1.99975 7.99935 1.99975C7.26297 1.99975 6.66602 2.5967 6.66602 3.33308C6.66602 4.06946 7.26297 4.66641 7.99935 4.66641C8.73573 4.66641 9.33268 4.06946 9.33268 3.33308Z"/>
+                        </g>
+                    </svg>
+                </span>
+                <div class="gg-options-list">
+                    <div class="gg-option-single" data-action="hide-on-page" id="gg-always-hide">
+                        <svg class="svg-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.76008 3.9396C1.52471 3.70422 1.52546 3.32238 1.76175 3.08793C1.99674 2.85478 2.37601 2.85553 2.61008 3.0896L12.9101 13.3896C13.1441 13.6237 13.1449 14.0029 12.9117 14.2379C12.6773 14.4742 12.2954 14.475 12.0601 14.2396L10.4334 12.6129C9.66675 12.8663 8.85341 12.9996 8.00008 12.9996C4.66675 12.9996 1.82008 10.9263 0.666748 7.99959C1.12675 6.82626 1.86008 5.79293 2.79341 4.97293L1.76008 3.9396ZM8.00008 5.99959C8.53051 5.99959 9.03922 6.21031 9.41429 6.58538C9.78937 6.96045 10.0001 7.46916 10.0001 7.99959C10.0004 8.22664 9.96209 8.45208 9.88675 8.66626L7.33341 6.11293C7.54759 6.03758 7.77304 5.99926 8.00008 5.99959ZM8.00008 2.99959C11.3334 2.99959 14.1801 5.07293 15.3334 7.99959C14.789 9.38155 13.8645 10.5811 12.6667 11.4596L11.7201 10.5063C12.642 9.86856 13.3856 9.00566 13.8801 7.99959C13.3412 6.8995 12.5044 5.97268 11.465 5.3245C10.4255 4.67631 9.22507 4.33277 8.00008 4.33293C7.27341 4.33293 6.56008 4.45293 5.89341 4.66626L4.86675 3.64626C5.82675 3.23293 6.88675 2.99959 8.00008 2.99959ZM2.12008 7.99959C2.65898 9.09968 3.49572 10.0265 4.53517 10.6747C5.57462 11.3229 6.77509 11.6664 8.00008 11.6663C8.46008 11.6663 8.91341 11.6196 9.33341 11.5263L7.81341 9.99959C7.34952 9.94987 6.91663 9.74284 6.58673 9.41294C6.25683 9.08304 6.0498 8.65015 6.00008 8.18626L3.73341 5.91293C3.07341 6.47959 2.52008 7.18626 2.12008 7.99959Z" fill="currentColor"/>
+                        </svg>
+                        <span class="gg-option-label" data-i18n="barAlwaysHideOnSite">Always hide on this site</span>
+                    </div>
+                    <div class="gg-option-single" data-action="hide-on-page" id="gg-change-appearance">
+                        <svg class="svg-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.99992 14.6667C7.12444 14.6667 6.25753 14.4943 5.4487 14.1592C4.63986 13.8242 3.90493 13.3331 3.28587 12.7141C2.03563 11.4638 1.33325 9.76815 1.33325 8.00004C1.33325 6.23193 2.03563 4.53624 3.28587 3.286C4.53612 2.03575 6.23181 1.33337 7.99992 1.33337C11.6666 1.33337 14.6666 4.00004 14.6666 7.33337C14.6666 8.39424 14.2452 9.41166 13.495 10.1618C12.7449 10.9119 11.7275 11.3334 10.6666 11.3334H9.46659C9.26659 11.3334 9.13325 11.4667 9.13325 11.6667C9.13325 11.7334 9.19992 11.8 9.19992 11.8667C9.46659 12.2 9.59992 12.6 9.59992 13C9.66658 13.9334 8.93325 14.6667 7.99992 14.6667ZM7.99992 2.66671C6.58543 2.66671 5.22888 3.22861 4.22868 4.2288C3.22849 5.229 2.66659 6.58555 2.66659 8.00004C2.66659 9.41453 3.22849 10.7711 4.22868 11.7713C5.22888 12.7715 6.58543 13.3334 7.99992 13.3334C8.19992 13.3334 8.33325 13.2 8.33325 13C8.33325 12.8667 8.26659 12.8 8.26659 12.7334C7.99992 12.4 7.86659 12.0667 7.86659 11.6667C7.86659 10.7334 8.59992 10 9.53325 10H10.6666C11.3738 10 12.0521 9.71909 12.5522 9.21899C13.0523 8.7189 13.3333 8.04062 13.3333 7.33337C13.3333 4.73337 10.9333 2.66671 7.99992 2.66671ZM4.33325 6.66671C4.86659 6.66671 5.33325 7.13337 5.33325 7.66671C5.33325 8.20004 4.86659 8.66671 4.33325 8.66671C3.79992 8.66671 3.33325 8.20004 3.33325 7.66671C3.33325 7.13337 3.79992 6.66671 4.33325 6.66671ZM6.33325 4.00004C6.86659 4.00004 7.33325 4.46671 7.33325 5.00004C7.33325 5.53337 6.86659 6.00004 6.33325 6.00004C5.79992 6.00004 5.33325 5.53337 5.33325 5.00004C5.33325 4.46671 5.79992 4.00004 6.33325 4.00004ZM9.66659 4.00004C10.1999 4.00004 10.6666 4.46671 10.6666 5.00004C10.6666 5.53337 10.1999 6.00004 9.66659 6.00004C9.13325 6.00004 8.66659 5.53337 8.66659 5.00004C8.66659 4.46671 9.13325 4.00004 9.66659 4.00004ZM11.6666 6.66671C12.1999 6.66671 12.6666 7.13337 12.6666 7.66671C12.6666 8.20004 12.1999 8.66671 11.6666 8.66671C11.1333 8.66671 10.6666 8.20004 10.6666 7.66671C10.6666 7.13337 11.1333 6.66671 11.6666 6.66671Z" fill="currentColor"/>
+                        </svg>
+                        <span class="gg-option-label" data-i18n="barChangeAppearance">Change Appearance</span>
+                    </div>
+                    <div class="gg-option-single" data-action="bar-minimize">
+                        <svg class="svg-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.29155 1.28071L12.2916 7.28071C12.479 7.46824 12.5843 7.72255 12.5843 7.98771C12.5843 8.25288 12.479 8.50718 12.2916 8.69471L6.29155 14.6947C6.19931 14.7902 6.08896 14.8664 5.96696 14.9188C5.84495 14.9712 5.71373 14.9988 5.58095 15C5.44818 15.0011 5.3165 14.9758 5.1936 14.9255C5.0707 14.8753 4.95905 14.801 4.86516 14.7071C4.77127 14.6132 4.69701 14.5016 4.64673 14.3787C4.59645 14.2558 4.57115 14.1241 4.5723 13.9913C4.57346 13.8585 4.60104 13.7273 4.65345 13.6053C4.70586 13.4833 4.78204 13.373 4.87755 13.2807L10.1706 7.98771L4.87755 2.69471C4.6954 2.50611 4.5946 2.25351 4.59688 1.99131C4.59916 1.72911 4.70433 1.4783 4.88974 1.29289C5.07514 1.10749 5.32596 1.00232 5.58815 1.00004C5.85035 0.997759 6.10295 1.09855 6.29155 1.28071Z" fill="currentColor"/>
+                        </svg>
+                        <span class="gg-option-label">Minimize</span>
+                    </div>
+                </div>
+            </div>
+            <span class="gg-hide-chevron" data-action="bar-minimize">
+                <svg class="svg-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.29155 1.28071L12.2916 7.28071C12.479 7.46824 12.5843 7.72255 12.5843 7.98771C12.5843 8.25288 12.479 8.50718 12.2916 8.69471L6.29155 14.6947C6.19931 14.7902 6.08896 14.8664 5.96696 14.9188C5.84495 14.9712 5.71373 14.9988 5.58095 15C5.44818 15.0011 5.3165 14.9758 5.1936 14.9255C5.0707 14.8753 4.95905 14.801 4.86516 14.7071C4.77127 14.6132 4.69701 14.5016 4.64673 14.3787C4.59645 14.2558 4.57115 14.1241 4.5723 13.9913C4.57346 13.8585 4.60104 13.7273 4.65345 13.6053C4.70586 13.4833 4.78204 13.373 4.87755 13.2807L10.1706 7.98771L4.87755 2.69471C4.6954 2.50611 4.5946 2.25351 4.59688 1.99131C4.59916 1.72911 4.70433 1.4783 4.88974 1.29289C5.07514 1.10749 5.32596 1.00232 5.58815 1.00004C5.85035 0.997759 6.10295 1.09855 6.29155 1.28071Z" fill="currentColor"/>
+                </svg>
+            </span>
+        </div>
+     </div>
+</div>

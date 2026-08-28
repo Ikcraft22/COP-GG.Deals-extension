@@ -1,0 +1,856 @@
+/* exo-2-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'GG Exo 2';
+  font-style: normal;
+  font-weight: 400;
+  src: url('chrome-extension://__MSG_@@extension_id__/src/assets/fonts/exo-2-v26-latin_latin-ext-regular.woff2') format('woff2');
+}
+/* exo-2-600 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'GG Exo 2';
+  font-style: normal;
+  font-weight: 600;
+  src: url('chrome-extension://__MSG_@@extension_id__/src/assets/fonts/exo-2-v26-latin_latin-ext-600.woff2') format('woff2');
+}
+/* lato-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'GG Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: url('chrome-extension://__MSG_@@extension_id__/src/assets/fonts/lato-v25-latin_latin-ext-regular.woff2') format('woff2');
+}
+/* lato-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'GG Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: url('chrome-extension://__MSG_@@extension_id__/src/assets/fonts/lato-v25-latin_latin-ext-700.woff2') format('woff2');
+}
+.gg-bottom-bar {
+  transition: margin 0.2s ease, bottom 0.2s linear, left 0.15s linear, max-width 0.15s linear 0.1s, transform 0.2s linear, border-radius 0.2s linear 0.1s !important;
+  will-change: margin, left, max-width, transform, border-radius !important;
+  margin: 0 0 -82px !important;
+  position: fixed !important;
+  z-index: 2147483647 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 48px !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  font-family: 'GG Lato', Tahoma, Arial, sans-serif !important;
+  border-style: solid !important;
+  border-width: 1px 0 0 0 !important;
+}
+.gg-bottom-bar.domain-hidden {
+  display: none !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar {
+    transition: margin 0.2s ease, bottom 0.2s ease, left 0.15s ease, max-width 0.15s ease 0.1s, transform 0.2s ease, border-radius 0.2s linear 0.1s !important;
+  }
+}
+.gg-bottom-bar * {
+  font-family: 'GG Lato', Tahoma, Arial, sans-serif !important;
+  letter-spacing: initial !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+.gg-bottom-bar svg.svg-icon {
+  overflow: initial !important;
+  vertical-align: initial !important;
+  align-self: initial !important;
+}
+.gg-bottom-bar strong,
+.gg-bottom-bar span,
+.gg-bottom-bar div {
+  outline: none !important;
+  border: initial !important;
+  margin: initial !important;
+  padding: initial !important;
+  vertical-align: initial !important;
+}
+.gg-bottom-bar a {
+  border: none !important;
+  outline: none !important;
+}
+.gg-bottom-bar a:hover {
+  border: none !important;
+  outline: none !important;
+}
+.gg-bottom-bar .full-link {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 20 !important;
+  display: block !important;
+}
+.gg-bottom-bar button {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: none !important;
+  cursor: pointer !important;
+}
+.gg-bottom-bar.shown {
+  margin: 0 !important;
+}
+@media (min-width: 1030px) {
+  .gg-bottom-bar {
+    align-items: center !important;
+    height: 48px !important;
+    flex-wrap: nowrap !important;
+  }
+}
+.gg-bottom-bar.layout-rounded {
+  max-width: 1280px !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar.layout-rounded {
+    border-width: 1px !important;
+    width: calc(100% - 32px) !important;
+    border-radius: calc(48px / 2) !important;
+    left: 50% !important;
+    bottom: 12px !important;
+    transform: translateX(-50%) !important;
+  }
+}
+.gg-bottom-bar.layout-rounded-corners {
+  max-width: 1280px !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar.layout-rounded-corners {
+    border-width: 1px !important;
+    width: calc(100% - 32px) !important;
+    border-radius: 8px !important;
+    left: 50% !important;
+    bottom: 12px !important;
+    transform: translateX(-50%) !important;
+  }
+}
+.gg-bottom-bar.layout-rounded-top {
+  transition: margin 0.2s ease, bottom 0.2s linear, left 0.15s linear, max-width 0.15s linear 0.1s, transform 0.2s linear, border-radius 0.2s linear 0.1s !important;
+  max-width: 1280px !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar.layout-rounded-top {
+    border-width: 1px 1px 0 1px !important;
+    width: calc(100% - 16px - 16px) !important;
+    border-radius: 16px 16px 0 0 !important;
+    border-bottom: none !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+}
+.gg-bottom-bar.layout-bottom-edge {
+  transition: margin 0.2s ease, bottom 0.2s linear, left 0.15s linear, max-width 0.15s linear 0.1s, width 0.15s linear 0.1s, transform 0.2s linear, border-radius 0.2s linear 0.1s !important;
+  border-width: 1px 0 0 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  bottom: 0 !important;
+}
+@media (min-width: 1030px) {
+  .gg-bottom-bar.layout-bottom-edge {
+    justify-content: center !important;
+  }
+}
+@media (min-width: 1030px) {
+  .gg-bottom-bar.layout-bottom-edge .gg-bar-content-wrapper {
+    flex: 0 0 auto !important;
+  }
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar.width-fixed .gg-bar-content-wrapper {
+    flex: 0 0 100% !important;
+  }
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar.width-fit-content {
+    width: fit-content !important;
+    max-width: calc(100% - 32px) !important;
+    min-width: max-content !important;
+  }
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar.width-fit-content .gg-bar-content-wrapper {
+    flex: 0 1 auto !important;
+  }
+}
+.gg-bottom-bar .gg-bar-content-wrapper {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  flex: 0 0 100% !important;
+  padding: 8px 12px !important;
+  box-sizing: border-box !important;
+  height: 100% !important;
+  column-gap: 12px !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar .gg-bar-content-wrapper {
+    padding: 12px 16px !important;
+    column-gap: 24px !important;
+  }
+}
+@media (min-width: 1030px) {
+  .gg-bottom-bar .gg-bar-content-wrapper {
+    column-gap: 32px !important;
+  }
+}
+.gg-bottom-bar .gg-bar-content {
+  position: relative !important;
+  transition: opacity 0.2s linear 0.3s !important;
+  will-change: opacity !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  opacity: 1 !important;
+  flex: 1 0 auto !important;
+  gap: 4px 12px !important;
+  align-items: baseline !important;
+  max-width: calc(100% - 16px - 28px - 16px - 20px) !important;
+  box-sizing: border-box !important;
+  border: none !important;
+  color: inherit !important;
+  min-height: 22px !important;
+  height: auto !important;
+  font-size: 14px !important;
+  line-height: 22px !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar .gg-bar-content {
+    flex-wrap: nowrap !important;
+    gap: 24px !important;
+  }
+}
+@media (min-width: 1030px) {
+  .gg-bottom-bar .gg-bar-content {
+    gap: 32px !important;
+  }
+}
+.gg-bottom-bar .gg-bar-game-title {
+  flex: 0 0 100% !important;
+  height: 16px !important;
+  line-height: 16px !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar .gg-bar-game-title {
+    flex: 0 1 auto !important;
+  }
+}
+.gg-bottom-bar .gg-bar-game-title .title-label {
+  font-size: 14px !important;
+  line-height: 16px !important;
+  height: 16px !important;
+  font-weight: 600 !important;
+  text-overflow: ellipsis !important;
+  will-change: contents !important;
+  overflow: hidden !important;
+  max-width: 100% !important;
+}
+.gg-bottom-bar .gg-bar-game-offers {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  row-gap: 1px !important;
+  flex: 0 0 100% !important;
+  min-height: 18px !important;
+  height: auto !important;
+  align-items: baseline !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar .gg-bar-game-offers {
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+    flex: 0 0 auto !important;
+  }
+}
+.gg-bottom-bar .gg-bar-game-offers .gg-game-price-label {
+  font-size: 12px !important;
+  line-height: 16px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  flex: 0 0 auto !important;
+}
+.gg-bottom-bar .gg-bar-game-offers .gg-game-price-value {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-weight: 600 !important;
+  flex: 0 0 auto !important;
+  will-change: contents !important;
+  font-family: 'GG Exo 2', Tahoma, Arial, sans-serif !important;
+  font-size: 16px !important;
+  line-height: 19px !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar .gg-bar-game-offers .gg-game-price-value {
+    font-size: 16px !important;
+    line-height: 21px !important;
+  }
+}
+.gg-bottom-bar .gg-bar-game-offers .gg-game-price-value.historical::after {
+  font-family: 'GG Lato', Tahoma, Arial, sans-serif !important;
+  display: block !important;
+  flex: 0 0 auto !important;
+  content: 'Historical Low' !important;
+  font-size: 13px !important;
+  line-height: 16px !important;
+  border-radius: 4px !important;
+  padding: 0 6px !important;
+}
+.gg-bottom-bar .gg-bar-game-offers .gg-game-price {
+  display: flex !important;
+  align-items: baseline !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  box-sizing: border-box !important;
+  white-space: nowrap !important;
+  flex: 0 0 100% !important;
+  height: 18px !important;
+  margin: 0 !important;
+  gap: 6px !important;
+}
+@media (min-width: 480px) {
+  .gg-bottom-bar .gg-bar-game-offers .gg-game-price {
+    flex: 0 0 auto !important;
+  }
+}
+@media (min-width: 480px) {
+  .gg-bottom-bar .gg-bar-game-offers .gg-game-price:has(+.gg-game-price) {
+    padding: 0 16px 0 0 !important;
+  }
+}
+@media (min-width: 480px) {
+  .gg-bottom-bar .gg-bar-game-offers .gg-game-price + .gg-game-price {
+    padding: 0 0 0 17px !important;
+  }
+}
+.gg-bottom-bar .gg-bar-game-actions {
+  position: relative !important;
+  z-index: 22 !important;
+  display: none !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar .gg-bar-game-actions {
+    display: flex !important;
+  }
+}
+.gg-bottom-bar a.gg-bar-game-link {
+  transition: color 0.2s ease !important;
+  will-change: color, contents !important;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  position: relative !important;
+  display: block !important;
+  padding: 0 12px 0 0 !important;
+}
+.gg-bottom-bar a.gg-bar-game-link::after {
+  transition: border-color 0.2s ease !important;
+  will-change: border-color !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: calc(50% - 4px) !important;
+  content: '' !important;
+  display: block !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-style: solid !important;
+  border-width: 4px 0px 4px 6px !important;
+}
+.gg-bottom-bar .gg-bar-debug {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.gg-bottom-bar .gg-bar-debug:hover .gg-bar-debug-panel,
+.gg-bottom-bar .gg-bar-debug:focus-within .gg-bar-debug-panel {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+.gg-bottom-bar .gg-bar-debug-trigger {
+  position: relative !important;
+  z-index: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 4px !important;
+  transition: color 0.2s ease, background-color 0.2s ease !important;
+}
+.gg-bottom-bar .gg-bar-debug-trigger .svg-icon {
+  display: block !important;
+  width: 16px !important;
+  height: 16px !important;
+  color: inherit !important;
+}
+.gg-bottom-bar .gg-bar-debug-panel {
+  position: absolute !important;
+  right: 0 !important;
+  bottom: calc(100% + 10px) !important;
+  z-index: 30 !important;
+  width: min(560px, calc(100vw - 32px)) !important;
+  max-height: min(560px, calc(100vh - 96px)) !important;
+  padding: 14px !important;
+  box-sizing: border-box !important;
+  border-radius: 8px !important;
+  overflow: auto !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(4px) !important;
+  transition: opacity 0.15s ease, visibility 0.15s ease, transform 0.15s ease !important;
+  text-align: left !important;
+}
+.gg-bottom-bar .gg-bar-debug-section {
+  display: block !important;
+}
+.gg-bottom-bar .gg-bar-debug-section + .gg-bar-debug-section {
+  margin-top: 14px !important;
+}
+.gg-bottom-bar .gg-bar-debug-heading {
+  margin-bottom: 6px !important;
+  font-size: 12px !important;
+  line-height: 16px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+.gg-bottom-bar .gg-bar-debug-json {
+  display: block !important;
+  margin: 0 !important;
+  padding: 10px !important;
+  border-radius: 4px !important;
+  overflow: auto !important;
+  white-space: pre !important;
+  font-family: monospace !important;
+  font-size: 12px !important;
+  line-height: 17px !important;
+  tab-size: 2 !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar.keyshops-hidden .gg-bar-game-actions {
+    margin-left: -8px !important;
+  }
+}
+.gg-bottom-bar .gg-bar-dropdown {
+  position: relative !important;
+  z-index: 22 !important;
+}
+.gg-bottom-bar .gg-bar-dropdown .gg-options-btn {
+  display: flex !important;
+  box-sizing: border-box !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  column-gap: 6px !important;
+  cursor: pointer !important;
+}
+.gg-bottom-bar .gg-bar-dropdown .gg-options-btn .gg-bar-dropdown-arrow {
+  transition: transform 0.2s ease !important;
+  will-change: transform !important;
+  flex: 0 0 12px !important;
+  height: 12px !important;
+}
+.gg-bottom-bar .gg-bar-dropdown .gg-options-btn .gg-bar-dropdown-arrow svg.svg-icon {
+  color: inherit !important;
+  width: 12px !important;
+  height: 12px !important;
+  display: block !important;
+}
+.gg-bottom-bar .gg-bar-dropdown .gg-options-list {
+  position: absolute !important;
+  padding: 4px 0 !important;
+  display: none !important;
+  bottom: 100% !important;
+  margin: 0 0 4px !important;
+  min-width: 210px !important;
+  border-radius: 4px !important;
+  flex-direction: column !important;
+  right: 0 !important;
+}
+.gg-bottom-bar .gg-bar-dropdown.dropdown-left .gg-options-list {
+  right: auto !important;
+  left: -16px !important;
+}
+.gg-bottom-bar .gg-bar-dropdown .gg-option-single {
+  transition: background-color 0.2s ease !important;
+  will-change: background-color !important;
+  display: flex !important;
+  cursor: pointer !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: 32px !important;
+  flex: 0 0 32px !important;
+  box-sizing: border-box !important;
+  padding: 4px 16px !important;
+  white-space: nowrap !important;
+  column-gap: 8px !important;
+  background: transparent !important;
+}
+.gg-bottom-bar .gg-bar-dropdown .gg-option-single svg.svg-icon {
+  display: block !important;
+  flex: 0 0 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+.gg-bottom-bar .gg-bar-dropdown .gg-option-single .gg-option-label {
+  display: block !important;
+  font-size: 14px !important;
+  line-height: 26px !important;
+  font-weight: 600 !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar .gg-bar-dropdown .gg-option-single[data-action="bar-minimize"] {
+    display: none !important;
+  }
+}
+.gg-bottom-bar .gg-bar-dropdown.open .gg-options-btn .gg-bar-dropdown-arrow {
+  transform: rotate(-180deg) !important;
+}
+.gg-bottom-bar .gg-bar-dropdown.open .gg-options-list {
+  display: flex !important;
+}
+.gg-bottom-bar .gg-bar-options-wrap {
+  position: static !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  flex: 0 0 auto !important;
+  height: 20px !important;
+  margin: 0 0 0 auto !important;
+  gap: 8px !important;
+}
+.gg-bottom-bar .gg-bar-options-drop {
+  width: 20px !important;
+  height: 20px !important;
+}
+.gg-bottom-bar .gg-bar-options-drop .gg-options-btn {
+  transition: color 0.2s ease !important;
+  will-change: color !important;
+  flex: 0 0 20px !important;
+  height: 20px !important;
+  padding: 2px !important;
+}
+.gg-bottom-bar .gg-bar-options-drop .gg-options-btn svg.svg-icon {
+  width: 16px !important;
+  height: 16px !important;
+  color: inherit !important;
+}
+.gg-bottom-bar .gg-hide-chevron {
+  transition: color 0.2s ease !important;
+  will-change: color !important;
+  position: relative !important;
+  left: 0 !important;
+  flex: 0 0 20px !important;
+  padding: 2px !important;
+  box-sizing: border-box !important;
+  color: #8B89A9 !important;
+  height: 20px !important;
+  display: none !important;
+  z-index: 22 !important;
+  cursor: pointer !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar .gg-hide-chevron {
+    display: flex !important;
+    align-items: center !important;
+  }
+}
+.gg-bottom-bar .gg-hide-chevron svg.svg-icon {
+  transition: transform 0.15s linear !important;
+  will-change: transform !important;
+  width: 16px !important;
+  height: 16px !important;
+  color: inherit !important;
+}
+.gg-bottom-bar .gg-hide-chevron:hover {
+  color: #FFF !important;
+}
+.gg-bottom-bar #gg-bottom-bar-close {
+  position: absolute !important;
+  right: 10px !important;
+  top: 10px !important;
+  cursor: pointer !important;
+  font-size: 20px !important;
+  color: #fff !important;
+}
+.gg-bottom-bar .gg-logo {
+  transition: margin 0.2s linear !important;
+  will-change: margin !important;
+  margin: 0 !important;
+  flex: 0 0 28px !important;
+  height: 16px !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar .gg-logo {
+    flex: 0 0 38px !important;
+    height: 22px !important;
+  }
+}
+.gg-bottom-bar .gg-logo svg.svg-icon {
+  will-change: color !important;
+  width: 28px !important;
+  height: 16px !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar .gg-logo svg.svg-icon {
+    width: 38px !important;
+    height: 22px !important;
+  }
+}
+.gg-bottom-bar.minimized {
+  transition: margin 0.15s linear, bottom 0.15s linear, left 0.15s ease-out, max-width 0.15s ease, width 0.15s ease, transform 0.15s ease-out, border-radius 0.15s linear 0.1s, border-width 0.15s linear 0.1s !important;
+  left: 100% !important;
+  right: auto !important;
+  transform: translateX(-100px) !important;
+  width: 100px !important;
+  max-width: 100px !important;
+  border-width: 1px 0 0 1px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  overflow: hidden !important;
+  margin: 0 -100px 0 0 !important;
+  min-height: unset !important;
+}
+@media (max-width: 794px) {
+  .gg-bottom-bar.minimized {
+    border-top-left-radius: 8px !important;
+  }
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar.minimized {
+    border-width: 1px 0 1px 1px !important;
+  }
+}
+.gg-bottom-bar.minimized.layout-rounded-top,
+.gg-bottom-bar.minimized.layout-bottom-edge {
+  border-width: 1px 0 0 1px !important;
+  border-top-left-radius: 8px !important;
+  justify-content: flex-start !important;
+}
+.gg-bottom-bar.minimized.shown {
+  margin: 0 !important;
+}
+.gg-bottom-bar.minimized .gg-logo {
+  margin: 2px 0 0 32px !important;
+}
+@media (min-width: 795px) {
+  .gg-bottom-bar.minimized .gg-logo {
+    margin: 0 0 0 32px !important;
+  }
+}
+.gg-bottom-bar.minimized .gg-bar-content {
+  overflow: hidden !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  opacity: 0 !important;
+}
+.gg-bottom-bar.minimized .gg-bar-options-wrap .gg-bar-options-drop {
+  display: none !important;
+}
+.gg-bottom-bar.minimized .gg-hide-chevron {
+  position: absolute !important;
+  left: 16px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 22 !important;
+  display: block !important;
+}
+.gg-bottom-bar.minimized .gg-hide-chevron svg.svg-icon {
+  transform: rotate(180deg) !important;
+}
+.gg-bottom-bar.theme-dark {
+  background: #0F0E11 !important;
+  box-shadow: 0 0 20px 0 #00000080 !important;
+  border-color: #4f4d6a !important;
+}
+.gg-bottom-bar.theme-dark .gg-logo svg.svg-icon {
+  color: #FFF !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-game-title .title-label {
+  color: #FFF !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-game-offers .gg-game-price-label {
+  color: #8b89a9 !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-game-offers .gg-game-price-value {
+  color: #FFF !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-game-offers .gg-game-price-value.historical {
+  color: #07DA74 !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-game-offers .gg-game-price-value.historical::after {
+  color: #07DA74 !important;
+  border: 1px solid #07DA7480 !important;
+  background: #07DA741F !important;
+}
+@media (min-width: 480px) {
+  .gg-bottom-bar.theme-dark .gg-bar-game-offers .gg-game-price + .gg-game-price {
+    border-left: 1px solid #585676 !important;
+  }
+}
+.gg-bottom-bar.theme-dark a.gg-bar-game-link {
+  color: #3FA5F3 !important;
+}
+.gg-bottom-bar.theme-dark a.gg-bar-game-link::after {
+  border-color: transparent transparent transparent #3FA5F3 !important;
+}
+.gg-bottom-bar.theme-dark a.gg-bar-game-link:hover {
+  color: #52aef4 !important;
+}
+.gg-bottom-bar.theme-dark a.gg-bar-game-link:hover::after {
+  border-color: transparent transparent transparent #52aef4 !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-debug-trigger {
+  color: #8b89a9 !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-debug-trigger:hover,
+.gg-bottom-bar.theme-dark .gg-bar-debug-trigger:focus-visible {
+  color: #FFF !important;
+  background: #353347 !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-debug-panel {
+  color: #FFF !important;
+  background: #2A2838 !important;
+  border: 1px solid #353347 !important;
+  box-shadow: 0 0 30px 0 #09090C66 !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-debug-heading {
+  color: #dcdce5 !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-debug-json {
+  color: #dcdce5 !important;
+  background: #17161D !important;
+  border: 1px solid #353347 !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-options-drop .gg-options-btn {
+  color: #8b89a9 !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-options-drop .gg-options-btn:hover {
+  color: #b9b8cc !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-dropdown .gg-options-btn .gg-bar-dropdown-arrow {
+  color: #dcdce5 !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-dropdown .gg-options-list {
+  box-shadow: 0px 0px 30px 0px #09090C33 !important;
+  border: 1px solid #353347 !important;
+  background: #2A2838 !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-dropdown .gg-option-single:hover {
+  background: #353347 !important;
+}
+.gg-bottom-bar.theme-dark .gg-bar-dropdown .gg-option-single .svg-icon,
+.gg-bottom-bar.theme-dark .gg-bar-dropdown .gg-option-single .gg-option-label {
+  color: #dcdce5 !important;
+}
+.gg-bottom-bar.theme-light {
+  background: #EFEFF1 !important;
+  box-shadow: 0 0 20px 0 #00000033 !important;
+  border-color: #F9FAFA !important;
+}
+.gg-bottom-bar.theme-light .gg-logo svg.svg-icon {
+  color: #0A090B !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-game-title .title-label {
+  color: #1F1C22 !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-game-offers .gg-game-price-label {
+  color: #8F849A !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-game-offers .gg-game-price-value {
+  color: #1F1C22 !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-game-offers .gg-game-price-value.historical {
+  color: #048044 !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-game-offers .gg-game-price-value.historical::after {
+  color: #048044 !important;
+  border: 1px solid #04804480 !important;
+  background: #04804417 !important;
+}
+@media (min-width: 480px) {
+  .gg-bottom-bar.theme-light .gg-bar-game-offers .gg-game-price + .gg-game-price {
+    border-left: 1px solid #A39AAC !important;
+  }
+}
+.gg-bottom-bar.theme-light a.gg-bar-game-link {
+  color: #0E81D8 !important;
+}
+.gg-bottom-bar.theme-light a.gg-bar-game-link::after {
+  border-color: transparent transparent transparent #0E81D8 !important;
+}
+.gg-bottom-bar.theme-light a.gg-bar-game-link:hover {
+  color: #0d7dd3 !important;
+}
+.gg-bottom-bar.theme-light a.gg-bar-game-link:hover::after {
+  border-color: transparent transparent transparent #0d7dd3 !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-debug-trigger {
+  color: #8F849A !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-debug-trigger:hover,
+.gg-bottom-bar.theme-light .gg-bar-debug-trigger:focus-visible {
+  color: #1F1C22 !important;
+  background: #F9FAFA !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-debug-panel {
+  color: #1F1C22 !important;
+  background: #FFF !important;
+  border: 1px solid #E0DDE3 !important;
+  box-shadow: 0 0 30px 0 #00000026 !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-debug-heading {
+  color: #47404F !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-debug-json {
+  color: #1F1C22 !important;
+  background: #EFEFF1 !important;
+  border: 1px solid #E0DDE3 !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-options-drop .gg-options-btn {
+  color: #8F849A !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-options-drop .gg-options-btn:hover {
+  color: #47404F !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-dropdown .gg-options-btn .gg-bar-dropdown-arrow {
+  color: #47404F !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-dropdown .gg-options-list {
+  box-shadow: 0px 0px 30px 0px #09090C33 !important;
+  border: 1px solid #D6D2DA !important;
+  background: #F4F5F6 !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-dropdown .gg-option-single:hover {
+  background: #E0DDE3 !important;
+}
+.gg-bottom-bar.theme-light .gg-bar-dropdown .gg-option-single .svg-icon,
+.gg-bottom-bar.theme-light .gg-bar-dropdown .gg-option-single .gg-option-label {
+  color: #5C5365 !important;
+}

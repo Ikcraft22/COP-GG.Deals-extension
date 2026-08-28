@@ -1,0 +1,308 @@
+{
+  "extensionName": {
+    "message": "GG.deals – Offerte sui giochi e confronto prezzi"
+  },
+  "extensionDescription": {
+    "message": "Confronta i prezzi dei giochi e trova offerte più convenienti online. Sincronizza liste dei desideri e raccolte con GG.deals."
+  },
+  "settingsTabAria": {
+    "message": "Scheda delle impostazioni",
+    "description": "Etichetta accessibile per la scheda delle impostazioni dell’estensione."
+  },
+  "signInBetterHeading": {
+    "message": "Accedi per un’esperienza migliore"
+  },
+  "signIn": {
+    "message": "Accedi"
+  },
+  "signInBetterDescription": {
+    "message": "Offerte personalizzate e sincronizzazione della raccolta di giochi in un unico posto."
+  },
+  "ggDealsUserSettings": {
+    "message": "Impostazioni utente di GG.deals"
+  },
+  "settingsPlatformTitle": {
+    "message": "Piattaforma"
+  },
+  "settingsPlatformDescription": {
+    "message": "Visualizza prodotti e prezzi pertinenti alla tua piattaforma."
+  },
+  "platformAll": {
+    "message": "Tutte le piattaforme"
+  },
+  "platformPc": {
+    "message": "PC"
+  },
+  "platformXbox": {
+    "message": "Xbox"
+  },
+  "platformPlayStation": {
+    "message": "PlayStation"
+  },
+  "platformSwitch": {
+    "message": "Switch"
+  },
+  "settingsRegionCurrencyTitle": {
+    "message": "Regione e valuta"
+  },
+  "settingsRegionCurrencyDescription": {
+    "message": "Visualizza prodotti e prezzi pertinenti alla tua regione."
+  },
+  "regionAustralia": {
+    "message": "Australia (AUD)"
+  },
+  "regionBelgium": {
+    "message": "Belgio (EUR)"
+  },
+  "regionBrazil": {
+    "message": "Brasile (BRL)"
+  },
+  "regionCanada": {
+    "message": "Canada (CAD)"
+  },
+  "regionDenmark": {
+    "message": "Danimarca (DKK)"
+  },
+  "regionEurope": {
+    "message": "Europa (EUR)"
+  },
+  "regionFinland": {
+    "message": "Finlandia (EUR)"
+  },
+  "regionFrance": {
+    "message": "Francia (EUR)"
+  },
+  "regionGermany": {
+    "message": "Germania (EUR)"
+  },
+  "regionIreland": {
+    "message": "Irlanda (EUR)"
+  },
+  "regionItaly": {
+    "message": "Italia (EUR)"
+  },
+  "regionNetherlands": {
+    "message": "Paesi Bassi (EUR)"
+  },
+  "regionNorway": {
+    "message": "Norvegia (NOK)"
+  },
+  "regionPoland": {
+    "message": "Polonia (zł)"
+  },
+  "regionSpain": {
+    "message": "Spagna (EUR)"
+  },
+  "regionSweden": {
+    "message": "Svezia (SEK)"
+  },
+  "regionSwitzerland": {
+    "message": "Svizzera (CHF)"
+  },
+  "regionUnitedKingdom": {
+    "message": "Regno Unito (GBP)"
+  },
+  "regionUnitedStates": {
+    "message": "Stati Uniti (USD)"
+  },
+  "settingsKeyshopsTitle": {
+    "message": "Keyshop"
+  },
+  "settingsKeyshopsDescription": {
+    "message": "Controlla la visualizzazione dei prezzi dei keyshop."
+  },
+  "settingsBarTitle": {
+    "message": "Barra di GG.deals"
+  },
+  "settingsBarDescription": {
+    "message": "Mostra la barra dell’estensione sui siti web."
+  },
+  "settingsWebsiteHiddenHeading": {
+    "message": "Sito web nascosto dalla barra di GG.deals"
+  },
+  "settingsWebsiteHiddenDescription": {
+    "message": "Questo sito web è stato aggiunto alla lista di blocco. Gestisci i siti web esclusi qui sotto."
+  },
+  "settingsBlacklistTitle": {
+    "message": "Lista di blocco"
+  },
+  "settingsBlacklistDescription": {
+    "message": "Nascondi la barra dell’estensione sui siti web selezionati."
+  },
+  "close": {
+    "message": "Chiudi"
+  },
+  "userAvatarAlt": {
+    "message": "Avatar di $USERNAME$",
+    "placeholders": {
+      "username": {
+        "content": "$1"
+      }
+    }
+  },
+  "user": {
+    "message": "Utente"
+  },
+  "getSettingsFromGgDeals": {
+    "message": "Ottieni le impostazioni da GG.deals"
+  },
+  "signOut": {
+    "message": "Esci"
+  },
+  "appearanceTabAria": {
+    "message": "Scheda dell’aspetto"
+  },
+  "appearanceThemeTitle": {
+    "message": "Tema"
+  },
+  "appearanceThemeDescription": {
+    "message": "Scegli i colori."
+  },
+  "appearanceThemeOptionsAria": {
+    "message": "Opzioni del tema"
+  },
+  "themeDark": {
+    "message": "Scuro"
+  },
+  "themeLight": {
+    "message": "Chiaro"
+  },
+  "themeSystem": {
+    "message": "Sistema"
+  },
+  "appearanceBarWidthTitle": {
+    "message": "Larghezza della barra"
+  },
+  "appearanceBarWidthDescription": {
+    "message": "Scegli la larghezza della barra dell’estensione."
+  },
+  "appearanceBarWidthOptionsAria": {
+    "message": "Opzioni di larghezza della barra"
+  },
+  "barWidthFixed": {
+    "message": "Fissa"
+  },
+  "barWidthFitContent": {
+    "message": "Adatta al contenuto"
+  },
+  "barWidthEdgeToEdge": {
+    "message": "Da bordo a bordo"
+  },
+  "appearanceBarRoundingTitle": {
+    "message": "Arrotondamento della barra"
+  },
+  "appearanceBarRoundingDescription": {
+    "message": "Scegli l’arrotondamento della barra dell’estensione."
+  },
+  "appearanceRoundingOptionsAria": {
+    "message": "Opzioni di arrotondamento"
+  },
+  "roundingRounded": {
+    "message": "Arrotondata"
+  },
+  "roundingRoundedCorners": {
+    "message": "Angoli arrotondati"
+  },
+  "roundingRoundedTop": {
+    "message": "Parte superiore arrotondata"
+  },
+  "dealsSeeAll": {
+    "message": "Vedi tutto"
+  },
+  "historicalLow": {
+    "message": "Minimo storico"
+  },
+  "historicalLowAbbreviation": {
+    "message": "HL"
+  },
+  "excludedSearchWebsites": {
+    "message": "Cerca siti web"
+  },
+  "excludedRemoveAll": {
+    "message": "Rimuovi tutti"
+  },
+  "excludedRemove": {
+    "message": "Rimuovi"
+  },
+  "excludedRemoveLowercase": {
+    "message": "rimuovi"
+  },
+  "excludedNoMatches": {
+    "message": "Nessun sito web corrispondente trovato."
+  },
+  "excludedRemoveSingleConfirm": {
+    "message": "Vuoi davvero rimuovere $WEBSITE$ dalla lista delle esclusioni?",
+    "placeholders": {
+      "website": {
+        "content": "$1"
+      }
+    }
+  },
+  "excludedRemoveFilteredConfirm": {
+    "message": "Vuoi davvero rimuovere tutti i $COUNT$ siti web filtrati?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "excludedRemoveAllConfirm": {
+    "message": "Vuoi davvero rimuovere tutti i $COUNT$ siti web dalla lista?",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "cancel": {
+    "message": "Annulla"
+  },
+  "extensionSettingsAria": {
+    "message": "Impostazioni dell’estensione"
+  },
+  "goToGgDeals": {
+    "message": "Vai a GG.deals"
+  },
+  "search": {
+    "message": "Cerca"
+  },
+  "searchGameOnGgDeals": {
+    "message": "Cerca un gioco su GG.deals"
+  },
+  "searchOnGgDeals": {
+    "message": "Cerca su GG.deals"
+  },
+  "mainSettingsTabsAria": {
+    "message": "Schede principali delle impostazioni"
+  },
+  "tabDeals": {
+    "message": "Offerte"
+  },
+  "tabSettings": {
+    "message": "Impostazioni"
+  },
+  "tabAppearance": {
+    "message": "Aspetto"
+  },
+  "verifyEmailAddress": {
+    "message": "Verifica il tuo indirizzo e-mail"
+  },
+  "notice": {
+    "message": "Avviso"
+  },
+  "barOfficialLabel": {
+    "message": "Ufficiale:"
+  },
+  "barKeyshopLabel": {
+    "message": "Keyshop:"
+  },
+  "barViewOnGgDeals": {
+    "message": "Visualizza su GG.deals"
+  },
+  "barAlwaysHideOnSite": {
+    "message": "Nascondi sempre su questo sito"
+  },
+  "barChangeAppearance": {
+    "message": "Modifica aspetto"
+  }
+}

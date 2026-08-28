@@ -1,0 +1,1699 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 400;
+  src: url('chrome-extension://__MSG_@@extension_id__/src/assets/fonts/exo-2-v26-latin_latin-ext-regular.woff2') format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 600;
+  src: url('chrome-extension://__MSG_@@extension_id__/src/assets/fonts/exo-2-v26-latin_latin-ext-600.woff2') format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: url('chrome-extension://__MSG_@@extension_id__/src/assets/fonts/lato-v25-latin_latin-ext-regular.woff2') format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: url('chrome-extension://__MSG_@@extension_id__/src/assets/fonts/lato-v25-latin_latin-ext-700.woff2') format('woff2');
+}
+html {
+  background: #272635;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: max-content;
+  min-height: 100vh;
+  max-height: 600px;
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  appearance: none;
+  display: none;
+}
+html:has(.gg-ext-settings.theme-light) {
+  background: #EBE9ED;
+}
+body {
+  background: #272635;
+  font-family: 'Lato', Tahoma, Arial, sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+  appearance: none;
+  display: none;
+}
+body:has(.gg-ext-settings.theme-light) {
+  background: #EBE9ED;
+}
+body #app {
+  padding: calc(56px + 48px) 0 0;
+  box-sizing: border-box;
+}
+body:hover .gg-custom-scroll-indicator {
+  opacity: 1;
+}
+.gg-custom-scroll-indicator {
+  transition: opacity 0.2s linear;
+  opacity: 0.25;
+  position: fixed;
+  right: 4px;
+  width: 4px;
+  background-color: #279af1;
+  border-radius: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+.gg-ext-settings {
+  width: 540px;
+  overflow: hidden;
+}
+.gg-ext-settings .gg-ext-settings-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 102;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 16px 0;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0 24px;
+  height: 56px;
+  background: #141216;
+}
+.gg-ext-settings .gg-logo {
+  display: block;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 24px;
+  color: #FFF;
+}
+.gg-ext-settings .svg-icon {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+.gg-ext-settings .svg-icon.svg-icon-dm {
+  display: block !important;
+}
+.gg-ext-settings .svg-icon.svg-icon-lm {
+  display: none !important;
+}
+.gg-ext-settings .gg-ext-settings-search-wrapper {
+  position: relative;
+  background: #353347;
+  border: 1px solid #353347;
+  border-radius: 4px;
+  flex: 1 1 auto;
+  max-width: 100%;
+}
+.gg-ext-settings .gg-ext-settings-search-wrapper .gg-ext-settings__search {
+  position: relative;
+  background: transparent;
+  border: none;
+  outline: none;
+  display: block;
+  width: 100%;
+  color: #FFF;
+  box-sizing: border-box;
+  padding: 10px 40px 10px 12px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+  z-index: 2;
+}
+.gg-ext-settings .gg-ext-settings-search-wrapper .gg-ext-settings__search:focus {
+  outline: none;
+}
+.gg-ext-settings .gg-ext-settings-search-wrapper .gg-ext-settings__search:not(:placeholder-shown) + .gg-ext-settings-search-label {
+  opacity: 0 !important;
+}
+.gg-ext-settings .gg-ext-settings-search-wrapper .gg-ext-settings-search-label {
+  transition: opacity 0.2s ease;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 1;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+  color: #8b89a9;
+  user-select: none;
+}
+.gg-ext-settings .gg-ext-settings-search-wrapper .gg-icon-search-btn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  padding: 12px;
+  box-sizing: border-box;
+  color: #dcdce5;
+  top: 0;
+  right: 0;
+  z-index: 40;
+  border: none;
+  outline: none !important;
+  margin: 0;
+  cursor: pointer;
+  background: none;
+}
+.gg-ext-settings .gg-ext-settings-search-wrapper .gg-icon-search {
+  width: 16px;
+  height: 16px;
+}
+.gg-ext-settings .gg-user-dropdown {
+  position: relative;
+  display: flex;
+}
+.gg-ext-settings .gg-user-dropdown .gg-user-dropdown-trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding-right: 16px;
+  color: #b9b8cc;
+  user-select: none;
+}
+.gg-ext-settings .gg-user-dropdown .gg-user-dropdown-trigger::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  display: block;
+  content: '';
+}
+.gg-ext-settings .gg-user-dropdown .gg-user-dropdown-trigger .gg-settings-select-label {
+  flex: 1 1 auto;
+  max-width: calc(100% - 24px);
+}
+.gg-ext-settings .gg-user-dropdown .gg-user-dropdown-trigger .svg-icon {
+  transition: transform 0.2s ease 0.1s;
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: center center;
+  display: block;
+  width: 12px;
+  height: 12px;
+  color: inherit;
+}
+.gg-ext-settings .gg-user-dropdown .gg-user-dropdown-list {
+  transition: opacity 0.1s linear, top 0.1s linear, max-height 0.1s ease, padding 0.05s linear;
+  padding: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 100%;
+  z-index: -1;
+  right: 0;
+  min-width: 100%;
+  box-sizing: border-box;
+  background: #2A2838;
+  border: 1px solid #353347;
+  border-radius: 4px;
+}
+.gg-ext-settings .gg-user-dropdown .gg-user-dropdown-list .gg-user-dropdown-option {
+  transition: background-color 0.2s ease;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  padding: 8px 12px;
+  color: #e8e7ee;
+  cursor: pointer;
+  gap: 8px;
+  white-space: nowrap;
+  text-decoration: none;
+  user-select: none;
+}
+.gg-ext-settings .gg-user-dropdown .gg-user-dropdown-list .gg-user-dropdown-option .svg-icon {
+  display: block;
+  color: inherit;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+.gg-ext-settings .gg-user-dropdown .gg-user-dropdown-list .gg-user-dropdown-option:hover {
+  background-color: #4f4d6a;
+}
+.gg-ext-settings .gg-user-dropdown.open .gg-user-dropdown-trigger .svg-icon {
+  transform: translateY(-50%) rotate(-180deg);
+}
+.gg-ext-settings .gg-user-dropdown.open .gg-user-dropdown-list {
+  max-height: 220px;
+  padding: 4px 0;
+  opacity: 1;
+  top: calc(100% + 6px);
+  z-index: 200;
+}
+.gg-ext-settings .gg-user-avatar {
+  display: flex;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #141216;
+  color: #747198;
+  user-select: none;
+}
+.gg-ext-settings .gg-user-avatar .svg-icon {
+  transition: color 0.2s ease;
+  display: block;
+  width: 32px;
+  height: 32px;
+  color: inherit;
+  border: none;
+  outline: none;
+  user-select: none;
+}
+.gg-ext-settings .gg-user-avatar .gg-user-avatar-image {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border: none;
+  outline: none;
+  user-select: none;
+}
+.gg-ext-settings .gg-ext-login-link {
+  display: flex;
+  flex: 0 0 auto;
+  column-gap: 12px;
+  text-decoration: none;
+}
+.gg-ext-settings .gg-ext-login-link .gg-ext-login-label {
+  transition: color 0.2s ease;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  column-gap: 4px;
+  align-items: center;
+  flex: 0 0 auto;
+  color: #3FA5F3;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 700;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+  user-select: none;
+}
+.gg-ext-settings .gg-ext-login-link .gg-ext-login-label .login-label-text {
+  display: block;
+  flex: 0 0 auto;
+  user-select: none;
+}
+.gg-ext-settings .gg-ext-login-link .gg-ext-login-label .icon-ext-arrow {
+  display: block;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  color: inherit;
+}
+.gg-ext-settings .gg-ext-login-link:hover .gg-ext-login-label {
+  color: #52aef4;
+}
+.gg-ext-settings .gg-ext-login-link:hover .gg-user-avatar {
+  color: #8b89a9;
+}
+.gg-ext-settings .gg-tabs {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  column-gap: 32px;
+  padding: 8px 16px 0;
+  box-sizing: border-box;
+  background: #141216;
+  height: 48px;
+}
+.gg-ext-settings .gg-tabs .gg-tab-trigger {
+  position: relative;
+  display: block;
+  transition: color 0.2s ease;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  color: #a2a0ba;
+  box-sizing: border-box;
+  padding: 10px 0;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  appearance: none;
+  background: none;
+  user-select: none;
+}
+.gg-ext-settings .gg-tabs .gg-tab-trigger::after {
+  transition: opacity 0.2s linear, max-height 0.2s linear;
+  content: '';
+  position: absolute;
+  display: block;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: #1fa2ff;
+  overflow: hidden;
+  opacity: 0;
+  max-height: 0;
+}
+.gg-ext-settings .gg-tabs .gg-tab-trigger:hover::after {
+  opacity: 0.4;
+  max-height: 4px;
+}
+.gg-ext-settings .gg-tabs .gg-tab-trigger.is-active {
+  color: #FFF;
+}
+.gg-ext-settings .gg-tabs .gg-tab-trigger.is-active::after {
+  opacity: 1;
+  max-height: 4px;
+}
+.gg-ext-settings .loading-state {
+  transition: opacity 0.2s ease, max-height 0.1s linear 0.25s;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 96px;
+  max-height: calc(600px - (56px + 48px));
+  background: #272635;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.gg-ext-settings .loading-state .gg-loaging-icon {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  display: block;
+}
+.gg-ext-settings .loading-state.hidden {
+  opacity: 0;
+  max-height: 0;
+  min-height: unset;
+}
+.gg-ext-settings .gg-tab-panel-wrapper {
+  transition: background-color 0.2s linear;
+  position: relative;
+  box-sizing: border-box;
+  background: #272635;
+}
+.gg-ext-settings .gg-tab-panel-wrapper .gg-tab-panel {
+  position: relative;
+  box-sizing: border-box;
+  padding: 24px 16px;
+  min-height: 96px;
+}
+.gg-ext-settings .gg-deals-section-wrapper {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+.gg-ext-settings .gg-deals-section-wrapper + .gg-deals-section-wrapper {
+  margin-top: 24px;
+}
+.gg-ext-settings .gg-deals-section {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+.gg-ext-settings .gg-deals-section-heading {
+  display: inline-flex;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+  margin: 0 0 12px;
+  color: #FFF;
+  user-select: none;
+}
+.gg-ext-settings .gg-deals-section-heading a {
+  transition: color 0.2s ease;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 16px;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: none;
+  user-select: none;
+}
+.gg-ext-settings .gg-deals-section-heading .gg-deals-section-heading-small {
+  transition: color 0.2s ease;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  column-gap: 4px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #dcdce5;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.gg-ext-settings .gg-deals-section-heading .gg-deals-section-heading-small::after {
+  transition: border-color 0.2s ease;
+  flex: 0 0 6px;
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 3px 0px 3px 6px;
+  border-color: transparent transparent transparent #dcdce5;
+}
+.gg-ext-settings .gg-deals-section-heading .gg-deals-section-heading-small:hover {
+  color: #FFF;
+}
+.gg-ext-settings .gg-deals-section-heading .gg-deals-section-heading-small:hover::after {
+  border-color: transparent transparent transparent #FFF;
+}
+.gg-ext-settings .gg-deals-item {
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin: 4px 0 0;
+  border: 1px solid #46455f;
+  border-radius: 8px;
+  background: #353347;
+  overflow: hidden;
+  column-gap: 12px;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+}
+.gg-ext-settings .gg-deals-item .gg-deals-item-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 134px;
+  min-height: 50px;
+  overflow: hidden;
+}
+.gg-ext-settings .gg-deals-item .gg-deals-item-image .gg-deals-item-cover {
+  transition: transform 0.2s ease;
+  object-fit: cover;
+  min-width: 100%;
+  min-height: 100%;
+  transform: scale(1);
+  transform-origin: center center;
+}
+.gg-ext-settings .gg-deals-item:hover {
+  background-color: #3d3c53;
+}
+.gg-ext-settings .gg-deals-item:hover .gg-deals-item-image .gg-deals-item-cover {
+  transform: scale(1.1);
+}
+.gg-ext-settings .gg-deals-item .gg-full-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 21;
+  display: block;
+}
+.gg-ext-settings .gg-deals-item .gg-deals-item-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  column-gap: 12px;
+  box-sizing: border-box;
+  padding: 0 12px 0 0;
+  flex: 0 0 calc(100% - 134px - 12px);
+}
+.gg-ext-settings .gg-deals-item .gg-deals-item-content .gg-deal-item-title {
+  flex: 1 1 auto;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  color: #FFF;
+  white-space: normal;
+  padding: 4px 0;
+  display: flex;
+}
+.gg-ext-settings .gg-deals-item .gg-deals-item-content .gg-deal-item-price-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  column-gap: 6px;
+  align-items: center;
+}
+.gg-ext-settings .gg-deals-item .gg-deals-item-content .gg-deal-item-price-wrapper .gg-deal-item-price-labels {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  column-gap: 2px;
+  align-items: center;
+}
+.gg-ext-settings .gg-deals-item .gg-deals-item-content .gg-deal-item-price-wrapper .gg-deal-item-price-labels .gg-deal-label {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  padding: 0 5px;
+  box-sizing: border-box;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: default;
+  user-select: none;
+}
+.gg-ext-settings .gg-deals-item .gg-deals-item-content .gg-deal-item-price-wrapper .gg-deal-item-price-labels .gg-deal-label.gg-label-discount {
+  background: #a2a0ba;
+  color: #23222f;
+  padding: 1px 6px;
+}
+.gg-ext-settings .gg-deals-item .gg-deals-item-content .gg-deal-item-price-wrapper .gg-deal-item-price-labels .gg-deal-label.gg-label-historical {
+  border: 1px solid #07DA7480;
+  background: #07DA741F;
+  color: #07DA74;
+  cursor: help;
+  z-index: 22;
+}
+.gg-ext-settings .gg-deals-item .gg-deals-item-content .gg-deal-item-price-wrapper .gg-deal-item-price-labels .gg-deal-label.gg-label-historical + .gg-label-discount {
+  background: #07DA74B2;
+  color: #23222f;
+}
+.gg-ext-settings .gg-deals-item .gg-deals-item-content .gg-deal-item-price-wrapper .gg-deal-item-price {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #FFF;
+  font-family: 'Exo 2', Tahoma, Arial, sans-serif !important;
+}
+.gg-ext-settings .gg-deals-item .gg-deals-item-content .gg-deal-item-price-wrapper .gg-deal-item-price.price-hl {
+  color: #07DA74;
+}
+.gg-ext-settings .gg-deals-item .gg-deal-item-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 20;
+  display: block;
+  width: 25px;
+  height: 25px;
+  pointer-events: none;
+}
+.gg-ext-settings .gg-settings-pill-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.gg-ext-settings .gg-settings-pill-container.with-pinned-link {
+  padding-bottom: 48px;
+}
+.gg-ext-settings .gg-settings-pill {
+  transition: background-color 0.2s linear, border-color 0.2s linear;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  column-gap: 16px;
+  box-sizing: border-box;
+  padding: 15px;
+  border: 1px solid #46455f;
+  background: #353347;
+  border-radius: 8px;
+  margin: 8px 0 0;
+}
+.gg-ext-settings .gg-settings-pill:first-of-type {
+  margin-top: 0;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-icon {
+  transition: color 0.2s ease;
+  flex: 0 0 32px;
+  color: #747198;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-icon .svg-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+.gg-ext-settings .gg-settings-pill.active .gg-settings-pill-icon {
+  color: #dcdce5;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-switch {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex: 0 0 40px;
+  width: 40px;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-switch .gg-ext-switch {
+  transition: background-color 0.2s ease;
+  position: relative;
+  display: block;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 22.5px;
+  border-radius: 11.25px;
+  overflow: hidden;
+  background: #747198;
+  cursor: pointer;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-switch .gg-ext-switch::before {
+  transition: left 0.2s ease;
+  position: absolute;
+  content: '';
+  display: block;
+  width: 17.5px;
+  height: 17.5px;
+  border-radius: 50%;
+  background: #FFF;
+  left: 2.5px;
+  top: 2.5px;
+  box-shadow: 0px 1.67px 3.33px 0px #14121633;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-switch input[type="checkbox"] {
+  display: none;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-switch input[type="checkbox"]:is(:checked) + .gg-ext-switch {
+  background-color: #279af1;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-switch input[type="checkbox"]:is(:checked) + .gg-ext-switch::before {
+  left: 20px;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-content .gg-settings-pill-title {
+  transition: color 0.2s linear;
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  line-height: 18px;
+  color: #FFF;
+  margin: 0 0 4px;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-content .gg-settings-pill-desc {
+  transition: color 0.2s linear;
+  display: block;
+  width: 100%;
+  font-size: 13px;
+  line-height: 16px;
+  color: #a2a0ba;
+  margin: 0;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 12px 0 0;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-trigger {
+  transition: border-radius 0.2s linear, background-color 0.2s linear, color 0.2s linear;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex: 0 0 36px;
+  border-radius: 4px;
+  background: #4f4d6a;
+  color: #e8e7ee;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 600;
+  box-sizing: border-box;
+  padding: 9.5px 12px;
+  column-gap: 12px;
+  user-select: none;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-trigger::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  display: block;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-trigger .gg-settings-select-label {
+  flex: 1 1 auto;
+  max-width: calc(100% - 24px);
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-trigger .svg-icon {
+  transition: transform 0.2s ease 0.1s;
+  transform-origin: center center;
+  display: block;
+  flex: 0 0 12px;
+  width: 12px;
+  height: 12px;
+  color: inherit;
+  justify-self: flex-end;
+  margin: 0 0 0 auto;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-list-container {
+  transition: max-height 0.1s ease, padding 0.05s linear;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 100%;
+  z-index: 20;
+  left: 0;
+  min-width: 100%;
+  box-sizing: border-box;
+  background: #46455f;
+  border-radius: 0 0 4px 4px;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-list-container .gg-dropdown-scroll-indicator {
+  position: absolute;
+  right: 4px;
+  width: 4px;
+  background-color: #279af1;
+  z-index: 30;
+  pointer-events: none;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-list {
+  box-sizing: border-box;
+  max-height: inherit;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-list::-webkit-scrollbar {
+  display: none;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-list .gg-settings-select-option {
+  transition: background-color 0.2s ease;
+  background: transparent;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  padding: 8px 12px;
+  color: #e8e7ee;
+  cursor: pointer;
+  user-select: none;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-list .gg-settings-select-option:hover:not(.selected) {
+  background-color: #4f4d6a;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-list .gg-settings-select-option.selected {
+  cursor: default;
+  background-color: #585676;
+  border-left: 4px solid #279af1;
+  padding: 8px 12px 8px 8px;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box.open .gg-settings-select-trigger {
+  border-radius: 4px 4px 0 0;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box.open .gg-settings-select-trigger .svg-icon {
+  transform: rotate(-180deg);
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box.open .gg-settings-select-list-container {
+  max-height: 227px;
+  padding: 0 0 4px;
+  z-index: 200;
+}
+.gg-ext-settings .gg-settings-pill .gg-settings-pill-select-box.open .gg-settings-select-list {
+  max-height: 220px;
+  overflow-y: auto;
+}
+.gg-ext-settings .gg-settings-bottom-pinned {
+  transition: color 0.2s ease, background-color 0.2s linear, border-color 0.2s linear;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 32;
+  background: #272635;
+  border-top: 1px solid #3d3c53;
+  padding: 15px 16px 16px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 700;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+}
+.gg-ext-settings .gg-settings-bottom-pinned .gg-settings-bottom-pinned-link {
+  display: inline-flex;
+  column-gap: 4px;
+  flex: 0 0 auto;
+  color: #3FA5F3;
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: none;
+}
+.gg-ext-settings .gg-settings-bottom-pinned .gg-settings-bottom-pinned-link:hover {
+  color: #52aef4;
+}
+.gg-ext-settings .gg-settings-bottom-pinned .gg-settings-bottom-pinned-label {
+  display: block;
+  flex: 0 0 auto;
+  user-select: none;
+}
+.gg-ext-settings .gg-settings-bottom-pinned .svg-icon {
+  display: block;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  color: inherit;
+}
+.gg-ext-settings .gg-info-box {
+  position: relative;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  border-style: solid;
+  border-width: 1px;
+  margin: 0 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  border-radius: 8px;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+  background: #353347;
+  border-color: #46455f;
+  color: #dcdce5;
+}
+.gg-ext-settings .gg-info-box:last-child {
+  margin-bottom: 0;
+}
+.gg-ext-settings .gg-info-box .gg-info-box-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  z-index: 21;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+.gg-ext-settings .gg-info-box .gg-info-box-close .svg-icon {
+  display: block;
+  flex: 0 0 12px;
+  width: 12px;
+  height: 12px;
+}
+.gg-ext-settings .gg-info-box .gg-info-box-heading {
+  display: block;
+  flex: 0 0 100%;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+.gg-ext-settings .gg-info-box .gg-info-box-heading + .gg-info-box-content {
+  margin: 4px 0 0;
+}
+.gg-ext-settings .gg-info-box .gg-info-box-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 0 100%;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 400;
+  column-gap: 4px;
+}
+.gg-ext-settings .gg-info-box .gg-info-box-content-link {
+  transition: color 0.2s ease;
+  display: inline-flex;
+  text-decoration: underline;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: 700;
+  column-gap: 4px;
+  align-items: center;
+}
+.gg-ext-settings .gg-info-box .gg-info-box-content-link .gg-info-box-content-link-label {
+  display: block;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  user-select: none;
+}
+.gg-ext-settings .gg-info-box .gg-info-box-content-link .svg-icon {
+  display: block;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+}
+.gg-ext-settings .gg-info-box.gg-info-box-warning {
+  background: #FF99001F;
+  border-color: #FFC2663D;
+  color: #FFC266;
+}
+.gg-ext-settings .gg-info-box.gg-info-box-warning .gg-info-box-content-link:hover {
+  color: #ffcc7f;
+}
+.gg-ext-settings .gg-info-box.gg-info-box-warning .gg-info-box-close:hover {
+  color: #ffcc7f;
+}
+.gg-ext-settings .gg-info-box.gg-info-box-info {
+  background: #279AF11F;
+  border-color: #52AEF43D;
+  color: #70BBF5;
+}
+.gg-ext-settings .gg-info-box.gg-info-box-info .gg-info-box-content-link:hover,
+.gg-ext-settings .gg-info-box.gg-info-box-info .gg-info-box-close:hover {
+  color: #9DD1F8;
+}
+.gg-ext-settings .gg-info-box.gg-info-box-success {
+  background: #22C55E1F;
+  border-color: #4ADE803D;
+  color: #71E39B;
+}
+.gg-ext-settings .gg-info-box.gg-info-box-success .gg-info-box-content-link:hover,
+.gg-ext-settings .gg-info-box.gg-info-box-success .gg-info-box-close:hover {
+  color: #9BEAB8;
+}
+.gg-ext-settings .gg-info-box.gg-info-box-error {
+  background: #EF44441F;
+  border-color: #F871713D;
+  color: #FF8585;
+}
+.gg-ext-settings .gg-info-box.gg-info-box-error .gg-info-box-content-link:hover,
+.gg-ext-settings .gg-info-box.gg-info-box-error .gg-info-box-close:hover {
+  color: #FFAAAA;
+}
+.gg-ext-settings .gg-websites-manager {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 16px 0 0;
+  gap: 8px;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-controls-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  column-gap: 24px;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-search-input-wrapper {
+  position: relative;
+  background: #3d3c53;
+  border: 1px solid #585676;
+  border-radius: 4px;
+  flex: 1 1 auto;
+  max-width: 100%;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-search-input {
+  position: relative;
+  background: transparent;
+  border: none;
+  outline: none;
+  display: block;
+  width: 100%;
+  color: #FFF;
+  box-sizing: border-box;
+  padding: 8px 26px 8px 8px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+  z-index: 2;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-search-input:focus {
+  outline: none;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-search-input:not(:placeholder-shown) + .gg-ext-settings-search-label {
+  opacity: 0 !important;
+}
+.gg-ext-settings .gg-websites-manager .gg-ext-settings-search-label {
+  transition: opacity 0.2s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 1;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+  color: #8b89a9;
+  user-select: none;
+}
+.gg-ext-settings .gg-websites-manager .gg-icon-search {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  color: #dcdce5;
+  top: 12px;
+  right: 8px;
+  z-index: 0;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-btn-remove-all {
+  transition: color 0.2s ease;
+  display: block;
+  flex: 0 0 auto;
+  padding: 9px 0;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+  color: #3FA5F3;
+  background: none;
+  border: none;
+  outline: none !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-btn-remove-all:hover {
+  color: #52aef4;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-list .gg-websites-item-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+  column-gap: 8px;
+  padding: 11px 8px;
+  flex: 0 0 40px;
+  border-top: 1px solid #585676;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-list .gg-websites-item-row:first-of-type {
+  border-top: none;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-list .gg-websites-item-label {
+  flex: 1 1 auto;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  color: #e8e7ee;
+  font-family: 'Lato', Tahoma, Arial, sans-serif;
+  user-select: none;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-list .gg-websites-btn-remove {
+  transition: color 0.2s ease;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 4px;
+  align-items: center;
+  flex: 0 0 auto;
+  padding: 2px 0;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 400;
+  color: #a2a0ba;
+  background: none;
+  border: none;
+  outline: none !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-list .gg-websites-btn-remove .gg-websites-btn-remove-label {
+  display: block;
+  flex: 0 0 auto;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+  cursor: pointer;
+  user-select: none;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-list .gg-websites-btn-remove .gg-icon-close-item {
+  display: block;
+  flex: 0 0 8px;
+  color: #e8e7ee;
+  width: 8px;
+  height: 8px;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-list .gg-websites-btn-remove:hover {
+  color: #e8e7ee;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-list .gg-websites-btn-remove:hover .gg-icon-close-item {
+  color: #FFF;
+}
+.gg-ext-settings .gg-websites-manager .gg-websites-empty-state {
+  font-size: 14px;
+  line-height: 18px;
+  padding: 11px 8px;
+  color: #a2a0ba;
+}
+.gg-ext-settings .gg-settings-pill-radio-buttons {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 4px;
+}
+.gg-ext-settings .gg-settings-pill-radio-buttons .gg-settings-pill-radio-button {
+  display: block;
+  flex: 0 0 auto;
+}
+.gg-ext-settings .gg-settings-pill-radio-buttons .gg-settings-pill-radio-button .gg-settings-pill-radio-label {
+  transition: background-color 0.15s ease, color 0.15s ease;
+  background: #4f4d6a;
+  color: #b9b8cc;
+  border-radius: 14px;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 700;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  flex: 0 0 auto;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+}
+.gg-ext-settings .gg-settings-pill-radio-buttons .gg-settings-pill-radio-button .gg-settings-pill-radio-label .svg-icon {
+  display: block;
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+  color: inherit;
+}
+.gg-ext-settings .gg-settings-pill-radio-buttons .gg-settings-pill-radio-button .gg-settings-pill-radio-label .gg-settings-pill-radio-label-text {
+  display: block;
+  flex: 0 0 auto;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+}
+.gg-ext-settings .gg-settings-pill-radio-buttons .gg-settings-pill-radio-button input[type="radio"] {
+  display: none;
+}
+.gg-ext-settings .gg-settings-pill-radio-buttons .gg-settings-pill-radio-button input[type="radio"]:is(:checked) ~ .gg-settings-pill-radio-label {
+  background-color: #279af1;
+  color: #FFF;
+}
+.gg-ext-settings .gg-settings-pill-radio-buttons .gg-settings-pill-radio-button:hover:not(:has(input[type="radio"]:checked)) .gg-settings-pill-radio-label {
+  background-color: #615e82;
+}
+.gg-ext-settings .gg-settings-radio-wrapper {
+  transition: opacity 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 12px 0 0;
+  gap: 8px;
+}
+.gg-ext-settings .gg-settings-radio-wrapper .gg-settings-radio-single {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
+  cursor: pointer;
+  align-items: flex-start;
+}
+.gg-ext-settings .gg-settings-radio-wrapper .gg-settings-radio-single .gg-radio-circle {
+  transition: background-color 0.2s ease;
+  position: relative;
+  display: block;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  margin: 6px 0;
+  box-sizing: border-box;
+  background: #4f4d6a;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.gg-ext-settings .gg-settings-radio-wrapper .gg-settings-radio-single .gg-radio-circle::before {
+  transition: border-width 0.1s ease, border-color 0.1s ease;
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dcdce5;
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  display: block;
+  content: '';
+}
+.gg-ext-settings .gg-settings-radio-wrapper .gg-settings-radio-single .gg-radio-circle::after {
+  transition: opacity 0.1s ease, transform 0.1s linear;
+  opacity: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #279af1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  box-sizing: border-box;
+  display: block;
+  content: '';
+}
+.gg-ext-settings .gg-settings-radio-wrapper .gg-settings-radio-single .gg-radio-icon {
+  display: block;
+  width: 40px;
+  flex: 0 0 40px;
+  height: 28px;
+}
+.gg-ext-settings .gg-settings-radio-wrapper .gg-settings-radio-single .gg-radio-icon .svg-icon {
+  transition: color 0.2s ease, stroke 0.2s ease;
+  color: #b9b8cc;
+  stroke: #747198;
+  display: block;
+}
+.gg-ext-settings .gg-settings-radio-wrapper .gg-settings-radio-single .gg-radio-label {
+  transition: color 0.2s ease;
+  display: block;
+  flex: 1 1 auto;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+  box-sizing: border-box;
+  padding: 5px 0 0;
+  color: #a2a0ba;
+  user-select: none;
+}
+.gg-ext-settings .gg-settings-radio-wrapper .gg-settings-radio-single input[type="radio"] {
+  display: none;
+}
+.gg-ext-settings .gg-settings-radio-wrapper .gg-settings-radio-single input[type="radio"]:is(:checked) + .gg-radio-circle {
+  background-color: #23222f;
+}
+.gg-ext-settings .gg-settings-radio-wrapper .gg-settings-radio-single input[type="radio"]:is(:checked) + .gg-radio-circle::before {
+  border-width: 2px;
+  border-color: #279af1;
+}
+.gg-ext-settings .gg-settings-radio-wrapper .gg-settings-radio-single input[type="radio"]:is(:checked) + .gg-radio-circle::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.gg-ext-settings .gg-settings-radio-wrapper .gg-settings-radio-single input[type="radio"]:is(:checked) + .gg-radio-circle ~ .gg-radio-icon .svg-icon {
+  color: #FFF;
+  stroke: #a2a0ba;
+}
+.gg-ext-settings .gg-settings-radio-wrapper .gg-settings-radio-single input[type="radio"]:is(:checked) + .gg-radio-circle ~ .gg-radio-label {
+  color: #FFF;
+}
+.gg-ext-settings .gg-settings-radio-wrapper:not([disabled]) .gg-settings-radio-single:hover:not(:has(input[type="radio"]:checked)) .gg-radio-circle::before {
+  border-width: 2px;
+}
+.gg-ext-settings .gg-settings-radio-wrapper[disabled] {
+  opacity: 0.25;
+}
+.gg-ext-settings .gg-settings-radio-wrapper[disabled] .gg-settings-radio-single {
+  cursor: not-allowed;
+}
+.gg-ext-settings .gg-custom-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(1px);
+}
+.gg-ext-settings .gg-custom-modal-overlay .gg-custom-modal-box {
+  position: relative;
+  margin: auto auto;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background: #353347;
+  border: 1px solid #46455f;
+  flex: 0 0 auto;
+  width: 360px;
+}
+.gg-ext-settings .gg-custom-modal-overlay .gg-custom-modal-box .gg-custom-modal-description {
+  display: block;
+  font-family: 'Lato', Tahoma, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #dcdce5;
+}
+.gg-ext-settings .gg-custom-modal-overlay .gg-custom-modal-box .gg-custom-modal-description strong {
+  font-weight: 700;
+}
+.gg-ext-settings .gg-custom-modal-overlay .gg-custom-modal-box .gg-custom-modal-actions-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 24px 0 0;
+}
+.gg-ext-settings .gg-custom-modal-overlay .gg-custom-modal-box .gg-custom-modal-btn {
+  transition: color 0.2s ease, background-color 0.2s ease;
+  font-family: 'Lato', Tahoma, Arial, sans-serif !important;
+  font-size: 14px;
+  box-shadow: none;
+  margin: 0;
+  padding: 8px 16px;
+  font-weight: 600;
+  outline: 0 !important;
+  border-radius: 4px;
+  border: 0;
+  color: #FFF;
+  background: #4f4d6a;
+  cursor: pointer;
+}
+.gg-ext-settings .gg-custom-modal-overlay .gg-custom-modal-box .gg-custom-modal-btn:hover {
+  background-color: #585676;
+}
+.gg-ext-settings .gg-custom-modal-overlay .gg-custom-modal-box .gg-custom-modal-btn.gg-custom-modal-btn-remove {
+  color: #FFF;
+  background-color: #eb1f32;
+}
+.gg-ext-settings .gg-custom-modal-overlay .gg-custom-modal-box .gg-custom-modal-btn.gg-custom-modal-btn-remove:hover {
+  background-color: #ce1225;
+}
+.gg-ext-settings.theme-light .svg-icon.svg-icon-dm {
+  display: none !important;
+}
+.gg-ext-settings.theme-light .svg-icon.svg-icon-lm {
+  display: block !important;
+}
+.gg-ext-settings.theme-light .loading-state {
+  background: #EBE9ED;
+}
+.gg-ext-settings.theme-light .gg-tab-panel-wrapper {
+  background-color: #EBE9ED;
+}
+.gg-ext-settings.theme-light .gg-deals-section-heading {
+  color: #1F1C22;
+}
+.gg-ext-settings.theme-light .gg-deals-section-heading .gg-deals-section-heading-small {
+  color: #47404F;
+}
+.gg-ext-settings.theme-light .gg-deals-section-heading .gg-deals-section-heading-small::after {
+  border-color: transparent transparent transparent #47404F;
+}
+.gg-ext-settings.theme-light .gg-deals-section-heading .gg-deals-section-heading-small:hover {
+  color: #1F1C22;
+}
+.gg-ext-settings.theme-light .gg-deals-section-heading .gg-deals-section-heading-small:hover::after {
+  border-color: transparent transparent transparent #1F1C22;
+}
+.gg-ext-settings.theme-light .gg-user-dropdown .gg-user-dropdown-list {
+  background-color: #F4F5F6;
+  border-color: #D6D2DA;
+}
+.gg-ext-settings.theme-light .gg-user-dropdown .gg-user-dropdown-list .gg-user-dropdown-option {
+  color: #47404F;
+}
+.gg-ext-settings.theme-light .gg-user-dropdown .gg-user-dropdown-list .gg-user-dropdown-option:hover {
+  background-color: #E0DDE3;
+}
+.gg-ext-settings.theme-light .gg-deals-item {
+  background-color: #F9FAFA;
+  border-color: #D6D2DA;
+}
+.gg-ext-settings.theme-light .gg-deals-item:hover {
+  background-color: #FFF;
+}
+.gg-ext-settings.theme-light .gg-deals-item .gg-deals-item-content .gg-deal-item-title {
+  color: #1F1C22;
+}
+.gg-ext-settings.theme-light .gg-deals-item .gg-deals-item-content .gg-deal-item-price-wrapper .gg-deal-item-price-labels .gg-deal-label.gg-label-discount {
+  background-color: #70657BEB;
+  color: #FFF;
+}
+.gg-ext-settings.theme-light .gg-deals-item .gg-deals-item-content .gg-deal-item-price-wrapper .gg-deal-item-price-labels .gg-deal-label.gg-label-historical {
+  border-color: #04804480;
+  background-color: #04804417;
+  color: #048044;
+}
+.gg-ext-settings.theme-light .gg-deals-item .gg-deals-item-content .gg-deal-item-price-wrapper .gg-deal-item-price-labels .gg-deal-label.gg-label-historical + .gg-label-discount {
+  background-color: #048044CC;
+  color: #FFF;
+}
+.gg-ext-settings.theme-light .gg-deals-item .gg-deals-item-content .gg-deal-item-price-wrapper .gg-deal-item-price {
+  color: #1F1C22;
+}
+.gg-ext-settings.theme-light .gg-deals-item .gg-deals-item-content .gg-deal-item-price-wrapper .gg-deal-item-price.price-hl {
+  color: #048044;
+}
+.gg-ext-settings.theme-light .gg-settings-pill {
+  border-color: #D6D2DA;
+  background-color: #F9FAFA;
+}
+.gg-ext-settings.theme-light .gg-settings-pill .gg-settings-pill-icon {
+  color: #C2BCC8;
+}
+.gg-ext-settings.theme-light .gg-settings-pill.active .gg-settings-pill-icon {
+  color: #47404F;
+}
+.gg-ext-settings.theme-light .gg-settings-pill .gg-settings-pill-switch .gg-ext-switch {
+  background-color: #C2BCC8;
+}
+.gg-ext-settings.theme-light .gg-settings-pill .gg-settings-pill-content .gg-settings-pill-title {
+  color: #1F1C22;
+}
+.gg-ext-settings.theme-light .gg-settings-pill .gg-settings-pill-content .gg-settings-pill-desc {
+  color: #70657B;
+}
+.gg-ext-settings.theme-light .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-trigger {
+  background-color: #E0DDE3;
+  color: #47404F;
+}
+.gg-ext-settings.theme-light .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-list-container {
+  background-color: #E0DDE3;
+}
+.gg-ext-settings.theme-light .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-list .gg-settings-select-option {
+  color: #47404F;
+}
+.gg-ext-settings.theme-light .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-list .gg-settings-select-option:hover:not(.selected) {
+  background-color: #D6D2DA;
+}
+.gg-ext-settings.theme-light .gg-settings-pill .gg-settings-pill-select-box .gg-settings-select-list .gg-settings-select-option.selected {
+  background-color: #EBE9ED;
+}
+.gg-ext-settings.theme-light .gg-settings-bottom-pinned {
+  background: #EBE9ED;
+  border-top: 1px solid #D6D2DA;
+}
+.gg-ext-settings.theme-light .gg-settings-bottom-pinned .gg-settings-bottom-pinned-link {
+  color: #0E81D8;
+}
+.gg-ext-settings.theme-light .gg-settings-bottom-pinned .gg-settings-bottom-pinned-link:hover {
+  color: #0d7dd3;
+}
+.gg-ext-settings.theme-light .gg-info-box {
+  background: #F9FAFA;
+  border-color: #D6D2DA;
+  color: #47404F;
+}
+.gg-ext-settings.theme-light .gg-info-box.gg-info-box-warning {
+  background: #FFF0CC;
+  border-color: #7046053D;
+  color: #704605;
+}
+.gg-ext-settings.theme-light .gg-info-box.gg-info-box-warning .gg-info-box-content-link:hover {
+  color: #f56600;
+}
+.gg-ext-settings.theme-light .gg-info-box.gg-info-box-warning .gg-info-box-close:hover {
+  color: #f56600;
+}
+.gg-ext-settings.theme-light .gg-info-box.gg-info-box-info {
+  background: #E7F4FD;
+  border-color: #0E81D83D;
+  color: #075D9E;
+}
+.gg-ext-settings.theme-light .gg-info-box.gg-info-box-info .gg-info-box-content-link:hover,
+.gg-ext-settings.theme-light .gg-info-box.gg-info-box-info .gg-info-box-close:hover {
+  color: #0E81D8;
+}
+.gg-ext-settings.theme-light .gg-info-box.gg-info-box-success {
+  background: #E7F8ED;
+  border-color: #15803D3D;
+  color: #166534;
+}
+.gg-ext-settings.theme-light .gg-info-box.gg-info-box-success .gg-info-box-content-link:hover,
+.gg-ext-settings.theme-light .gg-info-box.gg-info-box-success .gg-info-box-close:hover {
+  color: #15803D;
+}
+.gg-ext-settings.theme-light .gg-info-box.gg-info-box-error {
+  background: #FDECEC;
+  border-color: #B91C1C3D;
+  color: #991B1B;
+}
+.gg-ext-settings.theme-light .gg-info-box.gg-info-box-error .gg-info-box-content-link:hover,
+.gg-ext-settings.theme-light .gg-info-box.gg-info-box-error .gg-info-box-close:hover {
+  color: #DC2626;
+}
+.gg-ext-settings.theme-light .gg-websites-manager .gg-websites-search-input-wrapper {
+  background: #FFF;
+  border: 1px solid #D6D2DA;
+}
+.gg-ext-settings.theme-light .gg-websites-manager .gg-websites-search-input {
+  color: #1a1a23;
+}
+.gg-ext-settings.theme-light .gg-websites-manager .gg-ext-settings-search-label {
+  color: #A39AAC;
+}
+.gg-ext-settings.theme-light .gg-websites-manager .gg-icon-search {
+  color: #47404F;
+}
+.gg-ext-settings.theme-light .gg-websites-manager .gg-websites-btn-remove-all {
+  color: #0E81D8;
+}
+.gg-ext-settings.theme-light .gg-websites-manager .gg-websites-btn-remove-all:hover {
+  color: #0d7dd3;
+}
+.gg-ext-settings.theme-light .gg-websites-manager .gg-websites-list .gg-websites-item-row {
+  border-color: #D6D2DA;
+}
+.gg-ext-settings.theme-light .gg-websites-manager .gg-websites-list .gg-websites-item-label {
+  color: #47404F;
+}
+.gg-ext-settings.theme-light .gg-websites-manager .gg-websites-list .gg-websites-btn-remove {
+  color: #8F849A;
+}
+.gg-ext-settings.theme-light .gg-websites-manager .gg-websites-list .gg-websites-btn-remove .gg-icon-close-item {
+  color: #47404F;
+}
+.gg-ext-settings.theme-light .gg-websites-manager .gg-websites-list .gg-websites-btn-remove:hover {
+  color: #70657B;
+}
+.gg-ext-settings.theme-light .gg-websites-manager .gg-websites-list .gg-websites-btn-remove:hover .gg-icon-close-item {
+  color: #1a1a23;
+}
+.gg-ext-settings.theme-light .gg-websites-manager .gg-websites-empty-state {
+  color: #4f4d6a;
+}
+.gg-ext-settings.theme-light .gg-settings-pill-radio-buttons .gg-settings-pill-radio-button .gg-settings-pill-radio-label {
+  background: #EBE9ED;
+  color: #70657B;
+}
+.gg-ext-settings.theme-light .gg-settings-pill-radio-buttons .gg-settings-pill-radio-button input[type="radio"]:is(:checked) ~ .gg-settings-pill-radio-label {
+  background-color: #279af1;
+  color: #FFF;
+}
+.gg-ext-settings.theme-light .gg-settings-pill-radio-buttons .gg-settings-pill-radio-button:hover:not(:has(input[type="radio"]:checked)) .gg-settings-pill-radio-label {
+  background-color: #D6D2DA;
+}
+.gg-ext-settings.theme-light .gg-settings-radio-wrapper .gg-settings-radio-single .gg-radio-circle {
+  background: #FFF;
+}
+.gg-ext-settings.theme-light .gg-settings-radio-wrapper .gg-settings-radio-single .gg-radio-circle::before {
+  border-color: #47404F;
+}
+.gg-ext-settings.theme-light .gg-settings-radio-wrapper .gg-settings-radio-single .gg-radio-icon .svg-icon {
+  color: #70657B;
+  stroke: #A39AAC;
+}
+.gg-ext-settings.theme-light .gg-settings-radio-wrapper .gg-settings-radio-single .gg-radio-label {
+  color: #70657B;
+}
+.gg-ext-settings.theme-light .gg-settings-radio-wrapper .gg-settings-radio-single input[type="radio"]:is(:checked) + .gg-radio-circle {
+  background-color: #FFF;
+}
+.gg-ext-settings.theme-light .gg-settings-radio-wrapper .gg-settings-radio-single input[type="radio"]:is(:checked) + .gg-radio-circle::before {
+  border-color: #279af1;
+}
+.gg-ext-settings.theme-light .gg-settings-radio-wrapper .gg-settings-radio-single input[type="radio"]:is(:checked) + .gg-radio-circle ~ .gg-radio-icon .svg-icon {
+  color: #1F1C22;
+  stroke: #70657B;
+}
+.gg-ext-settings.theme-light .gg-settings-radio-wrapper .gg-settings-radio-single input[type="radio"]:is(:checked) + .gg-radio-circle ~ .gg-radio-label {
+  color: #1F1C22;
+}
+.gg-ext-settings.theme-light .gg-custom-modal-overlay .gg-custom-modal-box {
+  background: #F9FAFA;
+  border-color: #D6D2DA;
+}
+.gg-ext-settings.theme-light .gg-custom-modal-overlay .gg-custom-modal-box .gg-custom-modal-description {
+  color: #47404F;
+}
+.gg-ext-settings.theme-light .gg-custom-modal-overlay .gg-custom-modal-box .gg-custom-modal-btn {
+  color: #47404F;
+  background: #D6D2DA;
+}
+.gg-ext-settings.theme-light .gg-custom-modal-overlay .gg-custom-modal-box .gg-custom-modal-btn:hover {
+  background-color: #C2BCC8;
+}
+.gg-ext-settings.theme-light .gg-custom-modal-overlay .gg-custom-modal-box .gg-custom-modal-btn.gg-custom-modal-btn-remove {
+  color: #FFF;
+  background-color: #eb1f32;
+}
+.gg-ext-settings.theme-light .gg-custom-modal-overlay .gg-custom-modal-box .gg-custom-modal-btn.gg-custom-modal-btn-remove:hover {
+  background-color: #ce1225;
+}

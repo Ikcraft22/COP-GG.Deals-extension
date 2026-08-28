@@ -1,0 +1,8 @@
+export const SETTINGS_STORAGE_KEY: string = 'gg-ext-settings';
+export const APPEARANCE_STORAGE_KEY: string = 'gg-ext-appearance-settings';
+export const EXCLUDED_WEBSITES_STORAGE_KEY: string = 'gg-ext-excluded-websites';
+export const GG_USER_SETTINGS: string = 'gg-ext-gg-user-settings';
+export const GG_CUSTOM_MESSAGES: string = 'gg-ext-custom-messages';
+export const GG_SERVER_MESSAGE_BADGE: string = 'gg-ext-server-message-badge';
+export const GG_API_INVALID_API_KEY_CODE = 'invalid_api_key';
+export const EMAIL_UNVERIFIED_ERROR_CODE = 'unverified_email';

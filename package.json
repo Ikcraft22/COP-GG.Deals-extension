@@ -1,0 +1,37 @@
+{
+  "name": "ggdeals-extension",
+  "private": true,
+  "version": "1.0.0",
+  "license": "MPL-2.0",
+  "homepage": "https://github.com/ggdeals/browser-extension#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ggdeals/browser-extension.git"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "npm run watch:bar-css & npm run watch:settings-css & vite",
+    "build:bar-css": "lessc src/bar/styles/bar.less src/bar/styles/bar.css",
+    "watch:bar-css": "lessc --watch src/bar/styles/bar.less src/bar/styles/bar.css",
+    "build:settings-css": "lessc src/settings/styles/extension-settings.less src/settings/styles/extension-settings.css",
+    "watch:settings-css": "lessc --watch src/settings/styles/extension-settings.less src/settings/styles/extension-settings.css",
+    "build": "node scripts/build.mjs --target=chrome",
+    "build:all": "node scripts/build.mjs --target=all",
+    "build:chrome": "node scripts/build.mjs --target=chrome",
+    "build:firefox": "node scripts/build.mjs --target=firefox",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.3.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@types/chrome": "^0.1.36",
+    "@types/webextension-polyfill": "^0.12.5",
+    "less": "^4.6.4",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "preact": "^10.29.1",
+    "webextension-polyfill": "^0.12.0"
+  }
+}
