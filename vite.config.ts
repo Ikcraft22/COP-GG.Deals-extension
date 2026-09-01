@@ -73,6 +73,7 @@ export default defineConfig({
         outDir: outputDir,
         minify: false,
         cssMinify: false,
+        modulePreload: false,
         rollupOptions: {
             input: {
                 'index': resolve(__dirname, 'index.html')

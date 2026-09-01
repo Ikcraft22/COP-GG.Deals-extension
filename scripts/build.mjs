@@ -25,13 +25,6 @@ const ICON_ASSET_FILES = [
 
 const DEFAULT_MANIFEST_DOMAIN = 'gg.deals';
 const DEBUG_ONLY_BLOCK_PATTERN = /\s*<!-- DEBUG_ONLY_START -->[\s\S]*?<!-- DEBUG_ONLY_END -->/g;
-const FIREFOX_REQUIRED_DATA_COLLECTION_PERMISSIONS = [
-  'authenticationInfo', // GG.deals API keys and Epic OAuth tokens
-  'personallyIdentifyingInfo', // Account usernames and identifiers
-  'browsingActivity', // Product page URLs sent to the GG.deals API
-  'websiteContent', // Page titles and game libraries/wishlists
-  'locationInfo', // Region used to localize deals and prices
-];
 
 function parseArgs(argv) {
   let manifestDomain;
@@ -186,9 +179,10 @@ function ensureParentDir(filePath) {
 }
 
 function copyToDist(outDir, debugEnabled) {
-  const cssDest = join(outDir, 'src/bar/styles/bar.css');
-  const templateDest = join(outDir, 'src/bar/index.html');
   const assetsDestDir = join(outDir, 'assets');
+  const barAssetsDestDir = join(assetsDestDir, 'bar');
+  const cssDest = join(barAssetsDestDir, 'bar.css');
+  const templateDest = join(barAssetsDestDir, 'index.html');
   const barAssetFontsDestDir = join(assetsDestDir, 'fonts');
 
   ensureParentDir(cssDest);
@@ -220,7 +214,7 @@ function copyToDist(outDir, debugEnabled) {
 
   // CRXJS copies manifest assets using their source paths. They are duplicated
   // above into the single public assets directory used by the final bundle.
-  rmSync(join(outDir, 'src/assets'), { recursive: true, force: true });
+  rmSync(join(outDir, 'src'), { recursive: true, force: true });
 }
 
 function normalizeOutputAssetPaths(outputDir) {
@@ -232,7 +226,10 @@ function normalizeOutputAssetPaths(outputDir) {
     }
 
     const content = readFileSync(filePath, 'utf-8');
-    const updatedContent = content.replaceAll('src/assets/', 'assets/');
+    const updatedContent = content
+      .replaceAll('src/assets/', 'assets/')
+      .replaceAll('src/bar/index.html', 'assets/bar/index.html')
+      .replaceAll('src/bar/styles/bar.css', 'assets/bar/bar.css');
 
     if (updatedContent !== content) {
       writeFileSync(filePath, updatedContent, 'utf-8');
@@ -277,6 +274,80 @@ function normalizeGeneratedFileNames(outputDir) {
       writeFileSync(filePath, updatedContent, 'utf-8');
     }
   }
+}
+
+function flattenBarLoader(outputDir) {
+  const manifestPath = join(outputDir, 'manifest.json');
+  const loaderModulePath = join(outputDir, 'assets/bar-loader.js');
+  const generatedLoaderPath = join(outputDir, 'assets/bar-loader-loader.js');
+  const bottomBarModulePath = join(outputDir, 'assets/bottom-bar.js');
+  const finalLoaderPath = join(outputDir, 'assets/bar/loader.js');
+  const finalBottomBarModulePath = join(outputDir, 'assets/bar/bottom-bar.js');
+
+  if (!existsSync(loaderModulePath) || !existsSync(generatedLoaderPath) || !existsSync(bottomBarModulePath)) {
+    throw new Error('Could not find the generated bottom bar files.');
+  }
+
+  const loaderModule = readFileSync(loaderModulePath, 'utf-8');
+  const loaderBodyStart = loaderModule.indexOf('const SUPPORTED_HOST_PATTERNS = ');
+  const generatedDynamicImport = '__vitePreload(() => import("./bottom-bar.js"), true ? [] : void 0)';
+
+  if (loaderBodyStart === -1 || !loaderModule.includes(generatedDynamicImport)) {
+    throw new Error('Unexpected generated bottom bar loader output.');
+  }
+
+  const loaderBody = loaderModule
+    .slice(loaderBodyStart)
+    .replace(
+      generatedDynamicImport,
+      'import(/* @vite-ignore */ chrome.runtime.getURL("assets/bar/bottom-bar.js"))',
+    );
+  const classicLoader = `(function () {\n  'use strict';\n\n${loaderBody}\n})();\n`;
+  ensureParentDir(finalLoaderPath);
+  writeFileSync(finalLoaderPath, classicLoader, 'utf-8');
+  rmSync(loaderModulePath);
+  rmSync(generatedLoaderPath);
+
+  const bottomBarModule = readFileSync(bottomBarModulePath, 'utf-8')
+    .replaceAll('from "./', 'from "../');
+  writeFileSync(finalBottomBarModulePath, bottomBarModule, 'utf-8');
+  rmSync(bottomBarModulePath);
+
+  const manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'));
+  let contentScriptUpdated = false;
+
+  for (const contentScript of manifest.content_scripts ?? []) {
+    if (!Array.isArray(contentScript.js)) {
+      continue;
+    }
+
+    contentScript.js = contentScript.js.map((scriptPath) => {
+      if (scriptPath !== 'assets/bar-loader-loader.js') {
+        return scriptPath;
+      }
+
+      contentScriptUpdated = true;
+      return 'assets/bar/loader.js';
+    });
+  }
+
+  if (!contentScriptUpdated) {
+    throw new Error('Could not replace the generated bottom bar loader in manifest.json.');
+  }
+
+  for (const resource of manifest.web_accessible_resources ?? []) {
+    if (!Array.isArray(resource.resources)) {
+      continue;
+    }
+
+    resource.resources = resource.resources
+      .filter((resourcePath) => resourcePath !== 'assets/bar-loader.js')
+      .map((resourcePath) => resourcePath === 'assets/bottom-bar.js'
+        ? 'assets/bar/bottom-bar.js'
+        : resourcePath);
+  }
+
+  writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n', 'utf-8');
 }
 
 function replaceManifestDomain(manifestDomain, outputDir) {
@@ -428,21 +499,6 @@ function patchManifestForFirefox(manifestPath) {
   const manifest = JSON.parse(content);
   let didPatch = removeDevelopmentCsp(manifest);
 
-  const geckoSettings = manifest.browser_specific_settings?.gecko;
-  if (geckoSettings) {
-    const currentRequiredPermissions = geckoSettings.data_collection_permissions?.required;
-    const requiredPermissionsChanged = JSON.stringify(currentRequiredPermissions)
-      !== JSON.stringify(FIREFOX_REQUIRED_DATA_COLLECTION_PERMISSIONS);
-
-    if (requiredPermissionsChanged) {
-      geckoSettings.data_collection_permissions = {
-        ...geckoSettings.data_collection_permissions,
-        required: [...FIREFOX_REQUIRED_DATA_COLLECTION_PERMISSIONS],
-      };
-      didPatch = true;
-    }
-  }
-
   for (const resource of manifest.web_accessible_resources ?? []) {
     if (Object.hasOwn(resource, 'use_dynamic_url')) {
       delete resource.use_dynamic_url;
@@ -507,6 +563,7 @@ function main() {
   copyToDist(buildOutDir, debugEnabled);
   normalizeOutputAssetPaths(buildOutDir);
   normalizeGeneratedFileNames(buildOutDir);
+  flattenBarLoader(buildOutDir);
 
   if (hasOverrides && manifestDomain) {
     replaceManifestDomain(manifestDomain, buildOutDir);

@@ -105,7 +105,11 @@ type UpdateBadgeMessage = {
   isBlacklisted: boolean;
 };
 
-type BackgroundMessage = FetchSteamMessage | FetchSteamAccountNameMessage | PostImportDataMessage | FetchEpicTokenMessage | RefreshEpicTokenMessage | FetchEpicLibraryItemsMessage | FetchPlaystationWishlistMessage | FetchPlaystationAccountMessage | FetchPlaystationCollectionMessage | OpenUrlInNewTabMessage | FetchTestGameDataMessage | OpenPopupMessage | UpdateBadgeMessage;
+type InjectBottomBarStylesMessage = {
+  type: 'INJECT_BOTTOM_BAR_STYLES';
+};
+
+type BackgroundMessage = FetchSteamMessage | FetchSteamAccountNameMessage | PostImportDataMessage | FetchEpicTokenMessage | RefreshEpicTokenMessage | FetchEpicLibraryItemsMessage | FetchPlaystationWishlistMessage | FetchPlaystationAccountMessage | FetchPlaystationCollectionMessage | OpenUrlInNewTabMessage | FetchTestGameDataMessage | OpenPopupMessage | UpdateBadgeMessage | InjectBottomBarStylesMessage;
 
 type RuntimeMessageResponse = {
   ok: boolean;
@@ -1054,9 +1058,30 @@ async function fetchPlaystationCollectionWithPagination(url: string, reportProgr
   };
 }
 
-browser.runtime.onMessage.addListener(async (rawMessage: unknown, sender: { tab?: { id?: number } }): Promise<RuntimeMessageResponse | void> => {
+browser.runtime.onMessage.addListener(async (rawMessage: unknown, sender: { tab?: { id?: number }; frameId?: number }): Promise<RuntimeMessageResponse | void> => {
   const message = rawMessage as BackgroundMessage;
   console.log('[gg.deals-extension][background] message received:', message?.type);
+
+  if (message?.type === 'INJECT_BOTTOM_BAR_STYLES') {
+    const tabId = sender.tab?.id;
+    if (typeof tabId !== 'number') {
+      return { ok: false, error: 'Missing sender tab for bottom bar styles.' };
+    }
+
+    try {
+      await browser.scripting.insertCSS({
+        target: {
+          tabId,
+          frameIds: [sender.frameId ?? 0],
+        },
+        files: ['assets/bar/bar.css'],
+      });
+      return { ok: true };
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      return { ok: false, error: errorMessage };
+    }
+  }
 
   if (message?.type === 'FETCH_STEAM_USERDATA') {
     try {

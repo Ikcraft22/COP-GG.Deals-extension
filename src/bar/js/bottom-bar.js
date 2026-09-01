@@ -4,7 +4,7 @@ import browser from 'webextension-polyfill';
 import { t } from '../../utils/i18n.ts';
 
 const GG_BAR_ID = 'gg-bottom-bar';
-const GG_BAR_TEMPLATE_PATH = 'src/bar/index.html';
+const GG_BAR_TEMPLATE_PATH = 'assets/bar/index.html';
 const GG_LOCATION_CHANGE_EVENT = 'gg-extension:locationchange';
 const EXCLUDED_WEBSITES_STORAGE_KEY = 'gg-ext-excluded-websites';
 const DEBUG_URL_WATCH = ['1', 'true', 'yes', 'on'].includes(String(import.meta.env.VITE_BOTTOM_BAR_DEBUG ?? '').toLowerCase());
