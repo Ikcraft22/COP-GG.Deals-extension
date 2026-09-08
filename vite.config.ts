@@ -1,12 +1,22 @@
 import { defineConfig } from 'vite';
 import { crx } from '@crxjs/vite-plugin';
 import { resolve } from 'path';
-import typescript from '@rollup/plugin-typescript';
 import { readFileSync } from 'fs';
+import checker from 'vite-plugin-checker'
 
 const PREACT_MODULE_PATH_PATTERN = /\/node_modules\/preact\/dist\/preact\.(?:module\.js|mjs)$/;
 const PREACT_SET_INNER_HTML_PATTERN = /\b([\w$]+)\.innerHTML=([\w$]+)\.__html/g;
 const PREACT_CLEAR_INNER_HTML_PATTERN = /\b([\w$]+)\.innerHTML=""/g;
+
+declare global {
+    namespace NodeJS {
+        interface ProcessEnv {
+            MANIFEST_PATH?: string;
+            BUILD_OUT_DIR?: string;
+            VITE_BOTTOM_BAR_DEBUG?: string;
+        }
+    }
+}
 
 function firefoxLintSafePreactRenderer() {
     return {
@@ -46,6 +56,31 @@ function rejectPreactInnerHtml() {
                 code: replacementHelper + transformed,
                 map: null,
             };
+        },
+    };
+}
+
+const TREE_SHAKING_ANNOTATION_PATTERN = /\/\* @__(?:PURE|NO_SIDE_EFFECTS)__ \*\/ ?/g;
+
+// esbuild marks JSX calls and known pure constructors as side effect free so
+// that bundlers can drop the unused ones. Nothing downstream of us reads the
+// annotations, and unminified sources are what store reviewers read, so they
+// are only noise in the output. This has to run in `generateBundle`: Vite
+// transpiles chunks to the build target in a `renderChunk` hook of its own that
+// comes after every plugin hook, and that pass puts the annotations back.
+function annotationFreeOutput() {
+    // noinspection JSUnusedGlobalSymbols
+    return {
+        name: 'annotation-free-output',
+        enforce: 'post' as const,
+        generateBundle(_options: unknown, bundle: Record<string, { type: string; code?: string }>) {
+            for (const emittedFile of Object.values(bundle)) {
+                if (emittedFile.type !== 'chunk' || !emittedFile.code?.includes('@__')) {
+                    continue;
+                }
+
+                emittedFile.code = emittedFile.code.replace(TREE_SHAKING_ANNOTATION_PATTERN, '');
+            }
         },
     };
 }
@@ -92,14 +127,16 @@ function stableJavaScriptFileName(chunkName: string): string {
     return `${stableName}.js`;
 }
 
+// noinspection JSUnusedGlobalSymbols
 export default defineConfig({
     esbuild: {
         drop: debugEnabled ? [] : ['console'],
     },
     plugins: [
         firefoxLintSafePreactRenderer(),
-        typescript({ tsconfig: resolve(__dirname, 'tsconfig.json'), allowImportingTsExtensions: false }),
-        crx({ manifest })
+        checker({ typescript: true }),
+        crx({ manifest }),
+        annotationFreeOutput()
     ],
     build: {
         outDir: outputDir,
@@ -124,6 +161,6 @@ export default defineConfig({
         hmr: {
             clientPort: 5173,
         },
-        cors: true, // @review We should change this when releasing the extension, but for development it's ok
+        cors: true,
     },
 });

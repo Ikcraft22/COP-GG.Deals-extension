@@ -98,7 +98,6 @@ function restoreChildNodes(element: Element, snapshot: ChildNodesSnapshot): void
 }
 
 function markProviderConnectedInSettingsModal(host: HTMLElement, originalChildren: ChildNodesSnapshot): void {
-    // @review: this is a bit hacky, we should probably remove adding classes here
     host.classList.remove('syncing');
     host.classList.add('connected');
     host.dataset.ggdealsSyncBusy = '0';
