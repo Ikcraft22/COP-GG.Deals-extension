@@ -675,7 +675,7 @@ function ExtensionSettings() {
                     {isLoggedIn
                         ? <UserDropdown signOut={signOut} fetchSettings={fetchSettings} userSettings={userSettings} />
                         : <a
-                            href="https://gg.deals/login"
+                            href="https://gg.deals/login/"
                             className="gg-ext-login-link"
                             aria-busy={isSyncingUserSettings}
                             onClick={handleSignInClick}

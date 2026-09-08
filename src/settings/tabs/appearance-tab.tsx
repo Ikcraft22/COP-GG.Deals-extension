@@ -26,7 +26,7 @@ export function AppearanceTab(props: AppearanceTabProps) {
             {!isLoggedIn && <InfoBox
                 type="warning"
                 heading={t('signInBetterHeading')}
-                linkUrl="https://gg.deals/login"
+                linkUrl="https://gg.deals/login/"
                 linkLabel={t('signIn')}
                 onSignInClick={props.onSignInClick}
             >
@@ -34,7 +34,7 @@ export function AppearanceTab(props: AppearanceTabProps) {
             </InfoBox>}
 
             <BottomPinnedLink
-                url="https://gg.deals/settings"
+                url="https://gg.deals/settings/"
                 label={t('ggDealsUserSettings')}
             />
 
@@ -51,7 +51,7 @@ export function AppearanceTab(props: AppearanceTabProps) {
 
                 <div className="gg-settings-pill-radio-buttons" role="group" aria-label={t('appearanceThemeOptionsAria')}>
                     {THEME_OPTIONS.map((option) => {
-                        const Icon = option.icon; 
+                        const Icon = option.icon;
 
                         return (<label className="gg-settings-pill-radio-button" key={option.value}>
                             <input
@@ -132,10 +132,10 @@ export function AppearanceTab(props: AppearanceTabProps) {
                 <div className="gg-settings-pill-content">
                     <div className="gg-settings-pill-title">{t('appearanceBarRoundingTitle')}</div>
                     <div className="gg-settings-pill-desc">{t('appearanceBarRoundingDescription')}</div>
-       
+
                     <fieldset className="gg-settings-radio-wrapper" aria-label={t('appearanceRoundingOptionsAria')} disabled={props.barWidth === EDGE_TO_EDGE}>
                         {ROUNDING_OPTIONS.map((option) => {
-                            const Icon = option.icon; 
+                            const Icon = option.icon;
 
                             return (
                                 <label className="gg-settings-radio-single" key={option.value}>
@@ -147,7 +147,7 @@ export function AppearanceTab(props: AppearanceTabProps) {
                                     />
                                     <span className="gg-radio-circle"></span>
                                     <span className="gg-radio-icon">
-                                        <Icon /> 
+                                        <Icon />
                                     </span>
                                     <span className="gg-radio-label">{t(option.messageName)}</span>
                                 </label>

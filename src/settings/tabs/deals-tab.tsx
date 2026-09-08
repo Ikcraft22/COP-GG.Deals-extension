@@ -199,7 +199,7 @@ export function DealsTab({ userSettings, platform, regionCurrency, keyshopsEnabl
             {!isLoggedIn && <InfoBox
                 type="warning"
                 heading={t('signInBetterHeading')}
-                linkUrl="https://gg.deals/login"
+                linkUrl="https://gg.deals/login/"
                 linkLabel={t('signIn')}
                 onSignInClick={onSignInClick}
             >

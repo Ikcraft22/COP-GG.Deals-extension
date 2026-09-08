@@ -66,7 +66,7 @@ export function SettingsTab(props: SettingsTabProps) {
             {!isLoggedIn && <InfoBox
                 type="warning"
                 heading={t('signInBetterHeading')}
-                linkUrl="https://gg.deals/login"
+                linkUrl="https://gg.deals/login/"
                 linkLabel={t('signIn')}
                 onSignInClick={props.onSignInClick}
             >
@@ -74,7 +74,7 @@ export function SettingsTab(props: SettingsTabProps) {
             </InfoBox>}
 
             <BottomPinnedLink
-                url="https://gg.deals/settings"
+                url="https://gg.deals/settings/"
                 label={t('ggDealsUserSettings')}
             />
 
