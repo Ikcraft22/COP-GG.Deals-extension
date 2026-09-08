@@ -396,7 +396,10 @@ function copyToDist(outDir, debugEnabled) {
   mkdirSync(assetsDestDir, { recursive: true });
   mkdirSync(barAssetFontsDestDir, { recursive: true });
 
-  cpSync(SRC_BAR_CSS_PATH, cssDest);
+  // These files are copied straight from the sources, after the output tree
+  // has been normalized, so they carry source paths that no longer exist in
+  // the bundle - the bar stylesheet loads its fonts through one.
+  writeFileSync(cssDest, normalizeAssetPaths(readFileSync(SRC_BAR_CSS_PATH, 'utf-8')), 'utf-8');
   cpSync(SRC_BAR_ASSETS_FONTS_DIR, barAssetFontsDestDir, {
     recursive: true,
   });
@@ -405,7 +408,7 @@ function copyToDist(outDir, debugEnabled) {
   const outputTemplate = debugEnabled
     ? template.replaceAll('<!-- DEBUG_ONLY_START -->', '').replaceAll('<!-- DEBUG_ONLY_END -->', '')
     : template.replace(DEBUG_ONLY_BLOCK_PATTERN, '');
-  writeFileSync(templateDest, outputTemplate, 'utf-8');
+  writeFileSync(templateDest, normalizeAssetPaths(outputTemplate), 'utf-8');
 
   for (const iconFile of ICON_ASSET_FILES) {
     const srcPath = join(SRC_ASSETS_DIR, iconFile);
@@ -423,6 +426,15 @@ function copyToDist(outDir, debugEnabled) {
   rmSync(join(outDir, 'src'), { recursive: true, force: true });
 }
 
+// CRXJS emits assets under their source paths, but the bundle serves them from
+// a single assets directory.
+function normalizeAssetPaths(content) {
+  return content
+    .replaceAll('src/assets/', 'assets/')
+    .replaceAll('src/bar/index.html', 'assets/bar/index.html')
+    .replaceAll('src/bar/styles/bar.css', 'assets/bar/bar.css');
+}
+
 function normalizeOutputAssetPaths(outputDir) {
   const targetExtensions = new Set(['.js', '.html', '.css', '.json']);
 
@@ -432,10 +444,7 @@ function normalizeOutputAssetPaths(outputDir) {
     }
 
     const content = readFileSync(filePath, 'utf-8');
-    const updatedContent = content
-      .replaceAll('src/assets/', 'assets/')
-      .replaceAll('src/bar/index.html', 'assets/bar/index.html')
-      .replaceAll('src/bar/styles/bar.css', 'assets/bar/bar.css');
+    const updatedContent = normalizeAssetPaths(content);
 
     if (updatedContent !== content) {
       writeFileSync(filePath, updatedContent, 'utf-8');
