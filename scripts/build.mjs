@@ -495,19 +495,22 @@ function flattenBarLoader(outputDir) {
   }
 
   const loaderModule = readFileSync(loaderModulePath, 'utf-8');
-  const loaderBodyStart = loaderModule.indexOf('const SUPPORTED_HOST_PATTERNS = ');
   const generatedDynamicImport = '__vitePreload(() => import("./bottom-bar.js"), true ? [] : void 0)';
 
-  if (loaderBodyStart === -1 || !loaderModule.includes(generatedDynamicImport)) {
+  if (!loaderModule.includes(generatedDynamicImport)) {
     throw new Error('Unexpected generated bottom bar loader output.');
   }
 
   const loaderBody = loaderModule
-    .slice(loaderBodyStart)
     .replace(
       generatedDynamicImport,
       'import(/* @vite-ignore */ chrome.runtime.getURL("assets/bar/bottom-bar.js"))',
     );
+
+  if (loaderBody.includes(generatedDynamicImport) || /(^|\n)import\s+(?!\()/.test(loaderBody)) {
+    throw new Error('Could not convert the generated bottom bar loader to a classic script.');
+  }
+
   const classicLoader = `(function () {\n  'use strict';\n\n${loaderBody}\n})();\n`;
   ensureParentDir(finalLoaderPath);
   writeFileSync(finalLoaderPath, classicLoader, 'utf-8');
@@ -553,7 +556,32 @@ function flattenBarLoader(outputDir) {
         : resourcePath);
   }
 
+// The global entrypoint is empty, so it doesn't need web accessibility.
+// Removing it prevents granting HTTPS pages unnecessary access.
+  manifest.web_accessible_resources = (manifest.web_accessible_resources ?? []).filter((resource) => !(
+    Array.isArray(resource.matches)
+    && resource.matches.length === 1
+    && resource.matches[0] === 'https://*/*'
+    && Array.isArray(resource.resources)
+    && resource.resources.length === 1
+    && resource.resources[0] === 'assets/empty.js'
+  ));
+
   writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n', 'utf-8');
+}
+
+function addEmptyEntrypointComment(outputDir) {
+  const emptyEntrypointPath = join(outputDir, 'assets', 'empty.js');
+  const comment = '/*! Intentionally empty - this domain is not supported yet */\n';
+
+  if (!existsSync(emptyEntrypointPath)) {
+    throw new Error('Could not find the generated empty content-script entrypoint.');
+  }
+
+  const content = readFileSync(emptyEntrypointPath, 'utf-8');
+  if (content !== comment) {
+    writeFileSync(emptyEntrypointPath, comment, 'utf-8');
+  }
 }
 
 function replaceManifestDomain(manifestDomain, outputDir) {
@@ -761,10 +789,11 @@ function main() {
 
   runCommand('npx', ['vite', 'build'], viteEnv);
 
-  copyToDist(buildOutDir, debugEnabled);
   normalizeOutputAssetPaths(buildOutDir);
   normalizeGeneratedFileNames(buildOutDir);
   flattenBarLoader(buildOutDir);
+  addEmptyEntrypointComment(buildOutDir);
+  copyToDist(buildOutDir, debugEnabled);
 
   // Both replacements are driven by the same --site value, so the manifest and
   // the URLs used in the code can never disagree.
