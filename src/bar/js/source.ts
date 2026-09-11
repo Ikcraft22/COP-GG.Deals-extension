@@ -782,12 +782,6 @@ async function syncBarAppearanceFromStorage(barElement: HTMLElement): Promise<vo
 }
 
 function applyKeyshopsVisibility(barElement: HTMLElement, keyshopsEnabled: boolean): void {
-    const keyshopElement = barElement.querySelector<HTMLElement>('#gg-bar-keyshop-label');
-
-    if (keyshopElement) {
-        keyshopElement.style.display = keyshopsEnabled ? '' : 'none';
-    }
-
     barElement.classList.toggle(KEYSHOPS_HIDDEN_CLASS, !keyshopsEnabled);
 }
 

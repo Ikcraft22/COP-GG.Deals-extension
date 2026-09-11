@@ -453,6 +453,9 @@
     margin-left: -8px !important;
   }
 }
+.gg-bottom-bar.keyshops-hidden #gg-bar-keyshop-label {
+  display: none !important;
+}
 .gg-bottom-bar .gg-bar-dropdown {
   position: relative !important;
   z-index: 22 !important;
