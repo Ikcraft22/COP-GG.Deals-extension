@@ -20,13 +20,15 @@ export const resolveSteamDbRequestUrl = (): string | null => {
     try {
         const url = new URL(window.location.href);
         const hostname = url.hostname.toLowerCase().replace(/^www\./, '');
-        const appId = url.pathname.match(/^\/app\/(\d+)(?:\/|$)/i)?.[1];
+        const productMatch = url.pathname.match(/^\/(app|sub|bundle)\/(\d+)(?:\/|$)/i);
 
-        if (hostname !== 'steamdb.info' || !appId) {
+        if (hostname !== 'steamdb.info' || !productMatch) {
             return null;
         }
 
-        return `https://store.steampowered.com/app/${appId}/`;
+        const productType = productMatch[1];
+        const productId = productMatch[2];
+        return `https://store.steampowered.com/${productType.toLowerCase()}/${productId}/`;
     } catch {
         return null;
     }
