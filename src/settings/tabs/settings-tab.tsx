@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'preact/hooks';
-import type { SettingsData, SettingsTabProps } from '../helpers';
+import type { Platform, Region, SettingsTabProps } from '../helpers';
 import {
-    hasGGUserSettingsData,
-    loadGGUserSettings,
+    PLATFORMS,
+    REGIONS,
     loadExcludedWebsitesFromChromeStorage,
     saveExcludedWebsites
 } from '../helpers';
@@ -15,8 +15,41 @@ import { ExcludedWebsitesManager } from '../components/excluded-websites-manager
 import { toWebsiteItems, type WebsiteItem } from '../excluded-websites';
 import { t } from '../../utils/i18n';
 
+// Every supported value needs a label, so the dropdowns cannot drift from what we accept
+const PLATFORM_MESSAGE_NAMES: Record<Platform, string> = {
+    all: 'platformAll',
+    pc: 'platformPc',
+    xbox: 'platformXbox',
+    playstation: 'platformPlayStation',
+    nintendo: 'platformSwitch',
+};
+
+const REGION_MESSAGE_NAMES: Record<Region, string> = {
+    au: 'regionAustralia',
+    be: 'regionBelgium',
+    br: 'regionBrazil',
+    ca: 'regionCanada',
+    dk: 'regionDenmark',
+    eu: 'regionEurope',
+    fi: 'regionFinland',
+    fr: 'regionFrance',
+    de: 'regionGermany',
+    ie: 'regionIreland',
+    it: 'regionItaly',
+    nl: 'regionNetherlands',
+    no: 'regionNorway',
+    pl: 'regionPoland',
+    es: 'regionSpain',
+    se: 'regionSweden',
+    ch: 'regionSwitzerland',
+    gb: 'regionUnitedKingdom',
+    us: 'regionUnitedStates',
+};
+
 export function SettingsTab(props: SettingsTabProps) {
     const [excludedItems, setExcludedItems] = useState<WebsiteItem[]>([]);
+    const platformOptions = PLATFORMS.map((value) => ({ value, label: t(PLATFORM_MESSAGE_NAMES[value]) }));
+    const regionOptions = REGIONS.map((value) => ({ value, label: t(REGION_MESSAGE_NAMES[value]) }));
 
     useEffect(() => {
         void loadExcludedWebsitesFromChromeStorage().then((domains) => {
@@ -28,42 +61,9 @@ export function SettingsTab(props: SettingsTabProps) {
         });
     }, []);
 
-    // Dropdown data definitions
-    const platformOptions = [
-        { value: 'all', label: t('platformAll') },
-        { value: 'pc', label: t('platformPc') },
-        { value: 'xbox', label: t('platformXbox') },
-        { value: 'playstation', label: t('platformPlayStation') },
-        { value: 'nintendo', label: t('platformSwitch') }
-    ];
-
-    const regionCurrencyOptions = [
-        { value: 'aud-au', label: t('regionAustralia') },
-        { value: 'eur-be', label: t('regionBelgium') },
-        { value: 'brl-br', label: t('regionBrazil') },
-        { value: 'cad-ca', label: t('regionCanada') },
-        { value: 'dkk-dk', label: t('regionDenmark') },
-        { value: 'eur-eu', label: t('regionEurope') },
-        { value: 'eur-fi', label: t('regionFinland') },
-        { value: 'eur-fr', label: t('regionFrance') },
-        { value: 'eur-de', label: t('regionGermany') },
-        { value: 'eur-ie', label: t('regionIreland') },
-        { value: 'eur-it', label: t('regionItaly') },
-        { value: 'eur-nl', label: t('regionNetherlands') },
-        { value: 'nok-no', label: t('regionNorway') },
-        { value: 'pln-pl', label: t('regionPoland') },
-        { value: 'eur-es', label: t('regionSpain') },
-        { value: 'sek-se', label: t('regionSweden') },
-        { value: 'chf-ch', label: t('regionSwitzerland') },
-        { value: 'gbp-gb', label: t('regionUnitedKingdom') },
-        { value: 'usd-us', label: t('regionUnitedStates') }
-    ];
-
-    const isLoggedIn = hasGGUserSettingsData(loadGGUserSettings());
-
     return (
         <section className="gg-settings-pill-container with-pinned-link" aria-label={t('settingsTabAria')}>
-            {!isLoggedIn && <InfoBox
+            {!props.isLoggedIn && <InfoBox
                 type="warning"
                 heading={t('signInBetterHeading')}
                 linkUrl="https://gg.deals/login/"
@@ -91,7 +91,7 @@ export function SettingsTab(props: SettingsTabProps) {
                         name="settings-platform"
                         currentValue={props.platform}
                         options={platformOptions}
-                        onChange={(value) => props.onPlatformChange(value as SettingsData['platform'])}
+                        onChange={(value) => props.onPlatformChange(value as Platform)}
                     />
                 </div>
             </section>
@@ -108,9 +108,9 @@ export function SettingsTab(props: SettingsTabProps) {
                     <CustomDropdown
                         id="settings-region-currency"
                         name="settings-region-currency"
-                        currentValue={props.regionCurrency ?? ''}
-                        options={regionCurrencyOptions}
-                        onChange={(value) => props.onRegionCurrencyChange(value as NonNullable<SettingsData['regionCurrency']>)}
+                        currentValue={props.region}
+                        options={regionOptions}
+                        onChange={(value) => props.onRegionChange(value as Region)}
                     />
                 </div>
             </section>

@@ -1,20 +1,15 @@
-import type { RegionCurrency, SettingsData } from '../utils/extension-settings';
+import type { Platform, Region } from '../utils/extension-settings';
 
 export {
-    DEFAULT_APPEARANCE_SETTINGS,
-    DEFAULT_EXTENSION_SETTINGS,
+    PLATFORMS,
+    REGIONS,
     GGInvalidApiKeyError,
-    SIGNED_OUT_EXTENSION_SETTINGS,
-    SIGNED_OUT_GG_USER_SETTINGS,
-    getGGApiKey,
     hasGGUserSettingsData,
     isInvalidApiKeyResponse,
     loadAppearanceSettings,
     loadExcludedWebsitesFromChromeStorage,
     loadGGUserSettings,
-    loadGGUserSettingsFromChromeStorage,
-    loadSettings,
-    loadSettingsFromChromeStorage,
+    loadBarEnabled,
     saveAppearanceSettings,
     saveExcludedWebsites,
     saveGGUserSettings,
@@ -26,13 +21,14 @@ export {
 } from '../utils/extension-settings';
 export type {
     AuthenticatedGGUserSettingsData,
+    Platform,
     GGGame,
     GGGameLookupResponse,
     GGGamePrice,
     GGPayloadMessage,
     GGUserSettingsData,
     GGUserSettingsSyncOptions,
-    RegionCurrency,
+    Region,
     SettingsAppearanceData,
     SettingsData
 } from '../utils/extension-settings';
@@ -139,30 +135,22 @@ export function md5(value: string): string {
         .join('');
 }
 
-export type ExtensionSettingsValue = {
-    theme: SettingsTheme;
-    layout: SettingsLayout;
-};
-
-export type ExtensionSettingsProps = {
-    initialValue?: ExtensionSettingsValue;
-    onChange?: (value: ExtensionSettingsValue) => void;
-};
-
 export type SettingsTabProps = {
-    platform: string;
-    regionCurrency: RegionCurrency | null;
+    isLoggedIn: boolean;
+    platform: Platform;
+    region: Region;
     keyshopsEnabled: boolean;
     barEnabled: boolean;
     showBlacklistAlert: boolean;
     onSignInClick?: () => void;
-    onPlatformChange: (value: SettingsData['platform']) => void;
-    onRegionCurrencyChange: (value: RegionCurrency) => void;
+    onPlatformChange: (value: Platform) => void;
+    onRegionChange: (value: Region) => void;
     onKeyshopsEnabledChange: (value: boolean) => void;
     onBarEnabledChange: (value: boolean) => void;
 };
 
 export type AppearanceTabProps = {
+    isLoggedIn: boolean;
     theme: SettingsTheme;
     barWidth: BarWidth;
     rounding: Exclude<SettingsLayout, 'bottom-edge'>;
@@ -171,10 +159,3 @@ export type AppearanceTabProps = {
     onBarWidthChange: (value: BarWidth) => void;
     onRoundingChange: (value: Exclude<SettingsLayout, 'bottom-edge'>) => void;
 };
-
-export const ALL: string = 'all';
-export const PC: string = 'pc';
-export const STEAM: string = 'steam';
-export const XBOX: string = 'xbox';
-export const PLAYSTATION: string = 'playstation';
-export const SWITCH: string = 'nintendo';

@@ -2,9 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "preact/hooks";
 import { DEALS_URL } from "../../utils/gg-api-constants";
 import { DealsTabSingleDeal } from './deals-tab-single-deal';
 import { InfoBox } from '../components/info-box';
-import * as Icons from '../icons';
-import { SHOULD_FETCH_USER_SETTINGS_AFTER_SIGN_IN_KEY, PLATFORM_STEAM, PLATFORM_PC, PLATFORM_ALL, PLATFORM_SWITCH, PLATFORM_NINTENDO } from '../constants';
-import browser from 'webextension-polyfill';
+import { LoadingState } from '../components/loading-state';
 import { type GGUserSettingsData, hasGGUserSettingsData, isInvalidApiKeyResponse, md5, signOutFromExtensionMemory, withGGApiKeyHeader } from '../helpers';
 import { getEmailUnverifiedMessage, isEmailUnverifiedResponse, processExtensionResponse } from '../../utils/extension-settings';
 import { t } from '../../utils/i18n';
@@ -33,58 +31,32 @@ export type DealGroup = {
 };
 
 type DealsTabProps = {
-    userSettings: GGUserSettingsData | null;
-    platform: string;
-    keyshopsEnabled: boolean;
+    userSettings: GGUserSettingsData;
     isSyncingUserSettings: boolean;
     onSignInClick?: () => void;
     onApiKeyInvalid?: () => void;
     onEmailUnverified?: (message: string) => void;
 };
 
-function mapSettingsPlatformToDealsPlatform(platform: string): string {
-    const normalizedPlatform = platform.trim().toLowerCase();
-
-    if (normalizedPlatform === PLATFORM_STEAM) {
-        return PLATFORM_PC;
-    }
-
-    if (normalizedPlatform === PLATFORM_ALL) {
-        return PLATFORM_PC;
-    }
-
-    if (normalizedPlatform === PLATFORM_SWITCH) {
-        return PLATFORM_NINTENDO;
-    }
-
-    return normalizedPlatform;
-}
-
-export function DealsTab({ userSettings, platform, keyshopsEnabled, isSyncingUserSettings, onSignInClick, onApiKeyInvalid, onEmailUnverified }: DealsTabProps) {
+export function DealsTab({ userSettings, isSyncingUserSettings, onSignInClick, onApiKeyInvalid, onEmailUnverified }: DealsTabProps) {
     const [deals, setDeals] = useState<DealGroup[]>([]);
     const [loading, setLoading] = useState(true);
     const isLoggedIn = hasGGUserSettingsData(userSettings);
 
     // Use only the region from extensionData/user
-    const dealsRegion = userSettings?.region?.trim().toLowerCase() || null;
-    const dealsPlatform = userSettings?.platform?.trim().toLowerCase() || mapSettingsPlatformToDealsPlatform(platform);
-    const showKeyshops = typeof userSettings?.showKeyshops === 'boolean' ? userSettings.showKeyshops : keyshopsEnabled;
+    const dealsRegion = userSettings.region;
+    const dealsPlatform = userSettings.platform;
+    const showKeyshops = userSettings.showKeyshops;
     const dealsUrl = useMemo(() => (
-        dealsRegion
-            ? DEALS_URL
+        DEALS_URL
             .replace('{region}', dealsRegion)
             .replace('{platform}', dealsPlatform)
             .replace('{showKeyshops}', showKeyshops ? '1' : '0')
-            : null
     ), [dealsRegion, dealsPlatform, showKeyshops]);
     const latestRequestId = useRef(0);
 
     useEffect(() => {
         setLoading(true);
-
-        if (!dealsUrl) {
-            return;
-        }
 
         let isCancelled = false;
         const requestId = latestRequestId.current + 1;
@@ -93,8 +65,7 @@ export function DealsTab({ userSettings, platform, keyshopsEnabled, isSyncingUse
         const isCurrentRequest = () => !isCancelled && latestRequestId.current === requestId;
 
         const handleInvalidApiKey = () => {
-            signOutFromExtensionMemory();
-            void browser.storage.session.remove(SHOULD_FETCH_USER_SETTINGS_AFTER_SIGN_IN_KEY);
+            signOutFromExtensionMemory(userSettings);
             onApiKeyInvalid?.();
         };
 
@@ -102,7 +73,7 @@ export function DealsTab({ userSettings, platform, keyshopsEnabled, isSyncingUse
             try {
                 const authenticatedDealsUrl = new URL(dealsUrl);
 
-                if (isLoggedIn && typeof userSettings.apiKey === 'string') {
+                if (isLoggedIn) {
                     authenticatedDealsUrl.searchParams.set('k', md5(userSettings.apiKey).slice(0, 8));
                 }
 
@@ -181,16 +152,14 @@ export function DealsTab({ userSettings, platform, keyshopsEnabled, isSyncingUse
         return () => {
             isCancelled = true;
         };
-    }, [dealsUrl, userSettings?.apiKey]);
+    }, [dealsUrl, userSettings.apiKey]);
 
     useEffect(() => {
         console.log('Fetched deals:', deals);
     }, [deals]);
 
     return <>
-        <div className={`loading-state${loading || isSyncingUserSettings ? '' : ' hidden'}`}>
-            <Icons.ICON_LOADING />
-        </div>
+        <LoadingState hidden={!loading && !isSyncingUserSettings} />
         <div className="gg-deals-container">
             {!isLoggedIn && <InfoBox
                 type="warning"

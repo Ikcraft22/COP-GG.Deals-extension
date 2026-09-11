@@ -1,6 +1,5 @@
 import type { ComponentType } from 'preact';
 import { BOTTOM_EDGE, DARK, EDGE_TO_EDGE, FIT_CONTENT, FIXED, LIGHT, ROUNDED, ROUNDED_CORNERS, ROUNDED_TOP, SYSTEM, type AppearanceTabProps, type SettingsLayout, type SettingsTheme } from '../helpers';
-import { hasGGUserSettingsData, loadGGUserSettings } from '../helpers';
 import { InfoBox } from '../components/info-box';
 import { BottomPinnedLink } from '../components/bottom-pinned-link';
 import * as Icons from '../icons';
@@ -19,11 +18,9 @@ const ROUNDING_OPTIONS: Array<{ value: Exclude<SettingsLayout, typeof BOTTOM_EDG
 ];
 
 export function AppearanceTab(props: AppearanceTabProps) {
-    const isLoggedIn = hasGGUserSettingsData(loadGGUserSettings());
-
     return (
         <section className="gg-settings-pill-container with-pinned-link" aria-label={t('appearanceTabAria')}>
-            {!isLoggedIn && <InfoBox
+            {!props.isLoggedIn && <InfoBox
                 type="warning"
                 heading={t('signInBetterHeading')}
                 linkUrl="https://gg.deals/login/"

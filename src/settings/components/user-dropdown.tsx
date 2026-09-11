@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from 'preact/hooks';
-import type { GGUserSettingsData } from '../helpers';
+import type { AuthenticatedGGUserSettingsData } from '../helpers';
 import * as Icons from '../icons';
 import { t } from '../../utils/i18n';
 
 interface UserDropdownProps {
-    userSettings: GGUserSettingsData | null;
+    userSettings: AuthenticatedGGUserSettingsData;
     fetchSettings: () => Promise<void>;
     signOut: () => void;
 }
@@ -34,7 +34,7 @@ export function UserDropdown({ userSettings, fetchSettings, signOut }: UserDropd
                 onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
             >
                 <div className="gg-user-avatar">
-                    {userSettings?.avatar ? (
+                    {userSettings.avatar ? (
                         <img
                             className="gg-user-avatar-image"
                             src={userSettings.avatar}

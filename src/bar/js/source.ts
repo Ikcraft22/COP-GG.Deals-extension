@@ -98,10 +98,9 @@ import { resolveBottomBarPageContext, waitForRequiredDomainTitle } from '../inte
 import {
     loadGGUserSettingsFromChromeStorage,
     loadSettingsFromChromeStorage,
-    requestGGUserSettingsSync,
+    getNormalizedSettings,
     isInvalidApiKeyResponse,
-    DEFAULT_EXTENSION_SETTINGS,
-    SIGNED_OUT_GG_USER_SETTINGS,
+    clearGGUserCredentials,
     type GGGame,
     type GGGameLookupResponse,
     type SettingsData,
@@ -229,18 +228,13 @@ let pendingBarDebugData: BarDebugData | null = null;
 let currentBarElement: HTMLElement | null = null;
 
 async function clearExtensionSessionInStorage(): Promise<void> {
-    if (!browser.storage?.local) {
+    const existingUserSettings = await loadGGUserSettingsFromChromeStorage();
+    if (!existingUserSettings) {
         return;
     }
 
-    const existingUserSettings = await loadGGUserSettingsFromChromeStorage();
     await browser.storage.local.set({
-        [GG_USER_SETTINGS]: {
-            ...SIGNED_OUT_GG_USER_SETTINGS,
-            platform: existingUserSettings?.platform ?? SIGNED_OUT_GG_USER_SETTINGS.platform,
-            region: existingUserSettings?.region ?? SIGNED_OUT_GG_USER_SETTINGS.region,
-            showKeyshops: existingUserSettings?.showKeyshops ?? SIGNED_OUT_GG_USER_SETTINGS.showKeyshops,
-        },
+        [GG_USER_SETTINGS]: clearGGUserCredentials(existingUserSettings),
     });
 }
 
@@ -679,10 +673,6 @@ function applyAppearanceToBar(barElement: HTMLElement, settings: AppearanceSetti
 }
 
 async function readAppearanceSettingsFromStorage(): Promise<AppearanceSettingsPayload | null> {
-    if (!browser.storage?.local) {
-        return null;
-    }
-
     try {
         const result = await browser.storage.local.get([APPEARANCE_STORAGE_KEY]);
         const settings = result?.[APPEARANCE_STORAGE_KEY];
@@ -724,10 +714,6 @@ function isHostExcluded(hostname: string, excludedDomains: string[]): boolean {
 }
 
 async function readExcludedDomainsFromStorage(): Promise<string[]> {
-    if (!browser.storage?.local) {
-        return [];
-    }
-
     try {
         const result = await browser.storage.local.get([EXCLUDED_WEBSITES_STORAGE_KEY]);
         return sanitizeExcludedDomains(result?.[EXCLUDED_WEBSITES_STORAGE_KEY]);
@@ -749,10 +735,6 @@ export async function isCurrentHostExcludedByPreferences(): Promise<boolean> {
 }
 
 async function addCurrentDomainToExcludedWebsites(): Promise<void> {
-    if (!browser.storage?.local) {
-        return;
-    }
-
     const currentDomain = normalizeExcludedDomain(window.location.hostname ?? '');
     if (currentDomain.length === 0) {
         return;
@@ -787,16 +769,15 @@ function applyKeyshopsVisibility(barElement: HTMLElement, keyshopsEnabled: boole
 
 async function syncKeyshopsVisibilityFromStorage(barElement: HTMLElement): Promise<void> {
     const settings = await loadSettingsFromChromeStorage();
-    if (currentBarElement !== barElement) {
+    if (!settings || currentBarElement !== barElement) {
         return;
     }
 
-    const keyshopsEnabled = settings?.keyshopsEnabled ?? DEFAULT_EXTENSION_SETTINGS.keyshopsEnabled;
-    applyKeyshopsVisibility(barElement, keyshopsEnabled);
+    applyKeyshopsVisibility(barElement, settings.keyshopsEnabled);
 }
 
 function installAppearanceSyncListeners(): void {
-    if (appearanceChangeListenerInstalled || !browser.storage?.onChanged) {
+    if (appearanceChangeListenerInstalled) {
         return;
     }
 
@@ -861,8 +842,9 @@ function installAppearanceSyncListeners(): void {
                 ? settingsChange.newValue as SettingsData
                 : null;
 
-            const keyshopsEnabled = settingsData?.keyshopsEnabled ?? DEFAULT_EXTENSION_SETTINGS.keyshopsEnabled;
-            applyKeyshopsVisibility(currentBarElement, keyshopsEnabled);
+            if (settingsData) {
+                applyKeyshopsVisibility(currentBarElement, settingsData.keyshopsEnabled);
+            }
         }
     });
 
@@ -891,25 +873,10 @@ function closeGgDropdowns(barElement: HTMLElement): void {
     });
 }
 
-function mapSettingsPlatformToRequestPlatform(platform: SettingsData['platform']): string {
-    const normalizedPlatform = platform.trim().toLowerCase();
-
-    if (normalizedPlatform === 'pc' || normalizedPlatform === 'all') {
-        return 'pc';
-    }
-
-    if (normalizedPlatform === 'switch') {
-        return 'nintendo';
-    }
-
-    return normalizedPlatform;
-}
-
 export async function shouldInjectBottomBar(isStale: () => boolean = () => false): Promise<boolean> {
     // Early exit if bar is disabled in extension settings
-    const barSettings = await loadSettingsFromChromeStorage();
-    const barEnabled = barSettings?.barEnabled ?? DEFAULT_EXTENSION_SETTINGS.barEnabled;
-    if (!barEnabled) {
+    const settings = await getNormalizedSettings();
+    if (!settings.barEnabled) {
         logBottomBarDebugReason('bar is disabled in extension settings');
         return false;
     }
@@ -1004,36 +971,10 @@ export async function shouldInjectBottomBar(isStale: () => boolean = () => false
     pendingBarDebugData = null;
 
     try {
-        const [storedUserSettings, extensionSettingsFromStorage] = await Promise.all([
-            loadGGUserSettingsFromChromeStorage(),
-            loadSettingsFromChromeStorage(),
-        ]);
-        let userSettings = storedUserSettings;
-        const extensionSettings = extensionSettingsFromStorage ?? DEFAULT_EXTENSION_SETTINGS;
-
-        if (!userSettings?.region?.trim()) {
-            try {
-                userSettings = await requestGGUserSettingsSync({ mode: 'auto' });
-            } catch (error) {
-                const errorMessage = error instanceof Error ? error.message : String(error);
-                logBottomBarDebugReason('failed to synchronize region from extensionData/user', {
-                    error: errorMessage,
-                });
-            }
-        }
-
-        const platform = userSettings?.platform?.trim().toLowerCase()
-            || mapSettingsPlatformToRequestPlatform(extensionSettings.platform);
-
-        const showKeyshops = typeof userSettings?.showKeyshops === 'boolean'
-            ? userSettings.showKeyshops
-            : extensionSettings.keyshopsEnabled;
-        const region = userSettings?.region?.trim().toLowerCase();
-
-        if (!region) {
-            logBottomBarDebugReason('region is not available from extensionData/user yet');
-            return false;
-        }
+        const extensionSettings = await getNormalizedSettings();
+        const platform = extensionSettings.platform;
+        const showKeyshops = extensionSettings.keyshopsEnabled;
+        const region = extensionSettings.region;
 
         const commonPayload = {
             platform,

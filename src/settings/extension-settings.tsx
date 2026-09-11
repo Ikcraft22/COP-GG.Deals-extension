@@ -6,16 +6,15 @@ import { DealsTab } from './tabs/deals-tab';
 import { SettingsTab } from './tabs/settings-tab';
 import { UserDropdown } from './components/user-dropdown';
 import { InfoBox } from './components/info-box';
+import { LoadingState } from './components/loading-state';
 import {
     APPEARANCE,
     DEALS,
     SETTINGS,
-    type SettingsData,
-    type RegionCurrency,
     type GGUserSettingsData,
     type TabKey,
     saveSettings,
-    loadSettings,
+    loadBarEnabled,
     loadAppearanceSettings,
     loadGGUserSettings,
     hasGGUserSettingsData,
@@ -42,14 +41,6 @@ import {
     POPUP_LAST_ACTIVE_TAB_STORAGE_KEY,
     POPUP_SETTINGS_SCROLL_TARGET_BOTTOM,
     POPUP_SETTINGS_SCROLL_TARGET_STORAGE_KEY,
-    SHOULD_FETCH_USER_SETTINGS_AFTER_SIGN_IN_KEY,
-    PLATFORM_PC,
-    PLATFORM_STEAM,
-    PLATFORM_XBOX,
-    PLATFORM_PLAYSTATION,
-    PLATFORM_ALL,
-    PLATFORM_NINTENDO,
-    PLATFORM_SWITCH,
     SETTINGS_THEME_DARK,
     SETTINGS_THEME_LIGHT,
     SETTINGS_THEME_SYSTEM,
@@ -122,115 +113,11 @@ function CustomMessageContent({ message }: { message: string }) {
     return <>{Array.from(document.body.childNodes, (node, index) => renderCustomMessageNode(node, String(index)))}</>;
 }
 
-function mapUserPlatformToSettingsPlatform(platform: string | undefined): SettingsData['platform'] {
-    const normalizedPlatform = platform?.trim().toLowerCase();
-
-    if (normalizedPlatform === PLATFORM_PC || normalizedPlatform === PLATFORM_STEAM) {
-        return PLATFORM_PC;
-    }
-
-    if (normalizedPlatform === PLATFORM_XBOX || normalizedPlatform === PLATFORM_PLAYSTATION || normalizedPlatform === PLATFORM_ALL) {
-        return normalizedPlatform;
-    }
-
-    if (normalizedPlatform === PLATFORM_NINTENDO || normalizedPlatform === PLATFORM_SWITCH) {
-        return PLATFORM_NINTENDO;
-    }
-
-    return PLATFORM_ALL;
-}
-
-function mapUserRegionToRegionCurrency(region: string | undefined): SettingsData['regionCurrency'] {
-    const normalizedRegion = region?.trim().toLowerCase();
-
-    const countryToRegionCurrencyMap: Record<string, SettingsData['regionCurrency']> = {
-        'au': 'aud-au',
-        'be': 'eur-be',
-        'br': 'brl-br',
-        'ca': 'cad-ca',
-        'dk': 'dkk-dk',
-        'eu': 'eur-eu',
-        'fi': 'eur-fi',
-        'fr': 'eur-fr',
-        'de': 'eur-de',
-        'ie': 'eur-ie',
-        'it': 'eur-it',
-        'nl': 'eur-nl',
-        'no': 'nok-no',
-        'pl': 'pln-pl',
-        'es': 'eur-es',
-        'se': 'sek-se',
-        'ch': 'chf-ch',
-        'gb': 'gbp-gb',
-        'us': 'usd-us',
-    };
-
-    const directRegionValueMap: Record<string, SettingsData['regionCurrency']> = {
-        'aud-au': 'aud-au',
-        'eur-be': 'eur-be',
-        'brl-br': 'brl-br',
-        'cad-ca': 'cad-ca',
-        'dkk-dk': 'dkk-dk',
-        'eur-eu': 'eur-eu',
-        'eur-fi': 'eur-fi',
-        'eur-fr': 'eur-fr',
-        'eur-de': 'eur-de',
-        'eur-ie': 'eur-ie',
-        'eur-it': 'eur-it',
-        'eur-nl': 'eur-nl',
-        'nok-no': 'nok-no',
-        'pln-pl': 'pln-pl',
-        'eur-es': 'eur-es',
-        'sek-se': 'sek-se',
-        'chf-ch': 'chf-ch',
-        'gbp-gb': 'gbp-gb',
-        'usd-us': 'usd-us',
-    };
-
-    if (!normalizedRegion) {
-        return null;
-    }
-
-    if (directRegionValueMap[normalizedRegion]) {
-        return directRegionValueMap[normalizedRegion];
-    }
-
-    if (countryToRegionCurrencyMap[normalizedRegion]) {
-        return countryToRegionCurrencyMap[normalizedRegion];
-    }
-
-    const normalizedRegionParts = normalizedRegion.split('-').filter((part) => part.length > 0);
-    const lastRegionPart = normalizedRegionParts[normalizedRegionParts.length - 1];
-
-    if (lastRegionPart && countryToRegionCurrencyMap[lastRegionPart]) {
-        return countryToRegionCurrencyMap[lastRegionPart];
-    }
-
-    return null;
-}
-function mapSettingsPlatformToUserPlatform(platform: SettingsData['platform']): string {
-    if (platform === PLATFORM_STEAM) {
-        return PLATFORM_PC;
-    }
-
-    return platform;
-}
-
-function mapSettingsRegionCurrencyToUserRegion(regionCurrency: RegionCurrency): string | null {
-    const normalizedRegionCurrency = regionCurrency.trim().toLowerCase();
-    const [, regionCode] = normalizedRegionCurrency.split('-');
-
-    if (regionCode && regionCode.length > 0) {
-        return regionCode;
-    }
-
-    return null;
-}
-
 function ExtensionSettings() {
-    const [settings, setSettings] = useState<SettingsData>(() => loadSettings());
+    const [barEnabled, setBarEnabled] = useState<boolean>(() => loadBarEnabled());
     const [appearanceSettings, setAppearanceSettings] = useState<SettingsAppearanceData>(() => loadAppearanceSettings());
-    const [userSettings, setUserSettings] = useState<GGUserSettingsData | null>(() => loadGGUserSettings());
+    // null until the initial load resolves - user settings are complete from then on
+    const [userSettings, setUserSettings] = useState<GGUserSettingsData | null>(null);
     const [isSyncingUserSettings, setIsSyncingUserSettings] = useState(false);
     const [showBlacklistAlert, setShowBlacklistAlert] = useState(false);
     const [emailUnverifiedMessage, setEmailUnverifiedMessage] = useState<string | null>(null);
@@ -372,52 +259,17 @@ function ExtensionSettings() {
         };
     }, [activeTab]);
 
-    function updateSettings(patch: Partial<SettingsData>, syncGGUserSettings = true) {
-        setSettings((previous) => {
-            const next = {
-                ...previous,
-                ...patch,
-            };
+    function updateUserSettings(
+        current: GGUserSettingsData,
+        patch: Partial<Pick<GGUserSettingsData, 'platform' | 'region' | 'showKeyshops'>>,
+    ) {
+        const nextUserSettings: GGUserSettingsData = {
+            ...current,
+            ...patch,
+        };
 
-            saveSettings(next);
-
-            return next;
-        });
-
-        if (!syncGGUserSettings) {
-            return;
-        }
-
-        setUserSettings((previous) => {
-            if (!previous) {
-                return previous;
-            }
-
-            const hasPlatformPatch = typeof patch.platform === 'string';
-            const hasRegionPatch = typeof patch.regionCurrency === 'string';
-            const hasKeyshopsPatch = typeof patch.keyshopsEnabled === 'boolean';
-
-            if (!hasPlatformPatch && !hasRegionPatch && !hasKeyshopsPatch) {
-                return previous;
-            }
-
-            const nextUserSettings: GGUserSettingsData = {
-                ...previous,
-                platform: hasPlatformPatch
-                    ? mapSettingsPlatformToUserPlatform(patch.platform as SettingsData['platform'])
-                    : previous.platform,
-                region: hasRegionPatch
-                    ? mapSettingsRegionCurrencyToUserRegion(patch.regionCurrency as RegionCurrency) ?? previous.region
-                    : previous.region,
-                showKeyshops: hasKeyshopsPatch
-                    ? (patch.keyshopsEnabled as boolean)
-                    : previous.showKeyshops,
-            };
-
-            saveGGUserSettings(nextUserSettings);
-
-            return nextUserSettings;
-        });
+        saveGGUserSettings(nextUserSettings);
+        setUserSettings(nextUserSettings);
     }
 
     function updateAppearanceSettings(patch: Partial<SettingsAppearanceData>) {
@@ -500,23 +352,23 @@ function ExtensionSettings() {
             return;
         }
 
-        updateSettings({
-            platform: mapUserPlatformToSettingsPlatform(userSettings.platform),
-            regionCurrency: mapUserRegionToRegionCurrency(userSettings.region),
+        saveSettings({
+            platform: userSettings.platform,
+            region: userSettings.region,
             keyshopsEnabled: userSettings.showKeyshops,
-        }, false);
-    }, [userSettings]);
+            barEnabled,
+        });
+    }, [userSettings, barEnabled]);
 
-    const synchronizeInitialUserSettings = async (): Promise<void> => {
+    const loadInitialUserSettings = async (): Promise<void> => {
         setIsSyncingUserSettings(true);
 
         try {
-            const freshUserSettings = await requestGGUserSettingsSync({ mode: 'auto' });
-            saveGGUserSettingsToLocalStorage(freshUserSettings);
-            setUserSettings(freshUserSettings);
-            console.log('[gg.deals-extension] Synchronized initial GG user settings:', freshUserSettings);
+            const initialUserSettings = await loadGGUserSettings();
+            setUserSettings(initialUserSettings);
+            console.log('[gg.deals-extension] Loaded initial GG user settings:', initialUserSettings);
         } catch (error) {
-            console.warn('[gg.deals-extension] Failed to synchronize initial GG user settings:', error);
+            console.warn('[gg.deals-extension] Failed to load initial GG user settings:', error);
         } finally {
             setIsSyncingUserSettings(false);
         }
@@ -524,12 +376,11 @@ function ExtensionSettings() {
 
     async function signOut(): Promise<void> {
         // Remove login data, but keep the user's settings
-        const signedOutUserSettings = signOutFromExtensionMemory();
-        void browser.storage.session.remove(SHOULD_FETCH_USER_SETTINGS_AFTER_SIGN_IN_KEY);
+        const signedOutUserSettings = signOutFromExtensionMemory(userSettings ?? await loadGGUserSettings());
         setUserSettings(signedOutUserSettings);
     }
 
-    const fetchSettings = async (preserveLocalOverrides = false, options?: {
+    const fetchSettings = async (preserveLocalSettings = false, options?: {
         includeApiKeyHeader?: boolean;
         openLoginPageOnMissingSession?: boolean;
     }): Promise<void> => {
@@ -539,18 +390,18 @@ function ExtensionSettings() {
         const openLoginPageOnMissingSession = options?.openLoginPageOnMissingSession ?? true;
 
         try {
+            // Signing in adds the account to the settings the extension already uses,
+            // it does not replace platform, region and keyshops with the account ones
+            const localUserSettings = preserveLocalSettings ? await loadGGUserSettings() : null;
             const freshUserSettings = await requestGGUserSettingsSync({
                 mode: 'authenticated',
                 includeApiKeyHeader,
                 requireAuthenticated: true,
-                ...(preserveLocalOverrides ? {
+                ...(localUserSettings ? {
                     overrides: {
-                        platform: mapSettingsPlatformToUserPlatform(settings.platform),
-                        ...(settings.regionCurrency ? {
-                            region: mapSettingsRegionCurrencyToUserRegion(settings.regionCurrency)
-                                ?? userSettings?.region,
-                        } : {}),
-                        showKeyshops: settings.keyshopsEnabled,
+                        platform: localUserSettings.platform,
+                        region: localUserSettings.region,
+                        showKeyshops: localUserSettings.showKeyshops,
                     },
                 } : {}),
             });
@@ -580,17 +431,7 @@ function ExtensionSettings() {
     };
 
     useEffect(() => {
-        browser.storage.session.get([SHOULD_FETCH_USER_SETTINGS_AFTER_SIGN_IN_KEY]).then((result) => {
-            const shouldFetchAfterSignIn = result?.[SHOULD_FETCH_USER_SETTINGS_AFTER_SIGN_IN_KEY] === true;
-
-            if (shouldFetchAfterSignIn) {
-                void browser.storage.session.remove(SHOULD_FETCH_USER_SETTINGS_AFTER_SIGN_IN_KEY);
-                void fetchSettings();
-                return;
-            }
-
-            void synchronizeInitialUserSettings();
-        });
+        void loadInitialUserSettings();
     }, []);
 
     const isLoggedIn = hasGGUserSettingsData(userSettings);
@@ -610,9 +451,9 @@ function ExtensionSettings() {
             return;
         }
 
-        const platformParam = `/${settings.platform}/`;
+        const platform = userSettings?.platform;
 
-        const searchUrl = `https://gg.deals/search${platformParam !== '/all/' ? platformParam : '/'}?title=${encodeURIComponent(searchQuery)}`;
+        const searchUrl = `https://gg.deals/search${platform && platform !== 'all' ? `/${platform}/` : '/'}?title=${encodeURIComponent(searchQuery)}`;
         window.open(searchUrl, '_blank', 'noopener');
     }
 
@@ -621,7 +462,7 @@ function ExtensionSettings() {
             return;
         }
 
-        void fetchSettings(false, {
+        void fetchSettings(true, {
             includeApiKeyHeader: false,
             openLoginPageOnMissingSession: true,
         });
@@ -735,39 +576,41 @@ function ExtensionSettings() {
                         </InfoBox>
                     ))}
 
-                    {activeTab === DEALS && (
-                        <DealsTab
+                    {activeTab === DEALS && (userSettings
+                        ? <DealsTab
                             userSettings={userSettings}
-                            platform={settings.platform}
-                            keyshopsEnabled={settings.keyshopsEnabled}
                             isSyncingUserSettings={isSyncingUserSettings}
                             onSignInClick={handleSignInFetch}
                             onApiKeyInvalid={signOut}
                             onEmailUnverified={setEmailUnverifiedMessage}
                         />
+                        : <LoadingState />
                     )}
                 </section>
 
                 <section className="gg-tab-panel" id="tab-panel-settings" role="tabpanel" hidden={activeTab !== SETTINGS}>
-                    {activeTab === SETTINGS && (
-                        <SettingsTab
-                            platform={settings.platform}
-                            regionCurrency={settings.regionCurrency}
-                            keyshopsEnabled={settings.keyshopsEnabled}
-                            barEnabled={settings.barEnabled}
+                    {activeTab === SETTINGS && (userSettings
+                        ? <SettingsTab
+                            isLoggedIn={isLoggedIn}
+                            platform={userSettings.platform}
+                            region={userSettings.region}
+                            keyshopsEnabled={userSettings.showKeyshops}
+                            barEnabled={barEnabled}
                             showBlacklistAlert={showBlacklistAlert}
                             onSignInClick={handleSignInFetch}
-                            onPlatformChange={(platform) => updateSettings({ platform })}
-                            onRegionCurrencyChange={(regionCurrency) => updateSettings({ regionCurrency })}
-                            onKeyshopsEnabledChange={(keyshopsEnabled) => updateSettings({ keyshopsEnabled })}
-                            onBarEnabledChange={(barEnabled) => updateSettings({ barEnabled })}
+                            onPlatformChange={(platform) => updateUserSettings(userSettings, { platform })}
+                            onRegionChange={(region) => updateUserSettings(userSettings, { region })}
+                            onKeyshopsEnabledChange={(showKeyshops) => updateUserSettings(userSettings, { showKeyshops })}
+                            onBarEnabledChange={setBarEnabled}
                         />
+                        : <LoadingState />
                     )}
                 </section>
 
                 <section className="gg-tab-panel" id="tab-panel-appearance" role="tabpanel" hidden={activeTab !== APPEARANCE}>
-                    {activeTab === APPEARANCE && (
-                        <AppearanceTab
+                    {activeTab === APPEARANCE && (userSettings
+                        ? <AppearanceTab
+                            isLoggedIn={isLoggedIn}
                             theme={appearanceSettings.theme}
                             barWidth={appearanceSettings.barWidth}
                             rounding={appearanceSettings.rounding}
@@ -776,6 +619,7 @@ function ExtensionSettings() {
                             onBarWidthChange={(barWidth) => updateAppearanceSettings({ barWidth })}
                             onRoundingChange={(rounding) => updateAppearanceSettings({ rounding })}
                         />
+                        : <LoadingState />
                     )}
                 </section>
             </div>

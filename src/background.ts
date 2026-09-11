@@ -27,6 +27,8 @@ import {
   fetchGuestGGUserSettings,
   GGInvalidApiKeyError,
   hasGGUserSettingsData,
+  isPlatform,
+  isRegion,
   loadCustomMessagesFromChromeStorage,
   loadGGUserSettingsFromChromeStorage,
   processExtensionResponse,
@@ -216,8 +218,10 @@ function synchronizeGGUserSettings(options: GGUserSettingsSyncOptions = {}): Pro
       const existingUserSettings = await loadGGUserSettingsFromChromeStorage();
       const mode = options.mode ?? 'auto';
 
-      // "auto" keeps a complete cached value and only fetches when there's no region yet
-      if (mode === 'auto' && existingUserSettings?.region?.trim()) {
+      // "auto" keeps the cached value and only fetches when it is missing or unsupported
+      if (mode === 'auto'
+        && isPlatform(existingUserSettings?.platform)
+        && isRegion(existingUserSettings?.region)) {
         return existingUserSettings;
       }
 
