@@ -1,5 +1,33 @@
-import type { DomainPageRule } from '../types';
+import type { DomainPageEligibility, DomainPageRule } from '../types';
 import { extractPageIdentityFromLdJson } from '../../js/ld-json-helpers';
+import {
+    getLdJsonProductNodes,
+    isCurrentPageLdJsonProduct,
+} from '../../js/product-ld-json-helpers';
+
+export const resolveHumbleBundlePageEligibility = (): DomainPageEligibility => {
+    const productNodes = getLdJsonProductNodes();
+
+    if (productNodes.length === 0) {
+        return {
+            status: 'unknown',
+            reason: 'Humble Bundle Product LD+JSON is not available yet',
+        };
+    }
+
+    if (productNodes.some((node) => isCurrentPageLdJsonProduct(node, ['VideoGame']))) {
+        return {
+            status: 'eligible',
+            reason: 'Humble Bundle game confirmed by Product and VideoGame LD+JSON types',
+        };
+    }
+
+    return {
+        status: 'ineligible',
+        reason: 'Humble Bundle page does not have a matching VideoGame Product LD+JSON node',
+        evidence: [`productNodes=${productNodes.length}`],
+    };
+};
 
 function normalizeText(value: string | null | undefined): string | null {
     if (typeof value !== 'string') {
@@ -47,7 +75,9 @@ export const resolveHumbleBundleTitle = (): string | null => {
 
 export const humbleBundlePageRule: DomainPageRule = {
     domain: 'humblebundle.com',
+    resolvePageEligibility: resolveHumbleBundlePageEligibility,
     resolveTitle: resolveHumbleBundleTitle,
     resolveRequestUrl: () => window.location.href,
+    eligibilityResolveRetryMs: 5000,
     titleResolveRetryMs: 3000,
 };
