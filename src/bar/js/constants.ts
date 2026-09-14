@@ -17,7 +17,7 @@ export const BAR_LAYOUT_ROUNDED = 'rounded';
 export const BAR_LAYOUT_ROUNDED_CORNERS = 'rounded-corners';
 export const BAR_LAYOUT_ROUNDED_TOP = 'rounded-top';
 export const BAR_LAYOUT_BOTTOM_EDGE = 'bottom-edge';
-export const DEFAULT_BAR_LAYOUT = BAR_LAYOUT_ROUNDED;
+export const DEFAULT_BAR_LAYOUT = BAR_LAYOUT_ROUNDED_TOP;
 
 export const BAR_WIDTH_FIXED = 'fixed';
 export const BAR_WIDTH_FIT_CONTENT = 'fit-content';
