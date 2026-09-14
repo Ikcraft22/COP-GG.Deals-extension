@@ -154,10 +154,6 @@ export function DealsTab({ userSettings, isSyncingUserSettings, onSignInClick, o
         };
     }, [dealsUrl, userSettings.apiKey]);
 
-    useEffect(() => {
-        console.log('Fetched deals:', deals);
-    }, [deals]);
-
     return <>
         <LoadingState hidden={!loading && !isSyncingUserSettings} />
         <div className="gg-deals-container">

@@ -201,6 +201,8 @@ function ExtensionSettings() {
     });
 
     useEffect(() => {
+        let animationFrameId: number | null = null;
+
         const calculateScrollbar = () => {
             const root = document.documentElement;
             const body = document.body;
@@ -216,7 +218,11 @@ function ExtensionSettings() {
             );
 
             if (totalHeight <= windowHeight) {
-                setScrollMetrics({ visible: false, thumbHeight: 0, thumbTop: 0 });
+                setScrollMetrics((current) => (
+                    current.visible || current.thumbHeight !== 0 || current.thumbTop !== 0
+                        ? { visible: false, thumbHeight: 0, thumbTop: 0 }
+                        : current
+                ));
                 return;
             }
 
@@ -237,25 +243,45 @@ function ExtensionSettings() {
 
             const calculatedThumbTop = topBoundaryOffset + (maxThumbTravelDistance * currentScrollPercent);
 
-            setScrollMetrics({
-                visible: true,
-                thumbHeight: calculatedThumbHeight,
-                thumbTop: calculatedThumbTop
+            setScrollMetrics((current) => (
+                current.visible
+                    && current.thumbHeight === calculatedThumbHeight
+                    && current.thumbTop === calculatedThumbTop
+                    ? current
+                    : {
+                        visible: true,
+                        thumbHeight: calculatedThumbHeight,
+                        thumbTop: calculatedThumbTop,
+                    }
+            ));
+        };
+
+        const scheduleScrollbarCalculation = () => {
+            if (animationFrameId !== null) {
+                return;
+            }
+
+            animationFrameId = requestAnimationFrame(() => {
+                animationFrameId = null;
+                calculateScrollbar();
             });
         };
 
-        const resizeObserver = new ResizeObserver(() => calculateScrollbar());
+        const resizeObserver = new ResizeObserver(scheduleScrollbarCalculation);
         resizeObserver.observe(document.body);
 
-        window.addEventListener('scroll', calculateScrollbar, { passive: true });
-        window.addEventListener('resize', calculateScrollbar);
+        window.addEventListener('scroll', scheduleScrollbarCalculation, { passive: true });
+        window.addEventListener('resize', scheduleScrollbarCalculation);
 
         calculateScrollbar();
 
         return () => {
             resizeObserver.disconnect();
-            window.removeEventListener('scroll', calculateScrollbar);
-            window.removeEventListener('resize', calculateScrollbar);
+            window.removeEventListener('scroll', scheduleScrollbarCalculation);
+            window.removeEventListener('resize', scheduleScrollbarCalculation);
+            if (animationFrameId !== null) {
+                cancelAnimationFrame(animationFrameId);
+            }
         };
     }, [activeTab]);
 

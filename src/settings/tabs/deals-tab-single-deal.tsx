@@ -34,7 +34,14 @@ export function DealsTabSingleDeal({ deal }: Props) {
             return (
                 <div className="gg-deals-item" key={index}>
                     <div className="gg-deals-item-image">
-                        <img className="gg-deals-item-cover" src={item.game.images["1x"]} srcSet={`${item.game.images["1x"]} 1x, ${item.game.images["2x"]} 2x`} alt={item.game.title} />
+                        <img
+                            className="gg-deals-item-cover"
+                            src={item.game.images["1x"]}
+                            srcSet={`${item.game.images["1x"]} 1x, ${item.game.images["2x"]} 2x`}
+                            alt={item.game.title}
+                            loading="lazy"
+                            decoding="async"
+                        />
                         {ribbonImage && <img className="gg-deal-item-ribbon" src={ribbonImage} alt="" aria-hidden="true" />}
                     </div>
                     <div className="gg-deals-item-content">
