@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: release-${{ github.event.release.tag_name || github.ref_name }}
@@ -16,6 +16,10 @@ jobs:
   build:
     name: Build and attach extension packages
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      label: ${{ steps.built.outputs.label }}
 
     steps:
       - name: Checkout
@@ -65,11 +69,31 @@ jobs:
 
           ls -l artifacts
 
+      # AMO requires the source of bundled builds, so reviewers can rebuild it.
+      - name: Package source code
+        env:
+          LABEL: ${{ steps.built.outputs.label }}
+        run: |
+          set -euo pipefail
+
+          mkdir -p source
+          git archive --format=zip --prefix="ggdeals-extension-${LABEL}/" \
+            -o "source/ggdeals-extension-source-${LABEL}.zip" HEAD
+
+          ls -l source
+
       - name: Upload workflow artifacts
         uses: actions/upload-artifact@v7
         with:
           name: extension-packages-${{ steps.built.outputs.label }}
           path: artifacts/*.zip
+          if-no-files-found: error
+
+      - name: Upload source artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: extension-source-${{ steps.built.outputs.label }}
+          path: source/*.zip
           if-no-files-found: error
 
       - name: Attach packages to release
@@ -79,3 +103,65 @@ jobs:
           tag_name: ${{ github.event.release.tag_name }}
           files: artifacts/*.zip
           fail_on_unmatched_files: true
+
+  publish-chrome:
+    name: Publish to Chrome Web Store
+    needs: build
+    if: github.event_name == 'release' && !github.event.release.prerelease
+    runs-on: ubuntu-latest
+    environment: extension-stores
+
+    steps:
+      - name: Download packages
+        uses: actions/download-artifact@v8
+        with:
+          name: extension-packages-${{ needs.build.outputs.label }}
+          path: artifacts
+
+      - name: Upload and publish
+        uses: mnao305/chrome-extension-upload@f549d5d654694a7722d6abfa64c97409ad5e64c1 # v7.0.0
+        with:
+          file-path: artifacts/ggdeals-extension-chrome-${{ needs.build.outputs.label }}.zip
+          extension-id: ${{ vars.CHROME_EXTENSION_ID }}
+          publisher-id: ${{ vars.CHROME_PUBLISHER_ID }}
+          client-id: ${{ secrets.CHROME_CLIENT_ID }}
+          client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+          refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
+
+  publish-firefox:
+    name: Publish to Firefox Add-ons
+    needs: build
+    if: github.event_name == 'release' && !github.event.release.prerelease
+    runs-on: ubuntu-latest
+    environment: extension-stores
+
+    steps:
+      - name: Download packages
+        uses: actions/download-artifact@v8
+        with:
+          name: extension-packages-${{ needs.build.outputs.label }}
+          path: artifacts
+
+      - name: Download source code
+        uses: actions/download-artifact@v8
+        with:
+          name: extension-source-${{ needs.build.outputs.label }}
+          path: source
+
+      - name: Upload and publish
+        uses: wdzeng/firefox-addon@3184ee491b500e080885e046051366a4228c6e5d # v1.2.1
+        with:
+          addon-guid: extension@gg.deals
+          xpi-path: artifacts/ggdeals-extension-firefox-${{ needs.build.outputs.label }}.zip
+          source-file-path: source/ggdeals-extension-source-${{ needs.build.outputs.label }}.zip
+          jwt-issuer: ${{ secrets.AMO_JWT_ISSUER }}
+          jwt-secret: ${{ secrets.AMO_JWT_SECRET }}
+          approval-notes: |
+            The extension is bundled with Vite (not minified). To reproduce the submitted package from the attached source:
+
+            1. Install Node.js 22 (any version matching ^20.19.0 || >=22.12.0 works).
+            2. In the source directory run: `npm ci && npm run build:firefox -- --version=${{ needs.build.outputs.label }}`
+            3. The built extension is in `dist/gg.deals_firefox/` (the submitted zip is the contents of that directory).
+
+            Changes are described in release notes on GitHub: https://github.com/ggdeals/browser-extension/releases/tag/${{ needs.build.outputs.label }}
+            The release notes also contain a link to all the code changes compared to the previous version.
