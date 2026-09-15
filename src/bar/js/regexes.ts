@@ -58,6 +58,7 @@ export const UBISOFT_GAME_EDITION_PREFIX = /^https:\/\/(?:www\.)?ubisoft\.com\/[
 export const BATTLE_NET_PRODUCT_PREFIX = /^https:\/\/(?:eu|us)\.shop\.battle\.net\/[a-z]{2}-[a-z]{2}\/(?:family|product)\/[^/?#]+(?:\/?(?:[?#].*)?)?$/i;
 export const ISTHEREANYDEAL_GAME_PREFIX = /^https:\/\/(?:www\.)?isthereanydeal\.com\/game\/[^/?#]+(?:\/[^?#]*)?(?:[?#].*)?$/i;
 export const LESTRADES_GAME_PREFIX = /^https:\/\/(?:www\.)?lestrades\.com\/game\/\d+\/?(?:[?#].*)?$/i;
+export const LOWCYGIER_BAZAR_GAME_PREFIX = /^https:\/\/bazar\.lowcygier\.pl\/offer\/(?:game\/)?\d+\/?(?:[?#].*)?$/i;
 export const BARTER_VG_ITEM_PREFIX = /^https:\/\/(?:www\.)?barter\.vg\/i\/\d+\/?(?:[?#].*)?$/i;
 export const STEAMDB_PRODUCT_PREFIX = /^https:\/\/(?:www\.)?steamdb\.info\/(?:app|sub|bundle)\/\d+(?:\/[^?#]*)?(?:[?#].*)?$/i;
 export const STEAMCHARTS_APP_PREFIX = /^https:\/\/(?:www\.)?steamcharts\.com\/app\/\d+\/?(?:[?#].*)?$/i;

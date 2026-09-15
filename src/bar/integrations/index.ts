@@ -16,6 +16,7 @@ import { nintendoPageRule } from './nintendo';
 import { playerlandPageRule } from './playerland';
 import { isThereAnyDealPageRule } from './isthereanydeal';
 import { lestradesPageRule } from './lestrades';
+import { lowcygierBazarPageRule } from './lowcygierbazar';
 import { barterVgPageRule } from './bartervg';
 import { steamDbPageRule } from './steamdb';
 import { steamChartsPageRule } from './steamcharts';
@@ -105,6 +106,7 @@ const DOMAIN_PAGE_RULES: DomainPageRule[] = [
     playerlandPageRule,
     isThereAnyDealPageRule,
     lestradesPageRule,
+    lowcygierBazarPageRule,
     barterVgPageRule,
     steamDbPageRule,
     steamChartsPageRule,
