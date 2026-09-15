@@ -65,6 +65,7 @@ import { eldoradoPageRule } from './eldorado';
 import { playsumPageRule } from './playsum';
 import { playAsiaPageRule } from './playasia';
 import { electronicFirstPageRule } from './electronicfirst';
+import { twitchPageRule } from './twitch';
 import type { DomainPageEligibility, DomainPageRule } from './types';
 
 type BottomBarContextInput = {
@@ -154,6 +155,7 @@ const DOMAIN_PAGE_RULES: DomainPageRule[] = [
     playsumPageRule,
     playAsiaPageRule,
     electronicFirstPageRule,
+    twitchPageRule,
     ...amazonPageRules,
 ];
 

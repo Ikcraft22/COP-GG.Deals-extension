@@ -68,5 +68,6 @@ export const OPENCRITIC_GAME_PREFIX = /^https:\/\/(?:www\.)?opencritic\.com\/gam
 export const RELEASES_PRODUCT_PREFIX = /^https:\/\/(?:www\.)?releases\.com\/p\/[^/?#]+\/?(?:[?#].*)?$/i;
 export const EGDATA_OFFER_PREFIX = /^https:\/\/(?:www\.)?egdata\.app\/offers\/[^/?#]+\/?(?:[?#].*)?$/i;
 export const IGDB_GAME_PREFIX = /^https:\/\/(?:www\.)?igdb\.com\/games\/[^/?#]+\/?(?:[?#].*)?$/i;
+export const TWITCH_CATEGORY_PREFIX = /^https:\/\/(?:www\.)?twitch\.tv\/directory\/category\/[^/?#]+\/?(?:[?#].*)?$/i;
 export const GRY_ONLINE_GAME_PREFIX = /^https:\/\/(?:www\.)?gry-online\.pl\/gry\/[^/?#]+\/[^/?#]+\/?(?:[?#].*)?$/i;
 export const GAMEPRESSURE_GAME_PREFIX = /^https:\/\/(?:www\.)?gamepressure\.com\/games\/[^/?#]+\/[^/?#]+\/?(?:[?#].*)?$/i;
