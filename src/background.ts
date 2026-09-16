@@ -47,6 +47,7 @@ import {
   POPUP_SETTINGS_SCROLL_TARGET_STORAGE_KEY,
 } from './settings/constants';
 import browser from "webextension-polyfill";
+import { convertPriceToCop } from './utils/currency-converter';
 
 
 type FetchSteamMessage = {
@@ -121,7 +122,13 @@ type SyncGGUserSettingsMessage = {
   options?: GGUserSettingsSyncOptions;
 };
 
-type BackgroundMessage = FetchSteamMessage | FetchSteamAccountNameMessage | PostImportDataMessage | FetchEpicTokenMessage | RefreshEpicTokenMessage | FetchEpicLibraryItemsMessage | FetchPlaystationWishlistMessage | FetchPlaystationAccountMessage | FetchPlaystationCollectionMessage | OpenUrlInNewTabMessage | FetchTestGameDataMessage | OpenPopupMessage | UpdateBadgeMessage | SyncGGUserSettingsMessage;
+type ConvertPriceToCopMessage = {
+  type: 'CONVERT_PRICE_TO_COP';
+  price: string;
+  region: string;
+};
+
+type BackgroundMessage = FetchSteamMessage | FetchSteamAccountNameMessage | PostImportDataMessage | FetchEpicTokenMessage | RefreshEpicTokenMessage | FetchEpicLibraryItemsMessage | FetchPlaystationWishlistMessage | FetchPlaystationAccountMessage | FetchPlaystationCollectionMessage | OpenUrlInNewTabMessage | FetchTestGameDataMessage | OpenPopupMessage | UpdateBadgeMessage | SyncGGUserSettingsMessage | ConvertPriceToCopMessage;
 
 type RuntimeMessageResponse = {
   ok: boolean;
@@ -1129,6 +1136,20 @@ async function fetchPlaystationCollectionWithPagination(url: string, reportProgr
 browser.runtime.onMessage.addListener(async (rawMessage: unknown, sender: { tab?: { id?: number } }): Promise<RuntimeMessageResponse | void> => {
   const message = rawMessage as BackgroundMessage;
   console.log('[gg.deals-extension][background] message received:', message?.type);
+
+  if (message?.type === 'CONVERT_PRICE_TO_COP') {
+    try {
+      if (typeof message.price !== 'string' || typeof message.region !== 'string' || !isRegion(message.region)) {
+        return { ok: false, error: 'Invalid currency conversion request' };
+      }
+
+      const convertedPrice = await convertPriceToCop(message.price, message.region);
+      return { ok: true, data: convertedPrice };
+    } catch (error) {
+      console.warn('[gg.deals-extension][background] CONVERT_PRICE_TO_COP failed:', error);
+      return { ok: false, error: error instanceof Error ? error.message : String(error) };
+    }
+  }
 
   if (message?.type === SYNC_GG_USER_SETTINGS_MESSAGE) {
     try {

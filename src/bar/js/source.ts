@@ -216,6 +216,10 @@ type RuntimeMessageResponse = {
     error?: string;
 };
 
+type CopPriceResponse = RuntimeMessageResponse & {
+    data?: string | null;
+};
+
 type AppearanceSettingsPayload = {
     theme?: string;
     barWidth?: string;
@@ -396,7 +400,35 @@ export function isSupportedProductPage(url: string): boolean {
     });
 }
 
-function renderGameData(container: HTMLElement, data: GameDataResponse): void {
+async function renderCopPrice(
+    container: HTMLElement,
+    price: string,
+    region: SettingsData['region'],
+    renderToken: number,
+    getCurrentRenderToken: () => number,
+): Promise<void> {
+    if (price === '-') {
+        return;
+    }
+
+    try {
+        const response = await browser.runtime.sendMessage({
+            type: 'CONVERT_PRICE_TO_COP',
+            price,
+            region,
+        }) as CopPriceResponse;
+
+        if (renderToken !== getCurrentRenderToken() || !response.ok || typeof response.data !== 'string') {
+            return;
+        }
+
+        container.textContent = response.data;
+    } catch {
+        // Keep the original price visible if the exchange-rate service is unavailable.
+    }
+}
+
+function renderGameData(container: HTMLElement, data: GameDataResponse, region: SettingsData['region']): void {
     const entries = data.data;
     if (!Array.isArray(entries) || entries.length === 0) {
         return;
@@ -406,8 +438,10 @@ function renderGameData(container: HTMLElement, data: GameDataResponse): void {
     const gameLink = container.querySelector<HTMLAnchorElement>('.gg-bar-game-link');
     const fullLink = container.querySelector<HTMLAnchorElement>('.full-link');
     const titleRoot = container.querySelector<HTMLElement>('.gg-bar-game-title');
+    let renderToken = 0;
 
     const renderSelectedGame = (gameData: GameEntry): void => {
+        const currentRenderToken = ++renderToken;
         const name = typeof gameData.title === 'string' && gameData.title.trim().length > 0
             ? gameData.title.trim()
             : 'Unknown game';
@@ -428,6 +462,11 @@ function renderGameData(container: HTMLElement, data: GameDataResponse): void {
             const priceRetailContainer = offersContainer.querySelector('.game-price-retail');
             if (priceRetailContainer) {
                 priceRetailContainer.textContent = priceRetail;
+                const copPriceContainer = offersContainer.querySelector<HTMLElement>('.game-price-retail-cop');
+                if (copPriceContainer) {
+                    copPriceContainer.textContent = '';
+                    void renderCopPrice(copPriceContainer, priceRetail, region, currentRenderToken, () => renderToken);
+                }
 
                 if (priceRetailHistorical) {
                     priceRetailContainer.classList.add('historical');
@@ -439,6 +478,11 @@ function renderGameData(container: HTMLElement, data: GameDataResponse): void {
             const priceKeyshopContainer = offersContainer.querySelector('.game-price-keyshop');
             if (priceKeyshopContainer) {
                 priceKeyshopContainer.textContent = priceKeyshop;
+                const copPriceContainer = offersContainer.querySelector<HTMLElement>('.game-price-keyshop-cop');
+                if (copPriceContainer) {
+                    copPriceContainer.textContent = '';
+                    void renderCopPrice(copPriceContainer, priceKeyshop, region, currentRenderToken, () => renderToken);
+                }
 
                 if (priceKeyshopHistorical) {
                     priceKeyshopContainer.classList.add('historical');
@@ -1108,7 +1152,12 @@ export function onBottomBarInjected(barElement: HTMLElement): void {
     pendingBarGameData = null;
 
     if (gameData && hasRenderableGameData(gameData)) {
-        renderGameData(gameInfoContainer, gameData);
+        void getNormalizedSettings().then((settings) => {
+            renderGameData(gameInfoContainer, gameData, settings.region);
+        }).catch((error) => {
+            console.warn('[gg.deals-extension] Failed to load region for COP prices:', error);
+            renderGameData(gameInfoContainer, gameData, 'us');
+        });
     } else {
         console.warn('[gg.deals-extension] Missing renderable game data:', gameData);
     }

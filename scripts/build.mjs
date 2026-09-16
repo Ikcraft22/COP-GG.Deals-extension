@@ -365,15 +365,21 @@ function resolveOutputDirs(targets, debugEnabled, site) {
 }
 
 function runCommand(command, args, env = {}) {
+  const useWindowsShell = process.platform === 'win32' && (command === 'npm' || command === 'npx');
   const result = spawnSync(command, args, {
     cwd: ROOT_DIR,
     stdio: 'inherit',
-    shell: false,
+    shell: useWindowsShell,
     env: {
       ...process.env,
       ...env,
     },
   });
+
+  if (result.error) {
+    console.error(`Failed to start ${command}:`, result.error.message);
+    process.exit(1);
+  }
 
   if (result.status !== 0) {
     process.exit(result.status ?? 1);
